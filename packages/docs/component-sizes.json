@@ -1,0 +1,190 @@
+{
+  "accordion": {
+    "parsed": 89690,
+    "gzip": 17613
+  },
+  "avatar": {
+    "parsed": 68760,
+    "gzip": 13245
+  },
+  "block": {
+    "parsed": 73928,
+    "gzip": 14702
+  },
+  "breadcrumbs": {
+    "parsed": 77091,
+    "gzip": 15456
+  },
+  "button-group": {
+    "parsed": 91152,
+    "gzip": 17223
+  },
+  "button": {
+    "parsed": 77668,
+    "gzip": 14805
+  },
+  "card": {
+    "parsed": 69491,
+    "gzip": 13083
+  },
+  "checkbox": {
+    "parsed": 81661,
+    "gzip": 16155
+  },
+  "data-table": {
+    "parsed": 903958,
+    "gzip": 167626
+  },
+  "datepicker": {
+    "parsed": 697268,
+    "gzip": 127541
+  },
+  "dnd-list": {
+    "parsed": 95175,
+    "gzip": 20511
+  },
+  "drawer": {
+    "parsed": 134217,
+    "gzip": 32701
+  },
+  "file-uploader": {
+    "parsed": 135063,
+    "gzip": 28710
+  },
+  "flex-grid": {
+    "parsed": 82131,
+    "gzip": 16528
+  },
+  "form-control": {
+    "parsed": 68608,
+    "gzip": 13263
+  },
+  "header-navigation": {
+    "parsed": 68655,
+    "gzip": 13053
+  },
+  "heading": {
+    "parsed": 76355,
+    "gzip": 15184
+  },
+  "icon": {
+    "parsed": 105974,
+    "gzip": 16792
+  },
+  "input": {
+    "parsed": 123059,
+    "gzip": 24847
+  },
+  "layer": {
+    "parsed": 97844,
+    "gzip": 22482
+  },
+  "list": {
+    "parsed": 85831,
+    "gzip": 16645
+  },
+  "menu": {
+    "parsed": 173948,
+    "gzip": 39400
+  },
+  "modal": {
+    "parsed": 149598,
+    "gzip": 34934
+  },
+  "notification": {
+    "parsed": 92259,
+    "gzip": 18447
+  },
+  "pagination": {
+    "parsed": 343645,
+    "gzip": 71237
+  },
+  "payment-card": {
+    "parsed": 166310,
+    "gzip": 37083
+  },
+  "phone-input": {
+    "parsed": 889747,
+    "gzip": 246480
+  },
+  "pin-code": {
+    "parsed": 133572,
+    "gzip": 26401
+  },
+  "popover": {
+    "parsed": 136237,
+    "gzip": 32090
+  },
+  "progress-bar": {
+    "parsed": 69164,
+    "gzip": 13358
+  },
+  "progress-steps": {
+    "parsed": 78874,
+    "gzip": 14823
+  },
+  "radio": {
+    "parsed": 82754,
+    "gzip": 16173
+  },
+  "rating": {
+    "parsed": 79004,
+    "gzip": 16178
+  },
+  "select": {
+    "parsed": 327329,
+    "gzip": 69073
+  },
+  "side-navigation": {
+    "parsed": 75384,
+    "gzip": 14135
+  },
+  "slider": {
+    "parsed": 90884,
+    "gzip": 20110
+  },
+  "spinner": {
+    "parsed": 72121,
+    "gzip": 13867
+  },
+  "table-grid": {
+    "parsed": 180040,
+    "gzip": 39961
+  },
+  "table-semantic": {
+    "parsed": 85807,
+    "gzip": 15994
+  },
+  "table": {
+    "parsed": 177786,
+    "gzip": 39440
+  },
+  "tabs": {
+    "parsed": 77986,
+    "gzip": 15223
+  },
+  "tag": {
+    "parsed": 96128,
+    "gzip": 20400
+  },
+  "textarea": {
+    "parsed": 128531,
+    "gzip": 25455
+  },
+  "toast": {
+    "parsed": 89726,
+    "gzip": 18198
+  },
+  "tooltip": {
+    "parsed": 146075,
+    "gzip": 33578
+  },
+  "tree-view": {
+    "parsed": 80279,
+    "gzip": 15209
+  },
+  "typography": {
+    "parsed": 79715,
+    "gzip": 15889
+  }
+}

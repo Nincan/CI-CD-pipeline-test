@@ -1,0 +1,39 @@
+import Example from 'components/example';
+import Layout from 'components/layout';
+import Exports from 'components/exports';
+import ImplementationLink from 'components/implementation-link';
+
+import VariantOverlaps from 'componentConfigs/badge/examples/variants-overlaps.js';
+import Positions from 'componentConfigs/badge/examples/positions.js';
+import Avatar from 'componentConfigs/badge/examples/with-avatar.js';
+import Overrides from 'componentConfigs/badge/examples/overrides.js';
+
+import * as BadgeExports from 'spaceweb/badge';
+
+import Yard from 'components/yard/index';
+import badgeYardConfig from 'componentConfigs/badge/config';
+
+export default Layout;
+
+# Badge
+
+<Yard placeholderHeight={52} {...badgeYardConfig} />
+
+Badge generates a small badge on top of its child.
+
+## Examples
+
+<Example title="Badges in different variants and overlaps" path="badge/examples/variants-overlaps.js">
+  <VariantOverlaps />
+</Example>
+<Example title="Badges in different positions" path="badge/examples/positions.js">
+  <Positions />
+</Example>
+<Example title="Badge Overrides" path="badge/examples/overrides.js">
+  <Overrides />
+</Example>
+<Example title="How badges can be used with Avatar" path="badge/examples/with-avatar.js">
+  <Avatar />
+</Example>
+<ImplementationLink componentPath="badge" />
+<Exports component={BadgeExports} title="Badge exports" path="spaceweb/badge" />

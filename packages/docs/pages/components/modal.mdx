@@ -1,0 +1,136 @@
+import Example from 'components/example';
+import Layout from 'components/layout';
+import Exports from 'components/exports';
+import ImplementationLink from 'components/implementation-link';
+
+import ModalBasic from 'componentConfigs/modal/examples/basic.js';
+import ModalUnBordered from 'componentConfigs/modal/examples/unbordered-modal.js';
+import ModalSmall from 'componentConfigs/modal/examples/small-modal.js';
+import ModalSmallScroll from 'componentConfigs/modal/examples/small-scroll.js';
+import ModalMedium from 'componentConfigs/modal/examples/medium-modal.js';
+import ModalLarge from 'componentConfigs/modal/examples/large-modal.js';
+import ModalAutoFocus from 'componentConfigs/modal/examples/autofocus.js';
+import ModalNested from 'componentConfigs/modal/examples/nested.js';
+import ModalSized from 'componentConfigs/modal/examples/sized.js';
+import WithLayersManager from 'componentConfigs/modal/examples/with-layers-manager.js';
+import BlockBackdropClose from 'componentConfigs/modal/examples/block-backdrop-close.js';
+import * as ModalExports from 'spaceweb/modal';
+
+import Yard from 'components/yard/index';
+import modalYardConfig from 'componentConfigs/modal/config';
+import ApiTable from 'components/api-table';
+
+export default Layout;
+
+# Modal
+
+<Yard placeholderHeight={0} {...modalYardConfig} />
+
+A design structure to organize and hide content, so as not to overwhelm the user.
+
+Modals provide an opportunity to display content, focused actions or alerts while maintaining the
+context of an existing view. This limits workflow interruptions and allows for focused
+communication and user interactions. There are two types of modals in Base – default and alert.
+Each modal share the same anatomy of a header, footer, and shaded background overlay.
+
+Standard modals are basic containers with a close “X” and the ability the dismiss by clicking outside
+of the modal bounds. The primary action button is a primary system color, complimented by a grey
+cancel action.
+
+The alert modal is to intended to focus the user on an urgent message that requires deliberate
+action. By contrast to standard modals, alert modals have no close “X”, nor do they allow for out
+of bounds dismissal. The primary action is always a system red with a grey cancel action.
+
+## Sizes
+
+There are 3 available sizes for Modal (`sm`, `md`, `lg`).
+
+These translate to size of Modal Dialog:
+
+- **sm** - max height = `560px` & width = `520px`.
+- **md** - max height = `660px` & width = `720px`.
+- **lg** - height = `90% of (total screen)` & width = `1220px`.
+
+Apart from these typical use cases for more complex modals is to increase the size of the modal.
+You can simply use overrides to send your **custom height & widths** to Dialog. You can check that in examples.
+
+## Accessibility
+
+We have built in functionality based on the recommendations for dialogs and modals in [WAI-ARIA Authoring Practices 1.1](https://www.w3.org/TR/wai-aria-practices/#dialog_modal).
+
+- Upon opening, focus will be transferred to the first interactive element (unless `autofocus` is set to false)
+- Dialog element has `aria-modal="true"`
+- Explicitly exposes a `role` prop to control whether `dialog` or `alertdialog` is used.
+- `Tab` key moves between focusable items (form inputs, footer buttons, etc). User should not be able to tab to items outside of modal.
+- `Escape` key closes the modal
+- Click on backdrop (anywhere outside dialog) hides modal.
+- Background is not be scrollable while modal is open (position: fixed).
+- Upon closing, focus should return to element that triggered modal.
+
+## Examples
+
+<Example title="Modal With Button Trigger" path="modal/examples/basic.js">
+  <ModalBasic />
+</Example>
+<Example title="Modal with no border on Header and Footer" path="modal/examples/unbordered-modal.js">
+  <ModalUnBordered />
+</Example>
+
+You can use `noBorder` prop in both ModalHeader & ModalFooter to make them borderless.
+
+<br />
+<Example title="Placing initial focus" path="modal/examples/autofocus.js">
+  <ModalAutoFocus />
+</Example>
+
+The modal will by default focus the first interactive element.
+If you want to focus something further down in the tab order, you can use the `autoFocus` property.
+This might be useful for targeting the most common action in the modal, such as a confirmation button.
+
+<Example title="Block backdrop close" path="modal/examples/block-backdrop-close.js">
+  <BlockBackdropClose />
+</Example>
+
+onClose can have 3 different type of closeSource. `backdrop`, `closeButton` & `escape`. This can be helpfult to block close behaviour on backdrop click.
+
+## Sizes
+
+<Example title="Small Modal" path="modal/examples/small-modal.js">
+  <ModalSmall />
+</Example>
+<Example title="Small Modal with scroll" path="modal/examples/small-scroll.js">
+  <ModalSmallScroll />
+</Example>
+<Example title="Medium Modal" path="modal/examples/medium-modal.js">
+  <ModalMedium />
+</Example>
+<Example title="Large Modal" path="modal/examples/large-modal.js">
+  <ModalLarge />
+</Example>
+<Example title="Custom Sized Modal" path="modal/examples/sized.js">
+  <ModalSized />
+</Example>
+
+Here, we are using a combination of overrides and in-line styles to set the height of the modal to `80vh` and the width to `80vw`.
+We also set the Modal to be a column-based flex container, while the ModalBody is then set to `flex-grow : 1` in order to properly space the header and footer.
+
+<Example title="With Layers Manager" path="modal/examples/with-layers-manager.js">
+  <WithLayersManager />
+</Example>
+
+Modal/Popover can be wrapped with LayersManager to override host element or z-index of the container.
+
+<Example title="Adding nested modals" path="modal/examples/nested.js">
+  <ModalNested />
+</Example>
+
+**Notice** that you need to handle modals closing order following their stacking order
+when multiple modals are dismissed at the same time. This is important to have the body
+scrolling restored in an expected way. See how the initial modal's `close` function is
+passed as a callback to the modal that is stacked on top of it `toggleConfirm(false, close)`.
+
+## API
+
+<ApiTable title="Modal props" config={modalYardConfig} />
+<ImplementationLink componentPath="modal" />
+<Exports component={ModalExports} title="Modal exports" path="spaceweb/modal" />

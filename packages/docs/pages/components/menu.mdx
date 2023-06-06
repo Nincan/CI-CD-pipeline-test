@@ -1,0 +1,113 @@
+import Example from 'components/example';
+import Exports from 'components/exports';
+import Layout from 'components/layout';
+import SEO from 'components/meta-seo';
+import ImplementationLink from 'components/implementation-link';
+
+import DisableNavigationInit from 'componentConfigs/menu/examples/disable-navigation-init.js';
+import Basic from 'componentConfigs/menu/examples/basic.js';
+import MenuPopover from 'componentConfigs/menu/examples/menu-popover.js';
+import MenuScrollable from 'componentConfigs/menu/examples/menu-scrollable.js';
+import MenuWithReducer from 'componentConfigs/menu/examples/with-reducer.js';
+import ActionMenu from 'componentConfigs/menu/examples/action-menu.js';
+import NestedMenu from 'componentConfigs/menu/examples/nested-menu.js';
+import VirtualList from 'componentConfigs/menu/examples/virtual-list.js';
+import RefNavigation from 'componentConfigs/menu/examples/ref-navigation.js';
+
+import * as MenuExports from 'spaceweb/menu';
+
+import Yard from 'components/yard/index';
+import menuYardConfig from 'componentConfigs/menu/config';
+import ApiTable from 'components/api-table';
+
+export default Layout;
+
+# Menu
+
+<Yard placeholderHeight={20} {...menuYardConfig} />
+
+Menus in Space Web provide an opportunity to nest various hierarchical navigation, features, or
+settings. Each menu item has an option to include an icon by default, but this can be removed.
+The menus themselves share the functionality and display of select menus.
+
+## When to use
+
+- When you want to display a navigational list.
+- When you want to display a list of actions.
+
+## Keybindings
+
+- `KeyDown / KeyUp` navigates down / up in the menu list, highlighting items as needed.
+- `ArrowRight` / `Space` Opens nested menu, if it exists
+- `ArrowLeft` / `Esc` Closes nested menu and shifts focus to parent menu
+- `Enter` / `Space` selects the currently highlighted item. If no item is highlighted, select the first item in the menu list.
+
+## Accessibility
+
+- `role="listbox"` is provided to indicate `ul` as a composite widget.
+- currently focused element of `ul` is refernced by `aria-activedescendant` attribute, which value is the id of selected `li`.
+
+## Examples
+
+<Example title="Menu Basic" path="menu/examples/basic.js">
+  <Basic />
+</Example>
+
+Menu will be focused(keyboard navigation will start working) as soon as it mounts.
+ListItem is selected if `selected` prop is true. Navigation will start with first selected item highlighted.
+
+<Example title="Menu disableNavigationOnMount" path="menu/examples/disable-navigation-init.js">
+  <DisableNavigationInit />
+</Example>
+
+with `disableNavigationOnMount` set true, navigation will be off initially. It can be enabled by hovering over Menu, or when Menu is focused.
+
+<Example title="Virtualization" path="menu/examples/virtual-list.js">
+  <VirtualList />
+</Example>
+
+Setting `virtual` property for the Menu can enable virtualization. **maxHeight and overflow must be provided to menu or its container**
+
+Check [this example in list](/components/list#virtual-list-inside-a-container) if overflow cannot be handled on Menu component.
+
+<Example title="Menu with Popover" path="menu/examples/menu-popover.js">
+  <MenuPopover />
+</Example>
+<Example title="Menu with max-height" path="menu/examples/menu-scrollable.js">
+  <MenuScrollable />
+</Example>
+
+`maxHeight` can be provided to Menu to make it scrollable.
+
+Also, notice when triggerType is `hover` in StatefulPopover, `focusWhenNavigationEnabled` should be marked as `false`,
+otherwise as soon as user navigates anchor-button with keyboard, Button will be blurred when Menu mounts which will close popover-content(Menu) immediately.
+
+<Example title="Menu with reducer" path="menu/examples/with-reducer.js">
+  <MenuWithReducer />
+</Example>
+
+Reducer can be used to alter the state of Menu. Here, reducer is used to set initially highlighted item.
+
+<Example title="Action Menu" path="menu/examples/action-menu.js">
+  <ActionMenu />
+</Example>
+
+Configurable action menu can be created using Menu.
+
+<Example title="Nested Menu with Popover" path="menu/examples/nested-menu.js">
+  <NestedMenu />
+</Example>
+
+To use Nested Menu, Wrap Menu with `NestedMenu` Context and pass getChildMenu prop to MenuItem.
+
+<Example title="Navigation control with ref" path="menu/examples/ref-navigation.js">
+  <RefNavigation />
+</Example>
+
+Ref can be used to turn on/off navigation of the Menu.
+
+## API
+
+<ApiTable title="Menu props" config={menuYardConfig} />
+<ImplementationLink componentPath="menu" />
+<Exports component={MenuExports} title="Menu exports" path="spaceweb/menu" />

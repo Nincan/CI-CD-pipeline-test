@@ -1,0 +1,23 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "allowJs": true,
+    "baseUrl": "./",
+    "declaration": true,
+    "moduleResolution": "node",
+    "rootDir": "./svgComponents",
+    "target": "es5",
+    "outDir": "./dist",
+    "composite": true,
+    "paths": {
+      "@sprinklr/spaceweb": ["../spaceweb/src"],
+      "@sprinklr/spaceweb/*": ["../spaceweb/src/*"]
+    }
+  },
+  "references": [
+    {
+      "path": "../spaceweb"
+    }
+  ],
+  "exclude": ["svgs", "dist", "node_modules", "scripts"]
+}

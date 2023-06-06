@@ -1,0 +1,38 @@
+// THIS FILES IS GENERATED USING SCRIPT, DO NOT EDIT DIRECTLY
+const margin = function(value) {
+  return {
+    marginTop: value,
+    marginBottom: value,
+    marginLeft: value,
+    marginRight: value,
+  };
+};
+const padding = function(value) {
+  return {
+    paddingTop: value,
+    paddingBottom: value,
+    paddingLeft: value,
+    paddingRight: value,
+  };
+};
+const borderRadius = function(value) {
+  return {
+    borderTopLeftRadius: value,
+    borderTopRightRadius: value,
+    borderBottomLeftRadius: value,
+    borderBottomRightRadius: value,
+  };
+};
+const borderWidth = function(value) {
+  return {
+    borderTopWidth: value,
+    borderBottomWidth: value,
+    borderRightWidth: value,
+    borderLeftWidth: value,
+  };
+};
+
+export default {
+  longhandUtils: {margin, padding, borderRadius, borderWidth},
+  utilities: %%UTILITIES%%
+}

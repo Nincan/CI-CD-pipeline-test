@@ -1,0 +1,30 @@
+import Example from 'components/example';
+import Layout from 'components/layout';
+import Exports from 'components/exports';
+import ImplementationLink from 'components/implementation-link';
+
+import Yard from 'components/yard/index';
+import videoConfig from 'componentConfigs/video/config';
+
+import VideoFits from 'componentConfigs/video/examples/fits';
+
+import * as VideoExports from 'spaceweb/video';
+
+export default Layout;
+
+# Media
+
+<Yard placeholderHeight={52} {...videoConfig} />
+
+Media renders content like image & video.
+
+## Examples
+
+<Example title="Videos with different fit properties" path="video/examples/fits">
+  <VideoFits
+    src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+    poster="https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2018/01/12201051/cute-puppy-body-image.jpg"
+  />
+</Example>
+<ImplementationLink componentPath="video" />
+<Exports component={VideoExports} title="Video exports" path="spaceweb/video" />

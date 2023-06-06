@@ -1,0 +1,52 @@
+import Example from 'components/example';
+import Layout from 'components/layout';
+import Exports from 'components/exports';
+import SEO from 'components/meta-seo';
+import ImplementationLink from 'components/implementation-link';
+import { DocLink } from 'components/markdown-elements';
+
+import Shapes from 'componentConfigs/icon-button/examples/shapes.js';
+import Sizes from 'componentConfigs/icon-button/examples/sizes.js';
+import BorderVariants from 'componentConfigs/icon-button/examples/border-variants.js';
+
+import Yard from 'components/yard/index';
+import iconButtonYardConfig from 'componentConfigs/icon-button/config';
+import ApiTable from 'components/api-table';
+
+import { Link } from 'spaceweb/link';
+import { IconButton } from 'spaceweb/button';
+
+<SEO
+  description="Icon buttons allow users to take actions, and make choices, with a single tap."
+  keywords="IconButton, icon button, react button, clickable icon"
+/>
+
+export default Layout;
+
+# Icon Button
+
+<Yard placeholderHeight={54} {...iconButtonYardConfig} />
+
+Icon buttons allow users to take actions, and make choices, with a single tap.
+
+Refer to the <DocLink href="/iconLibrary">Icons Library</DocLink> regarding the available icon options.
+
+For buttons with both icons and text, use the `Button` component with `leftEnhancer`. For more information, see the <DocLink href="/components/button#adding-enhancers">Button</DocLink> docs.
+
+## Examples
+
+<Example title="Shapes" path="icon-button/examples/shapes.js">
+  <Shapes />
+</Example>
+<Example title="Sizes" path="icon-button/examples/sizes.js">
+  <Sizes />
+</Example>
+<Example title="Bordered Variants" path="icon-button/examples/border-variants.js">
+  <BorderVariants />
+</Example>
+
+## API
+
+<ApiTable title="IconButton props" config={iconButtonYardConfig} />
+<ImplementationLink componentPath="button/IconButton" />
+<Exports component={{ IconButton }} title="IconButton exports" path="spaceweb/button" />

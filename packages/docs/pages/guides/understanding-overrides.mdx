@@ -1,0 +1,311 @@
+import Layout from '../../components/layout';
+
+import Example from '../../components/example';
+import {StatefulSelect, TYPE} from 'spaceweb/select';
+import {StatefulList} from 'baseui/dnd-list';
+import * as ListExports from 'baseui/dnd-list';
+import { Notification } from "baseui/notification";
+
+import DndListExample from 'componentConfigs/dnd-list/examples/overrides_short.js';
+import DndListExampleStyle from 'componentConfigs/dnd-list/examples/overrides_style.js';
+import DndListExampleStateProps from 'componentConfigs/dnd-list/examples/overrides_state_props.js';
+import DndListExampleSubcomponent from 'componentConfigs/dnd-list/examples/overrides_whole_subcomponent.js';
+import SelectTagExample from 'componentConfigs/select/examples/overriden-tag.js';
+
+export default Layout;
+
+# Understanding Overrides
+
+<Notification
+  overrides={{
+    Body: {style: {width: 'auto'}},
+  }}
+>
+  By the end of this guide, you'll learn the concept of overrides in Spaceweb,
+  and the ways you can use them to change the look or the behavior of
+  components.
+</Notification>
+
+**Spaceweb is a set of reusable React components** that fully adopts the Space design language.
+
+## Subcomponents
+
+Spaceweb components typically consist of many **subcomponents**. Let's use `@sprinklr/spaceweb/dnd-list` as an example:
+
+<DndListExample />
+
+This component is very self-contained and you can load it through a single import:
+
+```jsx
+import {StatefulList} from '@sprinklr/spaceweb/dnd-list';
+
+export default () => (
+  <StatefulList
+    initialState={{
+      items: ['Item 1', 'Item 2', 'Item 3'],
+    }}
+  />
+);
+```
+
+But as you might guess, there are multiple React components under the hood, components like `Item`, `DragHandle` or `Label`. They all come with various styles, behaviors and attributes. **We call them subcomponents**.
+
+## Introducing Overrides
+
+**Overrides** gives you full access to all those subcomponents and lets you to override:
+
+- styles of the subcomponent
+- props of the subcomponent
+- the whole subcomponent
+
+**Every Spaceweb component has a top-level prop called `overrides`**. It accepts a map of subcomponents and desired overrides. For example, if we want to change the `Label`'s color and also add an additional `data-test-id` attribute (props are spread over the subcomponent), we can do:
+
+```jsx
+<StatefulList
+  initialState={{
+    items: ['Item 1', 'Item 2', 'Item 3'],
+  }}
+  overrides={{
+    Label: {
+      style: {
+        color: '#892C21',
+      },
+      props: {
+        'data-test-id': 'dnd-list-label',
+      },
+    },
+  }}
+/>
+```
+
+We defined `overrides.Label.style` and `overrides.Label.props` properties and this is the result (inspect the element to see the `data-test-id` attribute):
+
+<DndListExampleStyle />
+
+The `overrides.Label.style` property accepts any [Styles](/guides/styling#technical-terms) and is handled by Spaceweb's [styled](/guides/styling#styled) utility internally.
+For more information on how `styled` works, refer to [How Styles are Parsed?](/guides/how-styling-works)
+
+> **Caveat:** When using `overrides.foo.style`, you are overriding a set of existing CSS properties. **Our components always use longhand CSS properties and so should yours!** If you [mix shorthand and longhand properties](https://www.styletron.org/concepts/#shorthand-and-longhand-properties), you will see a warning and can run into strange behaviors!
+
+## Style Function
+
+If you opt-in for the [style function](/guides/styling#styling-using-theme-callback),
+`overrides` provides all the [style utils](https://prod-gitlab.sprinklr.com/sprinklr/frontend/spaceweb/-/blob/master/packages/spaceweb/src/types.ts).
+So instead of the hard-coded value `#892C21`, you can use the theme:
+
+```jsx
+<StatefulList
+  initialState={{
+    items: ['Item 1', 'Item 2', 'Item 3'],
+  }}
+  overrides={{
+    Label: {
+      style: ({ theme }, props) => ({
+        color: theme.spr.highlight,
+      }),
+    },
+  }}
+/>
+```
+
+## State Props
+
+The prop `$theme` is not the only variable that you can use in your style function. Most of subcomponents get various state props. For example, **the `Label` comes with**:
+
+- `$isDragged: boolean` - `true` if the list item is dragged
+- `$isSelected: boolean` - `true` if the list item is selected (space key-press)
+- `$isRemovable: boolean` - `true` if the list item is removable
+- `$value: React.Node` - item's value
+- `$index: number` - item's index
+
+Let's use `$isDragged` to change the Label color when dragged:
+
+```jsx
+<StatefulList
+  initialState={{
+    items: ['Item 1', 'Item 2', 'Item 3'],
+  }}
+  overrides={{
+    Label: {
+      style: ({$theme, $isDragged}) => ({
+        color: $isDragged ? $theme.colors.primary : $theme.colors.accent400,
+      }),
+    },
+  }}
+/>
+```
+
+The result is that the Label turns blue when it's dragged:
+
+<DndListExampleStateProps />
+
+## Exploring Overrides
+
+Almost every Spaceweb component has multiple overrides. **How can you learn what's available to you?** Every component page has the `Style Overrides` section at the top of the page. It lists all overridable subcomponents and highlights each one of them once activated. Using this editor, you can also change the style properties of each override, so you can see instantly how the modified components would look like.
+
+If you are interested in **which state props your style functions can use**, you'll find the list of them by clicking the "Toggle shared props" button in the overrides.
+
+## Override Nested Components
+
+Every Spaceweb component exposes the `override` prop. When one Spaceweb component uses another Spaceweb component internally we have access to a new, powerful pattern: **Nested Overrides**.
+
+The idea is to use a component's `overrides` prop to access a nested component and pass this nested component an `overrides` prop of its own. You end up with a _nested_ structure like so:
+
+```jsx
+<Foo
+  overrides={{
+    Boo: {
+      props: {
+        overrides: {
+          // pass "nested" overrides to the inner "Boo" component
+        },
+      },
+    },
+  }}
+/>
+```
+
+This is a very reliable method for customizing deeply nested components. It is possible because everywhere a Spaceweb component uses another Spaceweb component, that ‟parent” component will expose an `overrides` property for the ‟child” component. In theory, you could nest overrides as many levels deep as necessary to customize something.
+
+```jsx
+<Foo
+  overrides={{
+    Boo: {
+      props: {
+        overrides: {
+          Moo: {
+            props: {
+              overrides: {
+                Zoo: {
+                  props: {
+                    overrides: {
+                      Goo: () => 'hey mom!',
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  }}
+/>
+```
+
+In this example, we use four nested overrides to replace the `Goo` component. We do this without affecting the four components above `Goo`. We've avoided having to re-implement layers and layers of logic, and, because the interface is consistent, you can focus on _where_ you want to drop in, rather than _how_ to do it.
+
+If you find the exact syntax of this technique a little difficult to recall, try instead to remember that every Spaceweb component exposes an `overrides` prop and that every nested Spaceweb component is made accessible as an `overrides` property in the top-level component.
+
+The path always follows this pattern:
+
+> ComponentA > overrides > ComponentB > props > overrides
+
+### A more practical example
+
+Here is the default multi-select option for Spaceweb:
+
+<StatefulSelect
+  multi
+  type="search"
+  options={[
+    {label: 'Atlanta', id: 'ATL'},
+    {label: 'Baltimore', id: 'BWI'},
+    {label: 'Chicago', id: 'ORD'},
+    {label: 'Denver', id: 'DEN'},
+  ]}
+  initialState={{
+    value: [{label: 'Atlanta', id: 'ATL'}],
+  }}
+/>
+
+Let's change the way the selected values appear.
+
+The first step is to identify _what_ we want to override. In this case, we want to change the selected values for a multi-select. Let's check out the [`overrides` inspector for Select](/components/select/#overrides). Looking through the list of possible overrides, we see there is a promising `MultiValue` property.
+
+You might notice that the `MultiValue` component is just an instance of the `Tag` component. We can [reference the documentation for Tag](/components/tag/#overrides) to see what overrides are available.
+
+We have identified a nested Spaceweb component that is accessible via overrides. Now we can apply some nested overrides to customize things:
+
+<Example path="select/examples/overriden-tag.js">
+  <SelectTagExample />
+</Example>
+
+Notice the nested override pattern here:
+
+> StatefulSelect > overrides > MultiValue > props > overrides
+
+Once we have access to the nested `Tag`, we can override the styles for the `Root`, `Text`, `Action` & `ActionIcon`, changing the colors to a few lovely shades of purple.
+
+## Override The Entire Subcomponent
+
+> **This is a very advanced technique and rarely needed**. If you go down this path, you might also need to inspect our source code to fully understand all behaviors that subcomponents should/can implement.
+
+So far we demonstrated how to **override styles or add additional props** but you can also **completely replace subcomponents**. This means you can alter the behavior and appearance of all Spaceweb components. For example, **we can enhance our textual Label and add a cloning functionality**:
+
+```jsx
+import * as React from 'react';
+import {List, arrayMove} from '@sprinklr/spaceweb/dnd-list';
+
+export default class Example extends React.Component {
+  state = {
+    items: ['Car', 'Truck', 'Bike', 'Skateboard'],
+  };
+  render() {
+    return (
+      <List
+        items={this.state.items}
+        onChange={({oldIndex, newIndex}) =>
+          this.setState(prevState => ({
+            items: arrayMove(prevState.items, oldIndex, newIndex),
+          }))
+        }
+        overrides={{
+          Label: {
+            component: ({$value}) => (
+              <div style={{flexGrow: 1}}>
+                {$value}{' '}
+                <button
+                  onClick={() =>
+                    this.setState(prevState => ({
+                      items: prevState.items.concat([`${$value} clone`]),
+                    }))
+                  }
+                >
+                  Clone
+                </button>
+              </div>
+            ),
+          },
+        }}
+      />
+    );
+  }
+}
+```
+
+The result:
+
+<DndListExampleSubcomponent />
+
+Note that **we lost the original Label styling** since we replaced the whole Label subcomponent. If you still want to reuse or compose the original subcomponent you can import it:
+
+```js
+import {StyledLabel} from '@sprinklr/spaceweb/dnd-list';
+```
+
+The named import always matches the override key with an addition of `Styled` prefix. Following two examples yield the exactly same result since this is how Spaceweb components are implemented underneath:
+
+```jsx
+<StatefulList
+ initialState={{items: ['A', 'B', 'C']}}
+ overrides={{Label: StyledLabel}}
+/>
+
+<StatefulList
+ initialState={{items: ['A', 'B', 'C']}}
+/>
+```
+
+To learn more about how overrides work internally, check out the [Better Reusable React Components with the Overrides Pattern](https://medium.com/@dschnr/better-reusable-react-components-with-the-overrides-pattern-9eca2339f646)
+article.

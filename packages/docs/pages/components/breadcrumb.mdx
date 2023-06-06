@@ -1,0 +1,52 @@
+import Example from '../../components/example';
+import Layout from '../../components/layout';
+import Exports from '../../components/exports';
+import ImplementationLink from 'components/implementation-link';
+
+import Yard from '../../components/yard/index';
+import breadcrumbYardConfig from 'componentConfigs/breadcrumb/config';
+import breadcrumbItemYardConfig from 'componentConfigs/breadcrumb/breadcrumb-item-config';
+
+import BasicUsage from "../../componentConfigs/breadcrumb/examples/basic-usage";
+import WithEnhancer from "../../componentConfigs/breadcrumb/examples/with-enhancer"
+import LinkUsage from "../../componentConfigs/breadcrumb/examples/link-usage"
+import CustomSeparator from "../../componentConfigs/breadcrumb/examples/custom-separator"
+import DefaultTag from "../../componentConfigs/breadcrumb/examples/default-tag"
+
+import ApiTable from '../../components/api-table';
+import * as BreadcrumbExports from 'spaceweb/breadcrumb';
+
+export default Layout;
+
+# Breadcrumb
+<Yard placeholderHeight={48} {...breadcrumbYardConfig} />
+<br />
+
+# Breadcrumb Item
+<Yard placeholderHeight={48} {...breadcrumbItemYardConfig} />
+
+<Example title="Breadcrumb Example" path="breadcrumb/examples/basic-usage">
+    <BasicUsage />
+</Example>
+
+<Example title="Custom seperator" path="breadcrumb/examples/custom-separator">
+  <CustomSeparator />
+</Example>
+
+<Example title="Usage with enhancer" path="breadcrumb/examples/with-enhancer">
+  <WithEnhancer />
+</Example>
+
+<Example title="Link Usage" path="breadcrumb/examples/link-usage">
+  <LinkUsage />
+</Example>
+
+<Example title="Default tag according to the href prop" path="breadcrumb/examples/default-tag">
+  <DefaultTag />
+</Example>
+
+<ApiTable title="Breadcrumb props" config={breadcrumbYardConfig} />
+<ApiTable title="BreadcrumbItem props" config={breadcrumbItemYardConfig} />
+
+<ImplementationLink componentPath="breadcrumb" />
+<Exports component={BreadcrumbExports} title="Breadcrumb exports" path="spaceweb/breadcrumb" />

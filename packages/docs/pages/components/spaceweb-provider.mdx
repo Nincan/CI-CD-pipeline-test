@@ -1,0 +1,138 @@
+import Example from '../../components/example';
+import Layout from '../../components/layout';
+import Exports from '../../components/exports';
+import ImplementationLink from 'components/implementation-link';
+import { H3 } from '../../components/markdown-elements';
+
+import Direction from 'componentConfigs/spaceweb-provider/examples/direction';
+import SWTheme from 'componentConfigs/spaceweb-provider/examples/sw-theme';
+import Iframe from 'componentConfigs/spaceweb-provider/examples/iframe';
+import DarkTheme from 'componentConfigs/spaceweb-provider/examples/dark-theme';
+import DarkThemeWithLayer from 'componentConfigs/spaceweb-provider/examples/dark-theme-with-layer';
+
+import SpacewebProvider from 'spaceweb/spacewebProvider';
+
+import Yard from '../../components/yard/index';
+import spacewebYardConfig from 'componentConfigs/spaceweb-provider/config';
+import ApiTable from '../../components/api-table';
+
+export default Layout;
+
+# SpacewebProvider
+
+## When to use
+
+- When you're setting up Spaceweb and want to supply custom config for your use case.
+
+Usage
+
+```tsx
+import * as React from 'react';
+
+import SpacewebProvider from '@sprinklr/spaceweb/spacewebProvider';
+import sprLight from '@sprinklr/spaceweb-themes/space/light';
+
+const App = (): React.ReactElement => (
+  <SpacewebProvider
+    direction="ltr"
+    theme={theme}
+    layersZIndex={500}
+    locale={{
+      select: {
+        noResultsMsg: 'No Results found',
+        selectAllLabel: 'Select All',
+      },
+    }}
+  >
+    {/* Wrap your application in here */}
+  </SpacewebProvider>
+);
+
+export default App;
+```
+
+## Examples
+
+<Example title="Overridng Theme" path="spaceweb-provider/examples/sw-theme.js">
+  <SWTheme />
+</Example>
+
+When you wish to change overall theme, use theme override instead of adding overrides to individual components.
+
+<br />
+<H3>Custom ownerDocument</H3>
+
+```tsx
+import { useState } from 'react';
+import { createPortal } from 'react-dom';
+import { Box } from 'spaceweb/box';
+import SpacewebProvider from 'spaceweb/spacewebProvider';
+import sprLight from '@sprinklr/spaceweb-themes/space/light';
+
+const App = props => (
+  <SpacewebProvider theme={sprLight} ownerDocument={props.ownerDocument}>
+    <Box className="spr-support-success-text">This iframe is styled</Box>
+  </SpacewebProvider>
+);
+
+const IFrame = () => {
+  const [contentRef, setContentRef] = useState<HTMLIFrameElement | null>(null);
+  const mountNode = contentRef?.contentWindow?.document?.body;
+
+  return (
+    <iframe title="frame" frameBorder="1" ref={setContentRef}>
+      {mountNode && createPortal(<App ownerDocument={contentRef?.contentDocument} />, mountNode)}
+    </iframe>
+  );
+};
+
+export default IFrame;
+```
+
+When to use `ownerDocument`:
+
+- While using Spaceweb in an iframe you'd need to pass the iframe's document as `ownerDocument` to SpacewebProvider in its setup.
+- You can also single `ownerDocument` as a common host for multiple SpacewebProvider when their render trees are not overlapping.
+
+<br />
+
+Why `ownerDocument`?
+
+- This is required specially for style & layer management.
+- Styles from parent are never propagated to iframe & styletron caches its style in `document` head.
+- All **Portals**, **Modals** & **Tooltips** render in a Layer which is hosted on `body of document` which shouldn't go outside iframe's tree.
+
+## Rendering component in Dark mode
+
+<Example title="Using ThemeProvider only" path="spaceweb-provider/examples/dark-theme.js">
+  <DarkTheme />
+</Example>
+
+- Wrapping a component with ThemeProvider works if your app does not use theme css variables.
+- Popovers usually mounts in `document.body` and if your app uses css variables to apply tokens, then Popovers/modals will still use global css variables.
+  e.g.
+
+```jsx
+.PopoverBody {
+  background-color: var(--spr-ui-01, black);
+  /* Since, PopoverBody will be rendered in document.body,
+     --spr-ui-01 will resolve to global theme's ui-01 token */
+}
+```
+
+- To avoid this, you can change mountNode of all layers with LayersManager. Check the example below.
+
+<Example title="ThemeProvider with LayersManager" path="spaceweb-provider/examples/dark-theme-with-layer.js">
+  <DarkThemeWithLayer />
+</Example>
+
+## API
+
+<ApiTable title="SpacewebProvider props" config={spacewebYardConfig} />
+<ImplementationLink componentPath="spacewebProvider" />
+<Exports
+  component={SpacewebProvider}
+  title="SpacewebProvider exports"
+  path="spaceweb/spacewebProvider"
+  defaultExportName="SpacewebProvider"
+/>

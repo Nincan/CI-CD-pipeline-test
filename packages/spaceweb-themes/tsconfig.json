@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "allowJs": true,
+    "declaration": true,
+    "lib": ["ESNext.Array", "ES5", "DOM"],
+    "moduleResolution": "node",
+    "target": "es5",
+    "composite": true
+  },
+  "exclude": ["node_modules"]
+}

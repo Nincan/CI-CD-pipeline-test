@@ -1,0 +1,32 @@
+import Example from 'components/example';
+import Exports from 'components/exports';
+import Layout from 'components/layout';
+import Yard from 'components/yard/index';
+import ApiTable from 'components/api-table';
+import ImplementationLink from 'components/implementation-link';
+
+import IconExamples from 'componentConfigs/icon/examples/all';
+
+import * as IconExports from 'spaceweb/icon';
+import iconConfig from 'componentConfigs/icon/config';
+
+export default Layout;
+
+# Icon
+
+<Yard placeholderHeight={64} {...iconConfig} />
+
+## Icon Library
+
+Visit [Icon Library](/iconLibrary) for a list of all icons.
+
+## Examples
+
+<Example title="Icon basic usage" path="icon/examples/all">
+  <IconExamples />
+</Example>
+
+## API
+
+<ApiTable title="Icon props" config={iconConfig} />
+<ImplementationLink componentPath="icon" />

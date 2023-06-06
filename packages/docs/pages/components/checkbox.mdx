@@ -1,0 +1,78 @@
+import Example from '../../components/example';
+import Layout from '../../components/layout';
+import Exports from '../../components/exports';
+import ImplementationLink from 'components/implementation-link';
+
+import Basic from 'componentConfigs/checkbox/examples/basic-controlled.js';
+import Uncontrolled from 'componentConfigs/checkbox/examples/basic-uncontrolled';
+import Multiline from 'componentConfigs/checkbox/examples/multiline.js';
+import Error from 'componentConfigs/checkbox/examples/error.js';
+import Indeterminate from 'componentConfigs/checkbox/examples/indeterminate.js';
+import Disabled from 'componentConfigs/checkbox/examples/disabled.js';
+import Alignment from 'componentConfigs/checkbox/examples/alignment.js';
+import Customization from 'componentConfigs/checkbox/examples/overrides.js';
+import ComponentOverrides from 'componentConfigs/checkbox/examples/component-overrides.js';
+import Focus from 'componentConfigs/checkbox/examples/focus.js';
+import Toggle from 'componentConfigs/checkbox/examples/toggle.js';
+import Sizes from 'componentConfigs/checkbox/examples/sizes.js';
+
+import { Block } from 'baseui/block';
+import { StatefulCheckbox, STYLE_TYPE } from 'spaceweb/checkbox';
+import * as CheckboxExports from 'spaceweb/checkbox';
+
+import Yard from '../../components/yard/index';
+import checkboxYardConfig from 'componentConfigs/checkbox/config';
+import ApiTable from '../../components/api-table';
+
+export default Layout;
+
+# Checkbox
+
+<Yard placeholderHeight={48} {...checkboxYardConfig} />
+
+Checkboxes are used to provide users with multiple options for selection in a series of options.
+
+When used as a toggle they allow the user to make a binary choice usually (but not limited) in
+the form of a yes/no or on/off suggestion. Toggles are often used in product settings or as filter
+options. When engaged (on), Base Web toggles are colored and when disengaged (off) they’re grey.
+
+## When to use
+
+- When a collection of options share context.
+- When a user wants to toggle an option on/off.
+- When a user wants to select multiple options.
+
+## Examples
+
+<Example title="Basic usage" path="checkbox/examples/basic-controlled.js">
+  <Basic />
+</Example>
+<Example title="Sizes" path="checkbox/examples/sizes.js">
+  <Sizes />
+</Example>
+<Example title="Error state" path="checkbox/examples/error.js">
+  <Error />
+</Example>
+<Example title="Indeterminate state" path="checkbox/examples/indeterminate.js">
+  <Indeterminate />
+</Example>
+<Example title="Disabled state" path="checkbox/examples/disabled.js">
+  <Disabled />
+</Example>
+<Example title="Overriding styles" path="checkbox/examples/overrides.js">
+  <Customization />
+</Example>
+<Example title="Overriding sub-components" path="checkbox/examples/component-overrides.js">
+  <ComponentOverrides />
+</Example>
+<Example title="Stateful (uncontrolled) usage" path="checkbox/examples/basic-uncontrolled.js">
+  <Uncontrolled />
+</Example>
+
+As with many of our components, there is also an [uncontrolled](https://reactjs.org/docs/uncontrolled-components.html) version, `StatefulCheckbox`, which manages its own state.
+
+## API
+
+<ApiTable title="Checkbox props" config={checkboxYardConfig} />
+<ImplementationLink componentPath="checkbox" />
+<Exports component={CheckboxExports} title="Checkbox exports" path="spaceweb/checkbox" />

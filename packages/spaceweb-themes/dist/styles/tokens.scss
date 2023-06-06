@@ -1,0 +1,488 @@
+// This file was copied from style-dictionary and it creates spr-rule mixin.
+$dictionaryTokens: (
+  backgroundSize-auto: auto,
+  backgroundSize-cover: cover,
+  backgroundSize-contain: contain,
+  backgroundPosition-bottom: bottom,
+  backgroundPosition-center: center,
+  backgroundPosition-left: left,
+  backgroundPosition-left-bottom: left bottom,
+  backgroundPosition-left-top: left top,
+  backgroundPosition-right: right,
+  backgroundPosition-right-bottom: right bottom,
+  backgroundPosition-right-top: right top,
+  backgroundPosition-top: top,
+  borderRadius-1: 1px,
+  borderRadius-2: 2px,
+  borderRadius-4: 4px,
+  borderRadius-6: 6px,
+  borderRadius-8: 8px,
+  borderRadius-12: 12px,
+  borderRadius-16: 16px,
+  borderRadius-none: 0,
+  borderRadius-full: 100%,
+  borderWidth-0: 0,
+  borderWidth-1: 1px,
+  borderWidth-2: 2px,
+  borderWidth-default: 1px,
+  boxShadow-none: none,
+  cursor-auto: auto,
+  cursor-default: default,
+  cursor-pointer: pointer,
+  cursor-wait: wait,
+  cursor-text: text,
+  cursor-move: move,
+  cursor-copy: copy,
+  cursor-not-allowed: not-allowed,
+  flex-1: 1 1 0%,
+  flex-auto: 1 1 auto,
+  flex-initial: 0 1 auto,
+  flex-none: none,
+  flexGrow-0: 0,
+  flexGrow-default: 1,
+  flexShrink-0: 0,
+  flexShrink-default: 1,
+  fontSize-10: 1rem,
+  fontSize-11: 1.1rem,
+  fontSize-12: 1.2rem,
+  fontSize-13: 1.3rem,
+  fontSize-14: 1.4rem,
+  fontSize-16: 1.6rem,
+  fontSize-20: 2rem,
+  fontSize-24: 2.4rem,
+  fontSize-32: 3.2rem,
+  fontSize-40: 4rem,
+  fontSize-56: 5.6rem,
+  fontSize-72: 7.2rem,
+  fontWeight-300: 300,
+  fontWeight-400: 400,
+  fontWeight-500: 500,
+  fontWeight-600: 600,
+  fontWeight-700: 700,
+  fontWeight-regular: 400,
+  fontWeight-medium: 500,
+  fontWeight-semibold: 600,
+  fontWeight-bold: 700,
+  lineHeight-none: 1,
+  lineHeight-tight: 1.25,
+  lineHeight-normal: 1.5,
+  lineHeight-loose: 2,
+  letterSpacing-tight: -0.025em,
+  letterSpacing-normal: 0,
+  letterSpacing-wide: 0.025em,
+  listStyleType-none: none,
+  listStyleType-disc: disc,
+  listStyleType-decimal: decimal,
+  objectPosition-bottom: bottom,
+  objectPosition-center: center,
+  objectPosition-left: left,
+  objectPosition-left-bottom: left bottom,
+  objectPosition-left-top: left top,
+  objectPosition-right: right,
+  objectPosition-right-bottom: right bottom,
+  objectPosition-right-top: right top,
+  objectPosition-top: top,
+  opacity-0: 0,
+  opacity-5: 0.05,
+  opacity-7: 0.07,
+  opacity-10: 0.1,
+  opacity-12: 0.12,
+  opacity-15: 0.15,
+  opacity-20: 0.2,
+  opacity-30: 0.3,
+  opacity-40: 0.4,
+  opacity-50: 0.5,
+  opacity-60: 0.6,
+  opacity-70: 0.7,
+  opacity-80: 0.8,
+  opacity-90: 0.9,
+  opacity-100: 1,
+  zIndex-0: 0,
+  zIndex-10: 10,
+  zIndex-20: 20,
+  zIndex-30: 30,
+  zIndex-40: 40,
+  zIndex-50: 50,
+  zIndex-auto: auto,
+  height-0: 0,
+  height-1: 0.4rem,
+  height-2: 0.8rem,
+  height-3: 1.2rem,
+  height-4: 1.6rem,
+  height-5: 2rem,
+  height-6: 2.4rem,
+  height-7: 2.8rem,
+  height-8: 3.2rem,
+  height-9: 3.6rem,
+  height-10: 4rem,
+  height-11: 4.4rem,
+  height-12: 4.8rem,
+  height-auto: auto,
+  height-1.5: 0.6rem,
+  height-full: 100%,
+  height-screen: 100vh,
+  spacing-0: 0,
+  spacing-1: 0.4rem,
+  spacing-2: 0.8rem,
+  spacing-3: 1.2rem,
+  spacing-4: 1.6rem,
+  spacing-5: 2rem,
+  spacing-6: 2.4rem,
+  spacing-7: 2.8rem,
+  spacing-8: 3.2rem,
+  spacing-9: 3.6rem,
+  spacing-10: 4rem,
+  spacing-11: 4.4rem,
+  spacing-12: 4.8rem,
+  spacing-1.5: 0.6rem,
+  width-0: 0,
+  width-1: 0.4rem,
+  width-2: 0.8rem,
+  width-3: 1.2rem,
+  width-4: 1.6rem,
+  width-5: 2rem,
+  width-6: 2.4rem,
+  width-7: 2.8rem,
+  width-8: 3.2rem,
+  width-9: 3.6rem,
+  width-10: 4rem,
+  width-11: 4.4rem,
+  width-12: 4.8rem,
+  width-auto: auto,
+  width-1.5: 0.6rem,
+  width-1/2: 50%,
+  width-1/3: 33.333333%,
+  width-2/3: 66.666667%,
+  width-1/4: 25%,
+  width-2/4: 50%,
+  width-3/4: 75%,
+  width-1/5: 20%,
+  width-2/5: 40%,
+  width-3/5: 60%,
+  width-4/5: 80%,
+  width-1/12: 8.333333%,
+  width-2/12: 16.666667%,
+  width-3/12: 25%,
+  width-4/12: 33.333333%,
+  width-5/12: 41.666667%,
+  width-6/12: 50%,
+  width-7/12: 58.333333%,
+  width-8/12: 66.666667%,
+  width-9/12: 75%,
+  width-10/12: 83.333333%,
+  width-11/12: 91.666667%,
+  width-full: 100%,
+  width-screen: 100vw,
+  margin-0: 0,
+  margin-1: 0.4rem,
+  margin-2: 0.8rem,
+  margin-3: 1.2rem,
+  margin-4: 1.6rem,
+  margin-5: 2rem,
+  margin-6: 2.4rem,
+  margin-7: 2.8rem,
+  margin-8: 3.2rem,
+  margin-9: 3.6rem,
+  margin-10: 4rem,
+  margin-11: 4.4rem,
+  margin-12: 4.8rem,
+  margin-auto: auto,
+  margin-1.5: 0.6rem,
+  margin--1: -0.4rem,
+  margin--2: -0.8rem,
+  margin--3: -1.2rem,
+  margin--4: -1.6rem,
+  margin--5: -2rem,
+  margin--6: -2.4rem,
+  margin--7: -2.8rem,
+  margin--8: -3.2rem,
+  margin--9: -3.6rem,
+  margin--10: -4rem,
+  margin--11: -4.4rem,
+  margin--12: -4.8rem,
+  margin--1.5: -0.6rem,
+  padding-0: 0,
+  padding-1: 0.4rem,
+  padding-2: 0.8rem,
+  padding-3: 1.2rem,
+  padding-4: 1.6rem,
+  padding-5: 2rem,
+  padding-6: 2.4rem,
+  padding-7: 2.8rem,
+  padding-8: 3.2rem,
+  padding-9: 3.6rem,
+  padding-10: 4rem,
+  padding-11: 4.4rem,
+  padding-12: 4.8rem,
+  padding-1.5: 0.6rem,
+  maxHeight-full: 100%,
+  maxHeight-screen: 100vh,
+  minHeight-0: 0,
+  minHeight-full: 100%,
+  minHeight-screen: 100vh,
+  maxWidth-full: 100%,
+  maxWidth-screen: 100vw,
+  minWidth-0: 0,
+  minWidth-full: 100%,
+  colors-charcoal: #0a0a14,
+  colors-white: #ffffff,
+  colors-transparent: transparent,
+  colors-space: #0828cc,
+  colors-water: #f8f8fa,
+  colors-powder: #f2f2f4,
+  colors-azure: #ececef,
+  colors-ash: #d7d7dc,
+  colors-fossil: #a0a0a8,
+  colors-anchor: #646470,
+  colors-pebble: #aeaeb2,
+  colors-slate: #646469,
+  colors-graphite: #48484c,
+  colors-lead: #3a3a3e,
+  colors-obsidian: #2c2c2f,
+  colors-smoke: #1c1c1f,
+  colors-stone: #141416,
+  fill-current: currentColor,
+  stroke-current: currentColor,
+  app-header: #0a0a14,
+  app-header-tab: rgba(255, 255, 255, 0.1),
+  app-header-tab-hover: rgba(255, 255, 255, 0.2),
+  app-header-tab-active: #ffffff,
+  app-header-text: rgba(255, 255, 255, 0.6),
+  app-header-text-hover: #ffffff,
+  cht-bg: #f3eae1,
+  cht-border: #e6d4ca,
+  cht-bubble-left: #ffffff,
+  cht-bubble-right: #ebebff,
+  cht-bubble-supporting-text: #646470,
+  cht-bubble-text-left: #0a0a14,
+  cht-bubble-text-right: #0a0a14,
+  cht-bubble-border: #c7d3f7,
+  cht-bubble-icon-1: #646470,
+  cht-bubble-icon-2: #d7d7dc,
+  cht-bubble-icon-3: #0828cc,
+  cht-bubble-insert: #f8f8fa,
+  cht-bubble-link: #0828cc,
+  cht-bubble-text: #646470,
+  cht-reply: #ffffff,
+  cht-footer: #f3eae1,
+  cht-hover: rgba(100, 100, 112, 0.07),
+  cht-read: #006cd7,
+  cht-unread: #a0a0a8,
+  spr-ui-01: #ffffff,
+  spr-ui-02: #f8f8fa,
+  spr-ui-03: #f2f2f4,
+  spr-ui-04: #0828cc,
+  spr-ui-05: #f2f2f4,
+  spr-ui-06: #e6e6e9,
+  spr-ui-focus: rgba(8, 40, 204, 0.07),
+  spr-ui-focus-reverse: rgba(255, 255, 255, 0.2),
+  spr-ui-hover: rgba(8, 40, 204, 0.05),
+  spr-ui-hover-reverse: rgba(255, 255, 255, 0.1),
+  spr-support-error: #e44045,
+  spr-support-error-highlight: rgba(255, 96, 96, 0.1),
+  spr-support-success: #3fbf41,
+  spr-support-success-highlight: rgba(63, 191, 65, 0.07),
+  spr-support-warning: #eec202,
+  spr-support-warning-highlight: rgba(238, 194, 2, 0.1),
+  spr-clr-blue-highlight: #e8f0fe,
+  spr-tag: #f2f2f4,
+  spr-tag-01: #f2f2f4,
+  spr-tag-02: rgba(8, 40, 204, 0.07),
+  spr-field: #dbdbdb,
+  spr-popup: #ffffff,
+  spr-overlay: rgba(10, 10, 20, 0.9),
+  spr-tooltip-01: #0a0a14,
+  spr-highlight: rgba(255, 231, 173, 0.7),
+  spr-favourite: #ff9f21,
+  spr-notification: #c6202b,
+  spr-interactive-01: #0828cc,
+  spr-interactive-hover: #0729a0,
+  spr-interactive-disable: rgba(255, 255, 255, 0.8),
+  spr-interactive-02: #646470,
+  spr-clr-blue: #0aa2ff,
+  spr-clr-green: #20963a,
+  spr-clr-lavender: #7f36f6,
+  spr-clr-orange: #f08c1a,
+  spr-clr-pink: #de456b,
+  spr-clr-red: #e44045,
+  spr-clr-sea: #16aad2,
+  spr-clr-teal: #13c18d,
+  spr-clr-yellow: #deac09,
+  spr-clr-grey: #d7d7dc,
+  spr-icon-01: #0a0a14,
+  spr-icon-02: #646470,
+  spr-icon-03: #a0a0a8,
+  spr-icon-04: #0828cc,
+  spr-icon-05: #ffffff,
+  spr-icon-06: rgba(255, 255, 255, 0.6),
+  spr-icon-hover: #0a0a14,
+  spr-icon-disable: #d7d7dc,
+  spr-icon-hover-reverse: #ffffff,
+  spr-link: #0828cc,
+  spr-text-01: #0a0a14,
+  spr-text-02: #646470,
+  spr-text-03: #a0a0a8,
+  spr-text-04: #0828cc,
+  spr-text-05: #ffffff,
+  spr-text-06: #ffffff,
+  spr-text-placeholder: #a0a0a8,
+  spr-support-error-text: #c6202b,
+  spr-support-success-text: #20963a,
+  spr-support-warning-text: #deac09,
+  spr-hover: #0828cc,
+  spr-focus-01: #0828cc,
+  spr-border-01: #f2f2f4,
+  spr-border-02: #ececef,
+  spr-border-03: #d7d7dc,
+  spr-border-04: #a0a0a8,
+  spr-border-05: #ffffff,
+  spr-card-border: #ececef,
+  spr-popup-border: #d7d7dc,
+  spr-tooltip-border: #0a0a14,
+  spr-interactive-focus: #132a86,
+  spr-focus-02: 1px solid #1c62fd,
+  spr-shadow-01: 0 1px 4px 0 rgba(10, 10, 20, 0.15),
+  spr-shadow-02: 0 2px 8px 0 rgba(10, 10, 20, 0.2),
+  spr-shadow-03: -2px 9px 12px 0 rgba(10, 10, 20, 0.6),
+  spr-shadow-04: 0px -2px 8px 0px rgba(10, 10, 20, 0.2),
+  spr-shadow-05: 0px 3px 4px 0 rgba(0, 0, 0, 0.1),
+  spr-shadow-06: 0px -3px 4px 0 rgba(0, 0, 0, 0.1),
+  nav-ui-01: rgba(255, 255, 255, 0.2),
+  nav-ui-hover-01: rgba(255, 255, 255, 0.3),
+  nav-icon-01: rgba(255, 255, 255, 0.9),
+  nav-icon-focus-01: #327afd,
+  nav-text-01: rgba(255, 255, 255, 0.9),
+);
+
+/*
+  Sample Usage:
+
+  $dictionaryTokens: (
+    color-base-bg: '#0a0a14',
+  );
+  @include spr-rule(background-color, color-base-bg)
+
+  Produces:
+  background-color: #0a0a14
+  background-color: var(--color-base-bg, #0a0a14)
+*/
+
+@function spr-getTokenValue($tokenName) {
+  @if map-has-key($dictionaryTokens, $tokenName) {
+    @return map-get($dictionaryTokens, $tokenName);
+  }
+
+  @error "Invalid token name: `#{$tokenName}`.";
+  @return 'undefined-token';
+}
+
+@mixin spr-rule($propertyName, $tokenName, $important: false) {
+  @if $important {
+    #{$propertyName}: spr-getTokenValue($tokenName) !important;
+    #{$propertyName}: var(--#{$tokenName}, spr-getTokenValue($tokenName)) !important;
+  } @else {
+    #{$propertyName}: spr-getTokenValue($tokenName); // Fallback for browsers that don't support css vars
+    #{$propertyName}: var(--#{$tokenName}, spr-getTokenValue($tokenName));
+  }
+}
+
+// ------------------- rtl-mixin-start -------------------------
+$rtl-properties-map: (
+  margin-left: margin-right,
+  padding-left: padding-right,
+  border-left: border-right,
+  border-left-color: border-right-color,
+  border-left-style: border-right-style,
+  border-left-width: border-right-width,
+  border-top-left-radius: border-top-right-radius,
+  border-bottom-left-radius: border-bottom-right-radius,
+  left: right,
+  margin-right: margin-left,
+  padding-right: padding-left,
+  border-right: border-left,
+  border-right-color: border-left-color,
+  border-right-style: border-left-style,
+  border-right-width: border-left-width,
+  border-top-right-radius: border-top-left-radius,
+  border-bottom-right-radius: border-bottom-left-radius,
+  right: left,
+);
+$rtl-values-map: (
+  ltr: rtl,
+  left: right,
+  w-resize: e-resize,
+  sw-resize: se-resize,
+  nw-resize: ne-resize,
+  rtl: ltr,
+  right: left,
+  e-resize: w-resize,
+  se-resize: sw-resize,
+  ne-resize: nw-resize,
+);
+$quartet-values-properties: (
+  padding: 1,
+  margin: 1,
+  border-color: 1,
+  border-width: 1,
+  border-style: 1,
+);
+
+@function handle-quartet-value($value) {
+  @if (length($value) <= 3 or length($value) > 4) {
+    @return $value;
+  }
+  @return nth($value, 1) nth($value, 4) nth($value, 3) nth($value, 2);
+}
+
+/**
+  .foo {
+    @include rtl(margin-right, 10px);
+    @include rtl(padding, 1px 2px 3px 4px);
+    @include rtl(float, right);
+    @include rtl(border-left, 1px solid black);
+    @include rtl(left, 20rem);
+  }
+
+  converts to
+
+  .foo {
+    margin-right: 10px;
+    padding: 1px 2px 3px 4px;
+    float: right;
+    border-left: 1px solid black;
+    left: 20rem;
+  }
+  [dir=rtl] .foo {
+    margin-left: 10px;
+  }
+  [dir=rtl] .foo {
+    padding: 1px 4px 3px 2px;
+  }
+  [dir=rtl] .foo {
+    float: left;
+  }
+  [dir=rtl] .foo {
+    border-right: 1px solid black;
+  }
+  [dir=rtl] .foo {
+    right: 20rem;
+  }
+ */
+@mixin spr-rtl($property, $value) {
+  #{$property}: $value;
+  [dir='rtl'] & {
+    $rtl-property: $property;
+    $rtl-value: $value;
+    @if map-has-key($rtl-properties-map, $property) {
+      $rtl-property: map-get($rtl-properties-map, $property);
+    }
+    @if map-has-key($rtl-values-map, $value) {
+      $rtl-value: map-get($rtl-values-map, $value);
+    }
+    @if map-has-key($quartet-values-properties, $property) {
+      $rtl-value: handle-quartet-value($value);
+    }
+    #{$rtl-property}: $rtl-value;
+  }
+}
+// ------------------- rtl-mixin-end -------------------------

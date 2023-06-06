@@ -1,0 +1,69 @@
+import Example from 'components/example';
+import Layout from 'components/layout';
+import Exports from 'components/exports';
+import ApiTable from 'components/api-table';
+import Yard from 'components/yard/index';
+
+import DatePickerBasic from 'componentConfigs/date-picker/examples/basic';
+import DatePickerStates from 'componentConfigs/date-picker/examples/states';
+import DatepickerConstraints from 'componentConfigs/date-picker/examples/date-constraints';
+import DatePickerOverrides from 'componentConfigs/date-picker/examples/overrides';
+import MultipleMonthsDatePicker from 'componentConfigs/date-picker/examples/multiple-months';
+import FormatStringDatePicker from 'componentConfigs/date-picker/examples/format-string';
+import StatelessDatepicker from 'componentConfigs/date-picker/examples/stateless';
+import FixedHeightDatePicker from 'componentConfigs/date-picker/examples/fixed-height';
+import DatePickerWithTimezone from 'componentConfigs/date-picker/examples/with-timezone';
+import datePickerYardConfig from 'componentConfigs/date-picker/config';
+
+import * as DatePickerExports from 'spaceweb/date-picker';
+
+export default Layout;
+
+# DatePicker
+
+<Yard placeholderHeight={48} {...datePickerYardConfig} />
+
+A simple and reusable component to work with or select a date or a range of dates.
+
+## Accessibility
+
+- Supports keyboard hotkeys: tab - to switch between inputs, arrows, monthyear select and day grid. escape to close datepicker dropdown.
+- When month and year selects focused, up and down causes dropdown to open and move to value, enter and space to choose selected year or month.
+  When day grid is focused, left, down right and up to move through the grid days. Enter to pick date.
+- When left or right arrow is focused, enter causes the same as click on this arrow.
+- Accessibility best practices for this component (aria-valuenow, aria-valuetext, aria-valuemin, aria-valuemax, role=datepicker).
+
+## Examples
+
+<Example title="With timezone selector" path="date-picker/examples/with-timezone.js">
+  <DatePickerWithTimezone />
+</Example>
+<Example title="Basic usage" path="date-picker/examples/basic.js">
+  <DatePickerBasic />
+</Example>
+<Example title="States" path="date-picker/examples/states.js">
+  <DatePickerStates />
+</Example>
+<Example title="Date Constraints" path="date-picker/examples/date-constraints.js">
+  <DatepickerConstraints />
+</Example>
+<Example title="Date Picker With Multiple Months" path="date-picker/examples/multiple-months.js">
+  <MultipleMonthsDatePicker />
+</Example>
+<Example title="Date Picker With Format string" path="date-picker/examples/format-string.js">
+  <FormatStringDatePicker />
+</Example>
+<Example title="Date Picker With Fixed Height" path="date-picker/examples/fixed-height.js">
+  <FixedHeightDatePicker />
+</Example>
+<Example title="Date Picker With Overrides" path="date-picker/examples/overrides.js">
+  <DatePickerOverrides />
+</Example>
+<Example title="Stateless Datepicker" path="date-picker/examples/stateless.js">
+  <StatelessDatepicker />
+</Example>
+
+## API
+
+<ApiTable title="Date Picker props" config={datePickerYardConfig} />
+<Exports component={DatePickerExports} title="Date Picker exports" path="spaceweb/date-picker" />

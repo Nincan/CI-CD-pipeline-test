@@ -1,0 +1,35 @@
+import { Notification, KIND } from "baseui/notification";
+import Layout from '../../components/layout';
+import Example from '../../components/example';
+import SelectExample from 'componentConfigs/form-control/examples/select.js';
+
+export default Layout;
+
+# Testing Spaceweb components
+
+<Notification
+  overrides={{
+    Body: {style: {width: 'auto'}},
+  }}
+>
+  This guide will help you with understanding how to test certain spaceweb components.
+</Notification>
+
+## Testing Combobox
+
+<Example title="Select" path="form-control/examples/select.js">
+  <SelectExample />
+</Example>
+
+To test the which value is selected in the combobox example above, we can use `getSelectedOptions` utility provided in `spaceweb/select`. We can chose to pass the container of the Combobox to this utility as the first argument. If container is not provided, this utility will use the `screen` object provided by react-testing-library as the default container. This utility will search for all the elements within the container with `data-testid=combobox-selected-value` and return the testContent of these elements as a string array which can be used for testing.
+
+```
+import { getSelectedOptions } from '@sprinklr/spaceweb/select/utils/test-utils';
+
+test("AliceBlue should be the selected option", () => {
+    expect(getSelectedOptions()).toEqual(["AliceBlue"])
+    // no container passed so screen will be used as container
+
+})
+
+```

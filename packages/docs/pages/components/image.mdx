@@ -1,0 +1,42 @@
+import Example from 'components/example';
+import Layout from 'components/layout';
+import Exports from 'components/exports';
+import ImplementationLink from 'components/implementation-link';
+
+import Yard from 'components/yard/index';
+import imageConfig from 'componentConfigs/image/config';
+
+import ImageFits from 'componentConfigs/image/examples/fits';
+import DefaultFallback from 'componentConfigs/image/examples/defaultFallback';
+import FallbackImgComponent from 'componentConfigs/image/examples/fallbackImgComponent';
+import CustomFallbackProps from 'componentConfigs/image/examples/fallback-props-override';
+
+import * as ImageExports from 'spaceweb/image';
+
+export default Layout;
+
+# Media
+
+<Yard placeholderHeight={52} {...imageConfig} />
+
+Media renders content like image & video.
+
+## Examples
+
+<Example title="Images with different fit properties" path="image/examples/fits.js">
+  <ImageFits
+    src="https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2018/01/12201051/cute-puppy-body-image.jpg"
+    alt="cute doggo"
+  />
+</Example>
+<Example title="Default fallback component" path="image/examples/defaultFallback.js">
+  <DefaultFallback src="https://abc.xyz" alt="default fallback component" />
+</Example>
+<Example title="Custom fallback component and error handler" path="image/examples/fallbackImgComponent.js">
+  <FallbackImgComponent src="https://abc.xyz" alt="HTML image fallback" />
+</Example>
+<Example title="Override default fallback props" path="image/examples/fallback-props-override.js">
+  <CustomFallbackProps src="https://abc.xyz" alt="overrides default fallback props" />
+</Example>
+<ImplementationLink componentPath="image" />
+<Exports component={ImageExports} title="Image exports" path="spaceweb/image" />

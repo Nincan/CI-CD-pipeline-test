@@ -1,0 +1,106 @@
+{
+  "baseBranch": "origin/main",
+  "pipeline": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["lib/**", "out/**", "dist/**", ".next/**", "build/**"]
+    },
+    "@sprinklr/spaceweb#build": {
+      "dependsOn": ["@sprinklr/spaceweb-themes#build"],
+      "outputs": ["dist/**"]
+    },
+    "@sprinklr/spaceweb-icons#build": {
+      "dependsOn": ["@sprinklr/spaceweb#build"],
+      "outputs": ["dist/**", "svgComponents/**"]
+    },
+    "@sprinklr/spaceweb-charts#build": {
+      "dependsOn": ["@sprinklr/spaceweb-icons#build", "@sprinklr/spaceweb#build"],
+      "outputs": ["dist/**"]
+    },
+    "@sprinklr/spaceweb-calendar#build": {
+      "dependsOn": ["@sprinklr/spaceweb-themes#build", "@sprinklr/spaceweb#build"],
+      "outputs": ["dist/**"]
+    },
+    "@sprinklr/spaceweb-test-cli#build": {
+      "dependsOn": ["@sprinklr/spaceweb-charts#build", "@sprinklr/spaceweb-table#build", "@sprinklr/spaceweb#build"],
+      "outputs": ["out/**", "dist/**", ".next/**"]
+    },
+    "@sprinklr/spaceweb-frontend-web#build": {
+      "outputs": ["out/**", "dist/**", ".next/**"]
+    },
+    "@sprinklr/spaceweb-form#build": {
+      "dependsOn": ["@sprinklr/spaceweb#build"],
+      "outputs": ["dist/**"]
+    },
+    "@sprinklr/spaceweb-editor#build": {
+      "dependsOn": ["@sprinklr/spaceweb-icons#build", "@sprinklr/spaceweb-form#build", "@sprinklr/spaceweb#build"],
+      "outputs": ["dist/**"]
+    },
+    "spaceweb-vscode-extension#build": {
+      "dependsOn": ["@sprinklr/spaceweb-themes#build"],
+      "outputs": ["dist/**", "out/**"]
+    },
+    "@sprinklr/spaceweb-table#build": {
+      "dependsOn": ["@sprinklr/spaceweb-icons#build", "@sprinklr/spaceweb#build"],
+      "outputs": ["dist/**"]
+    },
+    "@sprinklr/spaceweb-meet#build": {
+      "dependsOn": ["@sprinklr/spaceweb-icons#build", "@sprinklr/spaceweb#build"],
+      "outputs": ["dist/**"]
+    },
+    "@sprinklr/spaceweb-bolt#build": {
+      "outputs": ["dist/**"]
+    },
+    "@sprinklr/spaceweb-cobrowse#build": {
+      "dependsOn": ["@sprinklr/spaceweb#build"],
+      "outputs": ["dist/**"]
+    },
+    "@sprinklr/spaceweb-crm-components#build": {
+      "dependsOn": ["@sprinklr/spaceweb#build", "@sprinklr/spaceweb-icons#build"],
+      "outputs": ["lib/**", "dist/**"]
+    },
+    "docs#build": {
+      "dependsOn": [
+        "@sprinklr/spaceweb-icons#build",
+        "@sprinklr/spaceweb#build",
+        "@sprinklr/spaceweb-themes#build",
+        "@sprinklr/spaceweb-form#build",
+        "@sprinklr/spaceweb-editor#build",
+        "@sprinklr/spaceweb-charts#build",
+        "@sprinklr/spaceweb-meet#build",
+        "@sprinklr/spaceweb-table#build",
+        "@sprinklr/spaceweb-calendar#build",
+        "@sprinklr/spaceweb-crm-components#build"
+      ],
+      "outputs": [".next/**"]
+    },
+    "docs#build-draft": {
+      "dependsOn": [
+        "@sprinklr/spaceweb-icons#build",
+        "@sprinklr/spaceweb#build",
+        "@sprinklr/spaceweb-themes#build",
+        "@sprinklr/spaceweb-form#build",
+        "@sprinklr/spaceweb-editor#build",
+        "@sprinklr/spaceweb-charts#build",
+        "@sprinklr/spaceweb-meet#build",
+        "@sprinklr/spaceweb-table#build",
+        "@sprinklr/spaceweb-crm-components#build"
+      ],
+      "outputs": [".next/**"]
+    },
+    "export": {
+      "dependsOn": ["build"],
+      "outputs": ["build/**", "out/**"]
+    },
+    "export-draft": {
+      "dependsOn": ["build-draft"],
+      "outputs": ["build/**", "out/**"]
+    },
+    "publish-aws": {
+      "dependsOn": ["build", "export"]
+    },
+    "publish-draft": {
+      "dependsOn": ["build-draft", "export-draft"]
+    }
+  }
+}

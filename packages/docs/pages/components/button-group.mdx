@@ -1,0 +1,109 @@
+import Example from '../../components/example';
+import Exports from '../../components/exports';
+import Layout from '../../components/layout';
+import SEO from '../../components/meta-seo';
+import ImplementationLink from 'components/implementation-link';
+
+import Basic from 'componentConfigs/button-group/examples/basic.js';
+import Icon from 'componentConfigs/button-group/examples/icon.js';
+import Enhancer from 'componentConfigs/button-group/examples/enhancer.js';
+import RadioMode from 'componentConfigs/button-group/examples/radio-mode.js';
+import CheckboxMode from 'componentConfigs/button-group/examples/checkbox-mode.js';
+import Disabled from 'componentConfigs/button-group/examples/disabled.js';
+import DisabledButton from 'componentConfigs/button-group/examples/disabled-button.js';
+import Dropdown from 'componentConfigs/button-group/examples/dropdown.js';
+import StatefulRadio from 'componentConfigs/button-group/examples/stateful-radio.js';
+import StatefulCheckbox from 'componentConfigs/button-group/examples/stateful-checkbox.js';
+import Navigation from 'componentConfigs/button-group/examples/navigation.js';
+import Controlled from 'componentConfigs/button-group/examples/controlled.js';
+import TopBar from 'componentConfigs/button-group/examples/topbar-icon-groups.js';
+import ActionBar from 'componentConfigs/button-group/examples/action-bar.js';
+
+import { Button } from 'spaceweb/button';
+import { ButtonGroup } from 'spaceweb/button-group';
+import * as ButtonGroupExports from 'spaceweb/button-group';
+
+import Yard from '../../components/yard/index';
+import buttonGroupYardConfig from 'componentConfigs/button-group/config';
+import ApiTable from '../../components/api-table';
+
+<SEO
+  description="The Button Group component groups a collection of similar actions together."
+  keywords="button group, react button group"
+/>
+
+export default Layout;
+
+# Button Group
+
+<Yard placeholderHeight={52} {...buttonGroupYardConfig} />
+
+Groups a collection of similar actions together.
+
+## When to use
+
+- If you need to emphasize context of similar actions.
+- If a single option or multiple options of the set may be selected.
+
+## Examples
+
+<Example title="Basic usage" path="button-group/examples/basic.js">
+  <Basic />
+</Example>
+<Example title="With icons" path="button-group/examples/icon.js">
+  <Icon />
+</Example>
+<Example title="With enhancers" path="button-group/examples/enhancer.js">
+  <Enhancer />
+</Example>
+<Example title="Radio mode" path="button-group/examples/radio-mode.js">
+  <RadioMode />
+</Example>
+<Example title="Navigation" path="button-group/examples/navigation.js">
+  <Navigation />
+</Example>
+<Example title="TopBar Button Group" path="button-group/examples/topbar-icon-groups.js">
+  <TopBar />
+</Example>
+<Example title="Action Bar" path="button-group/examples/action-bar.js">
+  <ActionBar />
+</Example>
+<Example title="Controlled Behaviour" path="button-group/examples/controlled.js">
+  <Controlled />
+</Example>
+
+In `radio` mode, the button group functions similarly to a radio group. Only one button can be "selected" at a time.
+
+<Example title="Checkbox mode" path="button-group/examples/checkbox-mode.js">
+  <CheckboxMode />
+</Example>
+
+In `checkbox` mode, the button group functions similarly to a group of checkboxes. Multiple buttons can be "selected" at the same time.
+
+<Example title="Disabled button group" path="button-group/examples/disabled.js">
+  <Disabled />
+</Example>
+
+You can disable the entire button group as in the example above. Or you can disable isolated buttons as in the example below.
+
+<Example title="Single disabled button" path="button-group/examples/disabled-button.js">
+  <DisabledButton />
+</Example>
+<Example title="With a dropdown" path="button-group/examples/dropdown.js">
+  <Dropdown />
+</Example>
+<Example title="Stateful (uncontrolled) with radio mode" path="button-group/examples/stateful-radio.js">
+  <StatefulRadio />
+</Example>
+
+As with many of our components, there is also an [uncontrolled](https://reactjs.org/docs/uncontrolled-components.html) version, `StatefulButtonGroup`, which manages its own state. If `mode` is set to `radio` or `checkbox`, this stateful version of the component will adapt to keep track of the `selected` value(s).
+
+<Example title="Stateful (uncontrolled) with checkbox mode" path="button-group/examples/stateful-checkbox.js">
+  <StatefulCheckbox />
+</Example>
+
+## API
+
+<ApiTable title="ButtonGroup props" config={buttonGroupYardConfig} />
+<ImplementationLink componentPath="button-group" />
+<Exports component={ButtonGroupExports} title="ButtonGroup exports" path="spaceweb/button-group" />

@@ -1,0 +1,76 @@
+import Example from '../../components/example';
+import Layout from '../../components/layout';
+import Exports from '../../components/exports';
+import ImplementationLink from 'components/implementation-link';
+
+import Basic from 'componentConfigs/tag/examples/basic.js';
+import Variants from 'componentConfigs/tag/examples/variants.js';
+import Kinds from 'componentConfigs/tag/examples/kinds.js';
+import NonClickable from 'componentConfigs/tag/examples/non-clickable.js';
+import Clickable from 'componentConfigs/tag/examples/clickable.js';
+import NonCloseable from 'componentConfigs/tag/examples/non-closeable.js';
+import ClickableNonCloseable from 'componentConfigs/tag/examples/clickable-non-closeable.js';
+import Size from 'componentConfigs/tag/examples/size.js';
+import AvatarTag from 'componentConfigs/tag/examples/avatar-tag.js';
+import ClassName from 'componentConfigs/tag/examples/classname.js';
+
+import { Tag } from 'spaceweb/tag';
+import * as TagExports from 'spaceweb/tag';
+
+import Yard from '../../components/yard/index';
+import tagYardConfig from 'componentConfigs/tag/config';
+import ApiTable from '../../components/api-table';
+
+export default Layout;
+
+# Tag
+
+<Yard placeholderHeight={34} {...tagYardConfig} />
+
+Compact UI to display a collection of concise information.
+
+## When to use
+
+- When displaying a list of tags.
+
+## Examples
+
+<Example title="Tag basic Usage" path="tag/examples/basic.js">
+  <Basic />
+</Example>
+<Example title="Classname usage" path="tag/examples/classname.js">
+  <ClassName />
+</Example>
+<Example title="Tag in different sizes" path="tag/examples/size.js">
+  <Size />
+</Example>
+<Example title="AvatarTag Component" path="tag/examples/avatar-tag.js">
+  <AvatarTag />
+</Example>
+
+AvatarTag uses `Tag` component internally and accepts all TagProps.
+
+<Example title="Tag Intent Prop Type" path="tag/examples/kinds.js">
+  <Kinds />
+</Example>
+<Example title="Tag Variants Prop Type" path="tag/examples/variants.js">
+  <Variants />
+</Example>
+<Example title="Tag closeable/non-clickable" path="tag/examples/non-clickable.js">
+  <NonClickable />
+</Example>
+<Example title="Tag closeable/clickable" path="tag/examples/clickable.js">
+  <Clickable />
+</Example>
+<Example title="Tag non-closeable/non-clickable" path="tag/examples/non-closeable.js">
+  <NonCloseable />
+</Example>
+<Example title="Tag non-closeable/clickable" path="tag/examples/clickable-non-closeable.js">
+  <ClickableNonCloseable />
+</Example>
+
+## API
+
+<ApiTable title="Tag props" config={tagYardConfig} />
+<ImplementationLink componentPath="tag" />
+<Exports component={TagExports} title="Tag exports" path="spaceweb/tag" />

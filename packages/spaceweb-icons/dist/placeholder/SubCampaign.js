@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var tslib_1 = require("tslib");
+var jsx_runtime_1 = require("react/jsx-runtime");
+var style_1 = require("@sprinklr/spaceweb/style");
+var icon_1 = (0, tslib_1.__importDefault)(require("../icon"));
+function PlaceholderSubCampaign(props) {
+    var _a = (0, style_1.useStyle)(), theme = _a.theme, isRTL = _a.isRTL;
+    return ((0, jsx_runtime_1.jsxs)(icon_1.default, (0, tslib_1.__assign)({ viewBox: "0 0 161.85 104.61", "data-icon-name": "PlaceholderSubCampaign" }, props, { children: [(0, jsx_runtime_1.jsx)("path", { d: "M114.74 64a1.4 1.4 0 110 2.8H83.7a1.4 1.4 0 110-2.8zm-37.92 0a1.4 1.4 0 110 2.8H31.94a1.4 1.4 0 110-2.8zm13.79 7.93a1.4 1.4 0 110 2.8H31.94a1.4 1.4 0 110-2.8zm24.13 0a1.4 1.4 0 110 2.8H97.5a1.4 1.4 0 110-2.8z", fill: theme.spr.icon04, opacity: ".5" }, void 0), (0, jsx_runtime_1.jsx)("path", { d: "M5.39 0A1.01 1.01 0 016.4 1.01v3.44h3.37a1.01 1.01 0 110 2.01l-3.37.01v3.44a1.02 1.02 0 01-2.02 0V6.47H1.01a1.01 1.01 0 110-2.01l3.36-.01V1.01a1.01 1.01 0 011-1.01zm139.3 47.88a1.01 1.01 0 011.03 1v1.7h1.69a1.01 1.01 0 110 2.01h-1.69v1.7a1.02 1.02 0 01-2.03 0v-1.7l-1.7.01a1.01 1.01 0 110-2.02h1.7v-1.69a1.01 1.01 0 011-1.01zm11.75 7.94a1.01 1.01 0 011.02 1.01v3.44h3.37a1.01 1.01 0 110 2.02h-3.36v3.44a1.02 1.02 0 01-2.03 0V62.3h-3.37a1.01 1.01 0 110-2.02h3.36v-3.44a1.01 1.01 0 011.01-1.02zM144.7 97.2a1.01 1.01 0 011.02 1.01v1.69h1.69a1.01 1.01 0 110 2.02h-1.69v1.68a1.02 1.02 0 01-2.03 0v-1.68h-1.7a1.01 1.01 0 110-2.02h1.7v-1.7a1.01 1.01 0 011-1zM26 38.5h100a6.5 6.5 0 016.5 6.5v30a6.5 6.5 0 01-6.5 6.5H26a6.5 6.5 0 01-6.5-6.5V45a6.5 6.5 0 016.5-6.5zm100-3H26a9.5 9.5 0 00-9.5 9.5v30a9.5 9.5 0 009.5 9.5h100a9.5 9.5 0 009.5-9.5V45a9.5 9.5 0 00-9.5-9.5z", fill: theme.spr.icon04 }, void 0), (0, jsx_runtime_1.jsx)("path", { d: "M117.5 28a9.5 9.5 0 019.3 7.53q-.4-.03-.8-.03H26a9.5 9.5 0 00-9.5 9.5v30a9.54 9.54 0 00.2 1.97A9.5 9.5 0 018 67.5v-30a9.5 9.5 0 019.5-9.5z", fill: theme.spr.ui03 }, void 0), (0, jsx_runtime_1.jsx)("path", { d: "M73.77 47.35a1.43 1.43 0 010 2.85h-26.2a1.43 1.43 0 010-2.85zm22.5 6.02a1.43 1.43 0 010 2.85h-48.7a1.43 1.43 0 010-2.85zM36.77 46a6.02 6.02 0 11-6 6.02 6 6 0 016-6.02z", fill: theme.spr.icon04, opacity: ".12" }, void 0)] }), void 0));
+}
+exports.default = PlaceholderSubCampaign;

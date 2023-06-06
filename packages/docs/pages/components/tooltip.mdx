@@ -1,0 +1,51 @@
+import Example from 'components/example';
+import Layout from 'components/layout';
+import Exports from 'components/exports';
+import ImplementationLink from 'components/implementation-link';
+
+import Stateful from 'componentConfigs/tooltip/examples/stateful.js';
+import StatefulComplexContent from 'componentConfigs/tooltip/examples/stateful-complex-content.js';
+import Size from 'componentConfigs/tooltip/examples/size.js';
+import WithLabel from 'componentConfigs/tooltip/examples/with-label.js';
+
+import { StatefulTooltip } from 'spaceweb/tooltip';
+import * as TooltipExports from 'spaceweb/tooltip';
+
+import Yard from 'components/yard/index';
+import tooltipYardConfig from 'componentConfigs/tooltip/config';
+import ApiTable from 'components/api-table';
+
+export default Layout;
+
+# Tooltip
+
+<Yard placeholderHeight={20} {...tooltipYardConfig} />
+
+Tooltips provide additional information upon hover or click. They often include
+contextual helper text to guide the user through the experience or provide more detail.
+Tooltips in Base have no arrow indicator and can be placed around any point of an object.
+Motion helps to reinforce its origin position.
+
+## Examples
+
+<Example title="Tooltip stateful example" path="tooltip/examples/stateful.js">
+  <Stateful />
+</Example>
+<Example title="Tooltip stateful example with complex content" path="tooltip/examples/stateful-complex-content.js">
+  <StatefulComplexContent />
+</Example>
+<Example title="Tooltip size variants" path="tooltip/examples/size.js">
+  <Size />
+</Example>
+<Example title="Tooltip with Label" path="tooltip/examples/with-label.js">
+  <WithLabel />
+</Example>
+
+## API
+
+<ApiTable
+  title="Tooltip props"
+  config={tooltipYardConfig}
+/>
+<ImplementationLink componentPath="tooltip" />
+<Exports component={TooltipExports} title="Tooltip exports" path="spaceweb/tooltip" cheatsheet={false} />

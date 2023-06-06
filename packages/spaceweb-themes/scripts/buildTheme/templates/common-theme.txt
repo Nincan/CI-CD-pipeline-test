@@ -1,0 +1,5 @@
+// THIS FILES IS GENERATED USING SCRIPT, DO NOT EDIT DIRECTLY
+const theme = %%THEME%%
+export default {
+  ...theme
+};

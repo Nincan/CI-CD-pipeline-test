@@ -1,0 +1,99 @@
+{
+  "extends": "../../tsconfig.json",
+  "exclude": ["node_modules"],
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "baseUrl": "./",
+    "paths": {
+      "@sprinklr/spaceweb": ["../spaceweb/src"],
+      "@sprinklr/spaceweb/*": ["../spaceweb/src/*"],
+      "spaceweb": ["../spaceweb/src"],
+      "spaceweb/*": ["../spaceweb/src/*"],
+      "spaceweb/package.json": ["../spaceweb/package.json"],
+      "spaceweb-icons/package.json": ["../spaceweb-icons/package.json"],
+      "spaceweb-form/package.json": ["../spaceweb-form/package.json"],
+      "spaceweb-editor/package.json": ["../spaceweb-editor/package.json"],
+      "spaceweb-crm-components/package.json": ["../spaceweb-crm-components/package.json"],
+      "@sprinklr/spaceweb-themes/*": ["../spaceweb-themes/dist/*"],
+      "@sprinklr/spaceweb-calendar/*": ["../spaceweb-calendar/src/*"],
+      "@sprinklr/spaceweb-calendar": ["../spaceweb-calendar/src"],
+      "spaceweb-themes": ["../spaceweb-themes"],
+      "spaceweb-themes/*": ["../spaceweb-themes/*"],
+      "@sprinklr/spaceweb-icons": ["../spaceweb-icons/svgComponents"],
+      "@sprinklr/spaceweb-icons/*": ["../spaceweb-icons/svgComponents/*"],
+      "spaceweb-icons": ["../spaceweb-icons/svgComponents"],
+      "spaceweb-icons/*": ["../spaceweb-icons/svgComponents/*"],
+      "spaceweb-vscode-extension/*": ["../spaceweb-vscode-extension/*"],
+      "@sprinklr/spaceweb-charts": ["../spaceweb-charts/src"],
+      "@sprinklr/spaceweb-charts/*": ["../spaceweb-charts/src/*"],
+      "@sprinklr/spaceweb-form": ["../spaceweb-form/src"],
+      "@sprinklr/spaceweb-form/*": ["../spaceweb-form/src/*"],
+      "spaceweb-form": ["../spaceweb-form/src"],
+      "spaceweb-form/*": ["../spaceweb-form/src/*"],
+      "@sprinklr/spaceweb-meet": ["../spaceweb-meet/src"],
+      "@sprinklr/spaceweb-meet/*": ["../spaceweb-meet/src/*"],
+      "spaceweb-meet": ["../spaceweb-meet/src"],
+      "spaceweb-meet/*": ["../spaceweb-meet/src/*"],
+      "@sprinklr/spaceweb-table": ["../spaceweb-table/src"],
+      "@sprinklr/spaceweb-table/*": ["../spaceweb-table/src/*"],
+      "@sprinklr/spaceweb-editor": ["../spaceweb-editor/src"],
+      "@sprinklr/spaceweb-editor/*": ["../spaceweb-editor/src/*"],
+      "spaceweb-editor": ["../spaceweb-editor/src"],
+      "spaceweb-editor/*": ["../spaceweb-editor/src/*"],
+      "spaceweb-crm-components": ["../spaceweb-crm-components/src"],
+      "spaceweb-crm-components/*": ["../spaceweb-crm-components/src/*"],
+      "@sprinklr/spaceweb-crm-components": ["../spaceweb-crm-components/src"],
+      "@sprinklr/spaceweb-crm-components/*": ["../spaceweb-crm-components/src/*"],
+      "spaceweb-editor/styles/editor.min.css": ["../spaceweb-editor/dist/styles/editor.min.css"]
+    },
+    "incremental": true
+  },
+  "references": [
+    {
+      "path": "../spaceweb"
+    },
+    {
+      "path": "../spaceweb-charts"
+    },
+    {
+      "path": "../spaceweb-table/"
+    },
+    {
+      "path": "../spaceweb-themes/"
+    },
+    {
+      "path": "../spaceweb-icons/"
+    },
+    {
+      "path": "../spaceweb-vscode-extension/"
+    },
+    {
+      "path": "../spaceweb-meet/"
+    },
+    {
+      "path": "../spaceweb-editor/"
+    },
+    {
+      "path": "../spaceweb-form/"
+    },
+    {
+      "path": "../spaceweb-crm-components/"
+    }
+  ],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "../spaceweb-table/src/typings/react-table-config.d.ts",
+    "../spaceweb/src/typings.d.ts"
+  ]
+}

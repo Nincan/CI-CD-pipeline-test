@@ -1,0 +1,33 @@
+{
+  "name": "@sprinklr/spaceweb-icons",
+  "version": "3.0.21",
+  "license": "ISC",
+  "description": "Sprinklr Design SVG icons converted to Spaceweb React Components",
+  "main": "./index.js",
+  "repository": "https://prod-gitlab.sprinklr.com/sprinklr/frontend/spaceweb",
+  "author": "Sprinklr, Inc.",
+  "scripts": {
+    "copy-package.json": "cp package.json dist/",
+    "copy-scripts": "cp -r scripts dist/",
+    "clean": "rm -rf dist && rm -f tsconfig.tsbuildinfo",
+    "deprecate-icons": "node scripts/deprecate-icons.js",
+    "build:icons": "node scripts/build-icons.js",
+    "build:cjs": "tsc --project tsconfig.json --module commonjs --outDir ./dist",
+    "build": "yarn clean && yarn deprecate-icons && yarn build:icons && yarn build:cjs && yarn copy-package.json && yarn copy-scripts",
+    "svgo": "node ./scripts/run-svgo.js",
+    "test": "jest ./src",
+    "test:watch": "jest --watch ./src",
+    "test:coverage": "jest ./src --coverage"
+  },
+  "dependencies": {
+    "tslib": "^2.4.0"
+  },
+  "peerDependencies": {
+    "@sprinklr/spaceweb": ">=9.0.0 <13.0.0"
+  },
+  "devDependencies": {
+    "glob": "^7.1.6",
+    "rimraf": "^3.0.2",
+    "svgo": "^1.3.2"
+  }
+}

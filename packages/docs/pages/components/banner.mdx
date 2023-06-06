@@ -1,0 +1,62 @@
+import Example from 'components/example';
+import Exports from 'components/exports';
+import Layout from 'components/layout';
+import ImplementationLink from 'components/implementation-link';
+
+import { Banner } from 'spaceweb/list';
+import * as BannerExports from 'spaceweb/banner';
+
+import Basic from 'componentConfigs/banner/examples/basic.js'
+import FixedHeight from 'componentConfigs/banner/examples/fixed-height.js'
+import CustomTitle from 'componentConfigs/banner/examples/custom-title.js'
+import Intents from 'componentConfigs/banner/examples/intents.js'
+import ListTypes from 'componentConfigs/banner/examples/list-types.js'
+
+import Yard from 'components/yard/index';
+import bannerYardConfig from 'componentConfigs/banner/config';
+import bannerItemYardConfig from 'componentConfigs/banner/banner-item-config';
+import ApiTable from 'components/api-table';
+
+export default Layout;
+
+# Banner
+
+<Yard placeholderHeight={52} {...bannerYardConfig} queryStringName="list" />
+
+Banner is a component to render alert notifications.
+They are composed of banner items describing errors as per the usecase.
+
+## Examples
+
+<Example title="Basic Banner" path="banner/examples/basic.js">
+  <Basic />
+</Example>
+
+<Example title="Banners with different intents" path="banner/examples/intents.js">
+  <Intents />
+</Example>
+
+<Example title="Banners with different list types" path="banner/examples/list-types.js">
+  <ListTypes />
+</Example>
+
+The list type of the banner items (i.e numeric or bullets) can be handled by providing `$as` prop. Whenever `$as` is set to `ul` or `ol`, the `role` of `BannerItemContainer` will automatically be set to `list`. To provide custom `role` to `BannerItemContainer`, pass `role` prop to `Banner` component.
+
+<Example title="Fixed Height Banner" path="banner/examples/fixed-height.js">
+  <FixedHeight />
+</Example>
+
+To fix the height of error list container, user needs to provide overrides to `BannerItemContainer` or `Root`.
+
+<Example title="Custom Title Component" path="banner/examples/custom-title.js">
+  <CustomTitle />
+</Example>
+
+Title property of Banner accepts ReactNode. Hence, a custom title component can also be passed to the title prop of banner.
+
+## API
+
+<ApiTable title="Banner props" config={bannerYardConfig} />
+<ApiTable title="BannerItem props" config={bannerItemYardConfig} />
+<ImplementationLink componentPath="banner" />
+<Exports component={BannerExports} title="Banner exports" path="spaceweb/banner" />

@@ -1,0 +1,57 @@
+import Example from 'components/example';
+import Layout from 'components/layout';
+import Exports from 'components/exports';
+import SEO from 'components/meta-seo';
+import ImplementationLink from 'components/implementation-link';
+
+import ClickableMediaCard from 'componentConfigs/base-button/examples/clickable-media-card.js';
+import AnchorBaseButton from 'componentConfigs/base-button/examples/anchor-base-button.js';
+import ClickableArea from 'componentConfigs/base-button/examples/clickable-area.js';
+
+import Yard from 'components/yard/index';
+import baseButtonYardConfig from 'componentConfigs/base-button/config';
+import ApiTable from 'components/api-table';
+
+import { Link } from 'spaceweb/link';
+import * as BaseButtonExports from 'spaceweb/base-button';
+
+<SEO
+  description="BaseButton is a building block to construct any clickable component with support for inbuilt a11y. It resets native styles provided to a button and takes care of keyboard modality."
+  keywords="BaseButton, react button, clickable component"
+/>
+
+export default Layout;
+
+# Base Button
+
+<Yard placeholderHeight={52} {...baseButtonYardConfig} />
+
+BaseButton is a building block to construct any clickable component with support for inbuilt a11y.
+It resets native styles provided to a button and takes care of keyboard modality.
+
+## When to use
+
+- To make any clickable component which doesn't follow already provided Button.
+- To make clickable areas or overlays on your components.
+- Need anchor functionality on custom component which isn't a button such as img with an href.
+
+## Accessibility
+
+- By default, BaseButton renders as a button.
+- BaseButton maintains accessibility upon overriding the component. No need of adding tabIndex or onKeyPress separately.
+- Add aria-label compulsorily for screen readers.
+
+## Examples
+
+<Example title="Clickable Media Card" path="base-button/examples/clickable-media-card.js">
+  <ClickableMediaCard />
+</Example>
+<Example title="Clickable Image with href" path="base-button/examples/anchor-base-button.js">
+  <AnchorBaseButton />
+</Example>
+<Example title="Play Card with Clickable Area" path="base-button/examples/clickable-area.js">
+  <ClickableArea />
+</Example>
+<ApiTable title="BaseButton props" config={baseButtonYardConfig} />
+<ImplementationLink componentPath="base-button" />
+<Exports component={BaseButtonExports} title="BaseButton exports" path="spaceweb/base-button" />

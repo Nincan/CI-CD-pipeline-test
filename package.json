@@ -1,0 +1,73 @@
+{
+  "name": "spaceweb",
+  "version": "12.14.3",
+  "description": "Sprinklr Design System",
+  "license": "ISC",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "contributors": "node ./scripts/generate-contributors",
+    "build": "turbo run build",
+    "docs:dev": "turbo run build --scope=\"docs\" && yarn workspace docs dev",
+    "docs:dev:only-spaceweb": "yarn workspace docs dev",
+    "docs:publish-draft": "turbo run publish-draft --scope=\"docs\"",
+    "docs:publish-aws": "turbo run publish-aws --scope=\"docs\"",
+    "spaceweb-frontend-web:publish-aws": "turbo run publish-aws --scope=\"@sprinklr/spaceweb-frontend-web\"",
+    "eslint-staged": "sh ./scripts/eslint.sh",
+    "size": "size-limit",
+    "size:why": "size-limit --why",
+    "test": "yarn workspace @sprinklr/spaceweb test && yarn workspace @sprinklr/spaceweb-form test && yarn workspace @sprinklr/spaceweb-charts test",
+    "prettier-fix": "pretty-quick --staged",
+    "ci:test-packages": "scripts/ci-test-packages.sh",
+    "ci:analytics": "ts-node ./scripts/ci-analytics.ts",
+    "report-ci-schedule": "node ./packages/spaceweb-test-cli/dist/script/index --config ./test-cli.config.json --report_data",
+    "release-package": "./scripts/releasePackage.sh"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn eslint-staged && pretty-quick --staged"
+    }
+  },
+  "devDependencies": {
+    "@size-limit/file": "^7.0.8",
+    "@size-limit/webpack": "^7.0.8",
+    "@size-limit/webpack-why": "^7.0.8",
+    "bytes": "^3.1.0",
+    "chalk": "^4.0.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-import-resolver-typescript": "^2.5.0",
+    "eslint-plugin-import": "^2.25.4",
+    "husky": "^4.2.3",
+    "node-emoji": "^1.10.0",
+    "opn": "^6.0.0",
+    "prettier": "^2.5.1",
+    "pretty-quick": "^3.1.3",
+    "simple-git": "^2.24.0",
+    "size-limit": "^7.0.8",
+    "turbo": "^1.1.10",
+    "typescript": "^4.1.5"
+  },
+  "resolutions": {
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "@tiptap/suggestion": "2.0.0-beta.74",
+    "prosemirror-model": "1.16.1",
+    "@types/prosemirror-model": "1.16.2",
+    "prosemirror-view": "1.23.13",
+    "@types/prosemirror-view": "1.23.3",
+    "prosemirror-state": "1.3.4",
+    "@types/prosemirror-state": "1.3.0",
+    "prosemirror-transform": "1.4.2",
+    "@types/prosemirror-transform": "1.4.2",
+    "@tiptap/extension-bubble-menu": "2.0.0-beta.51",
+    "rc": "1.2.8",
+    "@types/react": "17.0.44"
+  },
+  "dependencies": {
+    "assert": "^2.0.0",
+    "core-js": "^3.30.2",
+    "process": "^0.11.10"
+  }
+}

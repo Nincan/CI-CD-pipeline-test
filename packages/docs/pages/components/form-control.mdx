@@ -1,0 +1,97 @@
+import Example from 'components/example';
+import Layout from 'components/layout';
+import Exports from 'components/exports';
+import ImplementationLink from 'components/implementation-link';
+
+import InputExample from 'componentConfigs/form-control/examples/input.js';
+import TextareaExample from 'componentConfigs/form-control/examples/textarea.js';
+import CheckboxExample from 'componentConfigs/form-control/examples/checkbox.js';
+import SwitchExample from 'componentConfigs/form-control/examples/switch.js';
+import RadioGroupExample from 'componentConfigs/form-control/examples/radio-group.js';
+import SelectExample from 'componentConfigs/form-control/examples/select.js';
+import HorizontalExample from 'componentConfigs/form-control/examples/horizontal.js';
+import ValidationExample from 'componentConfigs/form-control/examples/validation.js';
+import Kinds from 'componentConfigs/form-control/examples/kinds.js';
+import Required from 'componentConfigs/form-control/examples/required.js';
+import SubTextExample from 'componentConfigs/form-control/examples/subText.js';
+
+import { FormControl } from 'spaceweb/form-control';
+import { StatefulInput } from 'spaceweb/input';
+import * as FormControlExports from 'spaceweb/form-control';
+
+import Yard from 'components/yard/index';
+import formControlYardConfig from 'componentConfigs/form-control/config';
+import ApiTable from 'components/api-table';
+
+export default Layout;
+
+# Form Control
+
+<Yard placeholderHeight={70} {...formControlYardConfig} />
+
+The `FormControl` component adds a label and caption for its child control.
+If an error message is passed it renders that message in place of the caption.
+
+Note, the `FormControl` expects a single child component.
+If that child has an `id` prop, the `label` in the form control will assign the `htmlFor` accordingly.
+
+## Examples
+
+<Example title="Input" path="form-control/examples/input.js">
+  <InputExample />
+</Example>
+<Example title="Select" path="form-control/examples/select.js">
+  <SelectExample />
+</Example>
+<Example title="Required input" path="form-control/examples/required.js">
+  <Required />
+</Example>
+<Example title="Horizontal" path="form-control/examples/horizontal.js">
+  <HorizontalExample />
+</Example>
+<Example title="SubText" path="form-control/examples/subText.js">
+  <SubTextExample />
+</Example>
+
+Note, red dot appears when required attribute is set. Form Control does not validate input, that has to be handled by consumer.
+
+<Example title="Textarea" path="form-control/examples/textarea.js">
+  <TextareaExample />
+</Example>
+<Example title="Validation example (with email)" path="form-control/examples/validation.js">
+  <ValidationExample />
+</Example>
+
+A common use case for an input on a form is to do some quick client side validation. Here, we are using the validate method from the `email-validator` package to track and update error states for both the form control and input components. This particular example shows the input in the context of a `<form>` element to show how the components' custom error states can compliment the browser's native form validation. The default form behavior is prevented so no network requests are sent on submit.
+
+<Example title="Checkbox" path="form-control/examples/checkbox.js">
+  <CheckboxExample />
+</Example>
+
+Note, for a `Checkbox`, the actual label is the accompanying text on the right side of the checkbox element.
+
+<Example title="Switch" path="form-control/examples/switch.js">
+  <SwitchExample />
+</Example>
+
+Note, for a `Switch`, the actual label is the accompanying text on the right side of the switch element.
+
+<Example title="RadioGroup" path="form-control/examples/radio-group.js">
+  <RadioGroupExample />
+</Example>
+
+Note, for a `Radio`/`RadioGroup`, the actual label is the accompanying text on the right side of the radio element.
+
+<Example title="States" path="form-control/examples/kinds.js">
+  <Kinds />
+</Example>
+
+The `positive` and `error` props accept both `boolean` and `string` values.
+If you pass a `string`, it will be used as the `caption` of the form control, overriding any value passed to the `caption` prop.
+The example above showcases this behavior.
+
+## API
+
+<ApiTable title="Form Control props" config={formControlYardConfig} />
+<ImplementationLink componentPath="form-control" />
+<Exports component={FormControlExports} title="Form Control exports" path="spaceweb/form-control" />

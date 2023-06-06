@@ -1,0 +1,147 @@
+import Layout from 'components/layout';
+import Example from 'components/example';
+import Exports from 'components/exports';
+import ApiTable from 'components/api-table';
+import Yard from 'components/yard/index';
+import ImplementationLink from 'components/implementation-link';
+import { DocLink } from 'components/markdown-elements';
+
+import BasicUsage from 'componentConfigs/async-select/examples/basic-usage.js';
+import BasicGroupedUsage from 'componentConfigs/async-select/examples/basic-grouped-usage.js';
+import GroupedSelectAll from 'componentConfigs/async-select/examples/grouped-select-all.js';
+import UsageWithMinimumInput from 'componentConfigs/async-select/examples/usage-with-minimum-input.js';
+import WithLoadOnFocus from 'componentConfigs/async-select/examples/with-load-on-focus.js';
+import UsageWithPrefetchedOptions from 'componentConfigs/async-select/examples/usage-with-prefetched-options.js';
+import UsageWithResolvedSelectedOptions from 'componentConfigs/async-select/examples/usage-with-resolved-selected-options.js';
+import UsageWithResolvedGroupedSelectedOptions from 'componentConfigs/async-select/examples/usage-with-unresolved-grouped-selected-options.js';
+import UsageWithUnresolvedSelectedOptions from 'componentConfigs/async-select/examples/usage-with-unresolved-selected-options.js';
+import WithoutSearch from 'componentConfigs/async-select/examples/usage-without-search.js';
+import CreateOptionPromise from 'componentConfigs/async-select/examples/create-option-promise.js';
+
+import * as AsyncSelectExports from 'spaceweb/asyncSelect';
+
+import asyncSelectYardConfig from 'componentConfigs/async-select/config';
+
+export default Layout;
+
+# AsyncSelect
+
+<Yard placeholderHeight={48} {...asyncSelectYardConfig} />
+
+Use AsyncSelect component to load options from a remote source as the user types.
+
+Options are fetched on the following triggers:
+
+- When user enters some text in the input
+- When user scrolls through the list of options in dropdown and all the pages of options haven't been fetched yet (pagination)
+- On mount when `fetchOnMount` is `true`
+- On focus (via keyboard or click) when `fetchOnFocus` is `true`
+
+For more information, see the documentation of <DocLink href="/components/select">Select</DocLink>.
+
+**Note:** By default, AsyncSelect looks for `id` and `label` properties in fetched options. To adapt to custom properties, use the `labelKey` and `valueKey` props to override the defaults.
+
+## Examples
+
+<Example title="Basic usage" path="async-select/examples/basic-usage.js">
+  <BasicUsage />
+</Example>
+
+Things to note:
+
+- `value` prop is always an `Array` to provide a consistent interface - no matter if you use multi or single select.
+- `value` prop is an `Object[]`, wherein values corresponding to both - `labelKey` and `valueKey` are present. Since v11.4.0, <b>you can also pass `id[]` as value to AsyncSelect.
+  `valueKeys` will also be present in `onChange` function from now on.</b>
+- `options` returned by `loadOptions` prop is always an `Object[]`. Grouping of options is supported with GroupedAsyncSelect. Check next example.
+
+<Example title="Basic Grouped usage" path="async-select/examples/basic-grouped-usage.js">
+  <BasicGroupedUsage />
+</Example>
+
+Things to note:
+
+- keys should be unique b/w group options
+
+<Example title="Grouped Select with SelectAllOption" path="async-select/examples/grouped-select-all.js">
+  <GroupedSelectAll />
+</Example>
+
+Things to note:
+
+- Since exclude options is not supported yet, all groups will be collapsed and in disabled state when SelectAll is selected.
+- Checked state of SelectAll option needs to be handled by consumer.
+- Since, asyncSelect is not aware of all possible options, `valueKeys` and `value` will be an empty array for when onChange `type` is `selectAll`.
+
+<Example title="Usage with minimum input" path="async-select/examples/usage-with-minimum-input.js">
+  <UsageWithMinimumInput />
+</Example>
+
+Things to note:
+
+- If `loadOnMount` is `true`, options will be fetched on mount irrespective of the value of `minimumInput`.
+- If `loadOnFocus` is `true`, options will be fetched on focus only if the number of characters entered by user is equal to or exceeds `minimumInput` value.
+
+<Example title="Usage with loadOnFocus" path="async-select/examples/with-load-on-focus.js">
+  <WithLoadOnFocus />
+</Example>
+<Example title="Usage with prefetched options" path="async-select/examples/usage-with-prefetched-options.js">
+  <UsageWithPrefetchedOptions />
+</Example>
+<Example
+  title="Usage with resolved selected options"
+  path="async-select/examples/usage-with-resolved-selected-options.js"
+>
+  <UsageWithResolvedSelectedOptions />
+</Example>
+
+Use when you have some preselected `value`s that don't need resolving (i.e. fetching of their corresponding options) by sending them as `initialOptions`.
+
+Things to note:
+
+- Options provided as `initialOptions` should always be a **subset** of all possible options that can returned from `loadOptions`
+- `initialOptions` prop when present, is always an `Object[]`. Grouping of options is supported with GroupedAsyncSelect.
+- Change in `initialOptions` on every render will not be honoured by `AsyncSelect`.
+
+<Example
+  title="Usage with unresolved selected options"
+  path="async-select/examples/usage-with-unresolved-selected-options.js"
+>
+  <UsageWithUnresolvedSelectedOptions />
+</Example>
+
+Things to note:
+
+- `value` prop is an `Object[]`, wherein values corresponding to both - `labelKey` and `valueKey` are present. Since v11.4.0, <b>you can also pass `id[]` as value to AsyncSelect.</b>
+- `resolveSelectedOptions` prop will be invoked only **once** on first mount based on the presence of unresolved selected options with unresolved `valueKey`s.
+- Use `resolveValuesOnUpdate`(introduced in 11.7.0) to calculate unresolved values and invoke `resolveSelectedOptions` on update as well.
+- `options` returned by `resolveSelectedOptions` prop is always be an `Object[]`. Grouping of options is supported with GroupedAsyncSelect. Check next example.
+- tombstone will be visible when initial selected options are being resolved.
+
+<Example
+  title="Usage with unresolved selected options grouped select"
+  path="async-select/examples/usage-with-unresolved-grouped-selected-options.js"
+>
+  <UsageWithResolvedGroupedSelectedOptions />
+</Example>
+
+Things to note:
+
+- `value` prop is an `{ [groupId]: Array<Object|id> }`. Object should have values corresponding to both - `labelKey` and `valueKey`.
+- `options` returned by `resolveSelectedOptions` should be of shape `{ [groupId]: Array<Object|id> }`.
+- tombstone will be visible when initial selected options are being resolved.
+
+<Example title="Usage without search" path="async-select/examples/usage-without-search.js">
+  <WithoutSearch />
+</Example>
+
+<Example title="Usage with createOption returning Promise" path="async-select/examples/create-option-promise.js">
+  <CreateOptionPromise />
+</Example>
+
+<br />
+
+## API
+
+<ApiTable title="AsyncSelect props" config={asyncSelectYardConfig} />
+<ImplementationLink componentPath="asyncSelect" />
+<Exports component={AsyncSelectExports} title="AsyncSelect exports" path="spaceweb/asyncSelect" />

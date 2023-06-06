@@ -1,0 +1,60 @@
+import Example from '../../components/example';
+import Layout from '../../components/layout';
+import Exports from '../../components/exports';
+import ImplementationLink from 'components/implementation-link';
+
+import Basic from 'componentConfigs/radio/examples/basic.js';
+import Stateful from 'componentConfigs/radio/examples/stateful.js';
+import HorizontalAlign from 'componentConfigs/radio/examples/horizontal-align.js';
+import Error from 'componentConfigs/radio/examples/error.js';
+import Customization from 'componentConfigs/radio/examples/overrides.js';
+import Disabled from 'componentConfigs/radio/examples/disabled.js';
+import Sizes from 'componentConfigs/radio/examples/sizes.js';
+
+import { Radio, StatefulRadioGroup } from 'baseui/radio';
+import * as RadioExports from 'baseui/radio';
+
+import Yard from '../../components/yard/index';
+import radioYardConfig from 'componentConfigs/radio/config';
+import ApiTable from '../../components/api-table';
+
+export default Layout;
+
+# Radio
+
+<Yard placeholderHeight={122} {...radioYardConfig} />
+
+Radios are used when only one choice may be selected in a series of options.
+
+## When to use
+
+- When the user should see all available options.
+
+## Examples
+
+<Example title="Sizes" path="radio/examples/sizes.js">
+  <Sizes />
+</Example>
+<Example title="Disabled radios" path="radio/examples/disabled.js">
+  <Disabled />
+</Example>
+<Example title="Horizontal alignment" path="radio/examples/horizontal-align.js">
+  <HorizontalAlign />
+</Example>
+<Example title="Error state" path="radio/examples/error.js">
+  <Error />
+</Example>
+<Example title="Overrides usage" path="radio/examples/overrides.js">
+  <Customization />
+</Example>
+<Example title="Stateful (uncontrolled) usage" path="radio/examples/stateful.js">
+  <Stateful />
+</Example>
+
+As with many of our components, there is also an [uncontrolled](https://reactjs.org/docs/uncontrolled-components.html) version, `StatefulRadioGroup`, which manages its own state.
+
+## API
+
+<ApiTable title="Radio props" config={radioYardConfig} />
+<ImplementationLink componentPath="radio" />
+<Exports component={RadioExports} title="Radio exports" path="baseui/radio" />

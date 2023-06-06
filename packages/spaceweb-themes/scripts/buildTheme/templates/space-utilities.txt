@@ -1,0 +1,10 @@
+// THIS FILES IS GENERATED USING SCRIPT, DO NOT EDIT DIRECTLY
+import commonUtilities from '%%COMMON_UTILITIES_PATH%%';
+
+const { borderRadius, borderWidth, margin, padding } = commonUtilities.longhandUtils;
+
+const utilities = %%THEME_UTILITIES%%
+export default {
+  ...commonUtilities.utilities,
+  ...utilities
+};

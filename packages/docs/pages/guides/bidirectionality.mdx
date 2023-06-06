@@ -1,0 +1,77 @@
+import Layout from '../../components/layout';
+import { Notification } from 'baseui/notification';
+import Direction2Col from 'components/pseudoSelectorsExamples/direction-2-col';
+
+export default Layout;
+
+# Bidirectionality
+
+<Notification
+  overrides={{
+    Body: { style: { width: 'auto' } },
+  }}
+>
+  In this guide, you'll learn how to set up Spaceweb for right-to-left languages.
+</Notification>
+
+For user interfaces for languages that are read from right-to-left (RTL),
+the interface should be mirrored. This ensures that the application is easy to understand.
+
+## Setup
+
+### In HTML
+
+Add the `dir` attribute to the `body` of your application:
+
+```html
+<body dir="rtl"></body>
+```
+
+### In Spaceweb
+
+You have to change the `direction` prop in the `SpacewebProvider`:
+
+```tsx
+// App.tsx
+
+import * as React from 'react';
+import SpacewebProvider from '@sprinklr/spaceweb/spacewebProvider';
+import light from '@sprinklr/spaceweb-themes/hyperspace/light';
+
+const App = (): React.ReactElement => (
+  <SpacewebProvider direction="ltr" theme={theme}>
+    {/* your application code here */}
+  </SpacewebProvider>
+);
+
+export default App;
+```
+
+### Usage
+
+With utility classes
+
+```tsx
+<Box className="ml-2" />
+```
+
+With styleObject
+
+```tsx
+const { isRTL } = useStyle();
+<Box className={{ [isRTL ? 'marginRight' : 'marginLeft']: '4px' }} />;
+```
+
+### Example
+
+<Direction2Col />
+
+```jsx
+<Box className="...">
+  <Avatar />
+  <Box className="ml-2">
+    <Typography />
+    <Typography />
+  </Box>
+</Box>
+```

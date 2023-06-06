@@ -1,0 +1,68 @@
+import Example from '../../components/example';
+import Layout from '../../components/layout';
+import Exports from '../../components/exports';
+import ImplementationLink from 'components/implementation-link';
+import { DocLink } from 'components/markdown-elements';
+
+import TextareaBasic from 'componentConfigs/textarea/examples/basic.js';
+import TextareaStates from 'componentConfigs/textarea/examples/states.js';
+import TextareaSizes from 'componentConfigs/textarea/examples/sizes.js';
+import TextareaRef from 'componentConfigs/textarea/examples/ref.js';
+import TextareaResizable from 'componentConfigs/textarea/examples/resizable.js';
+import TextareaStateful from 'componentConfigs/textarea/examples/stateful.js';
+import TextareaDebounce from 'componentConfigs/textarea/examples/debounce.js';
+import TextareaAutoSize from 'componentConfigs/textarea/examples/autoSize.js';
+
+import { StatefulTextarea as Textarea, SIZE } from 'spaceweb/textarea';
+import * as TextareaExports from 'spaceweb/textarea';
+
+import Yard from '../../components/yard/index';
+import textareaYardConfig from 'componentConfigs/textarea/config';
+import ApiTable from '../../components/api-table';
+
+export default Layout;
+
+# Textarea
+
+<Yard placeholderHeight={48} {...textareaYardConfig} />
+
+## Examples
+
+<Example title="Basic usage" path="textarea/examples/basic.js">
+  <TextareaBasic />
+</Example>
+<Example title="States" path="textarea/examples/states.js">
+  <TextareaStates />
+</Example>
+<Example title="Sizes" path="textarea/examples/sizes.js">
+  <TextareaSizes />
+</Example>
+<Example title="Allow the user to resize" path="textarea/examples/resizable.js">
+  <TextareaResizable />
+</Example>
+
+By default, `Textarea` is not resizeable. However, you can use `overrides` as in the example above to supply minimum and maximum dimensions for the component. This will allow users to resize the `Textarea` within the boundaries you define.
+
+### AutoFocus
+`Textarea` accepts an `autoFocus` prop. For information on its behaviour, check <DocLink href="/components/input#autofocus">Input's autoFocus example</DocLink>.
+
+<Example title="AutoSize" path="textarea/examples/autoSize.js">
+  <TextareaAutoSize />
+</Example>
+<Example title="Focus and ref" path="textarea/examples/ref.js">
+  <TextareaRef />
+</Example>
+<Example title="Stateful (uncontrolled) usage" path="textarea/examples/stateful.js">
+  <TextareaStateful />
+</Example>
+<Example title="Debounce" path="textarea/examples/debounce.js">
+  <TextareaDebounce />
+</Example>
+
+As with many of our components, there is also an [uncontrolled](https://reactjs.org/docs/uncontrolled-components.html) version, `StatefulTextarea`, which manages its own state.
+
+## API
+
+<ApiTable title="Textarea props" config={textareaYardConfig} />
+<ImplementationLink componentPath="textarea" />
+<Exports component={TextareaExports} title="Textarea exports" path="spaceweb/textarea" />

@@ -1,0 +1,109 @@
+import { Notification } from 'baseui/notification';
+import Layout from '../../components/layout';
+import ThemeExplorer from '../../components/themeExplorer/themeExplorer';
+
+export default Layout;
+
+# Theme
+
+<Notification
+  overrides={{
+    Body: { style: { width: 'auto' } },
+  }}
+>
+  This guide will help you understand the different aspects about Spaceweb Themes.
+</Notification>
+
+**Spaceweb** themes is built from the combination of
+
+- `TailwindCSS` providing the basic set of atomic utilities
+- `@sprinklr/style-dictionary` providing the style-tokens
+
+We provide two themes out of the box, **Light** and **Dark**, which style components in light & dark variants.
+
+## Toggling light and dark theme
+
+If you want to allow for toggling between the two themes at runtime, you need to allocate some state for determining which theme is passed to `SpacewebProvider`.
+
+```tsx
+import React, { ReactElement } from 'react';
+
+import SpacewebProvider from '@sprinklr/spaceweb/spacewebProvider';
+import { Direction, ThemeModule } from '@sprinklr/spaceweb-themes/types';
+import sprLight from '@sprinklr/spaceweb-themes/space/light';
+import sprLight from '@sprinklr/spaceweb-themes/space/dark';
+
+type State = {
+  theme: 'light' | 'dark';
+  direction: Direction;
+};
+
+const App = (): ReactElement => {
+    const [state, setState] = useState<State>({
+      theme: 'dark',
+      direction: 'ltr'
+    });
+
+    return (
+        <SpacewebProvider direction={state.direction} theme={state.theme === 'light' ? sprLight : sprDark}>
+            {/* your application code here */}
+        </SpacewebProvider>
+    );
+};
+
+export default App;
+```
+
+## Override Theme
+
+You can override the theme with the help of `ThemeProvider`.
+
+```tsx
+import React, { ReactElement } from 'react';
+
+import SpacewebProvider from '@sprinklr/spaceweb/spacewebProvider';
+import { ThemeProvider } from '@sprinklr/spaceweb/theme';
+
+import { Box } from '@sprinklr/spaceweb-themes/box';
+import sprLight from '@sprinklr/spaceweb-themes/space/light';
+import hyperspaceLight from '@sprinklr/spaceweb-themes/hyperspace/light';
+
+const App = (): ReactElement => (
+
+  <SpacewebProvider theme={sprLight}>
+
+    <Box className="spr-text-04">This is text is sprLight themed</Box>
+
+    <ThemeProvider theme={hyperspaceLight}>
+      <Box className="spr-text-04">This is text is hyperspaceLight themed</Box>
+    </ThemeProvider>
+
+  </SpacewebProvider>
+
+);
+
+export default App;
+```
+
+### Theme Properties
+
+The theme object organizes its various properties according to their respective concerns.
+
+<Notification
+  overrides={{
+    Body: {style: {width: 'auto'}},
+  }}
+>
+  NOTE: Spaceweb uses a 4px grid for defining the unit sizes. Hence all the utility classes work in multiples of 4px.
+  <br/>
+  <br/>
+  m-1 = margin of 4px
+  <br/>
+  p-2 = padding of 8px
+</Notification>
+
+<ThemeExplorer />
+
+### Using Theme Properties in Code
+
+Head over to the [styling guide](/guides/styling) on how to use these theme properties to style your code.

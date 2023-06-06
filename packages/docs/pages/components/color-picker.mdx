@@ -1,0 +1,37 @@
+import Example from '../../components/example';
+import Layout from '../../components/layout';
+import Exports from '../../components/exports';
+import ImplementationLink from 'components/implementation-link';
+
+import Basic from 'componentConfigs/color-picker/examples/basic.js';
+import Overrides from 'componentConfigs/color-picker/examples/overrides.js';
+
+import { Block } from 'baseui/block';
+import { ColorPicker } from 'spaceweb/color-picker';
+import * as ColorPickerExports from 'spaceweb/color-picker';
+
+import Yard from '../../components/yard/index';
+import colorPickerYardConfig from 'componentConfigs/color-picker/config';
+import ApiTable from '../../components/api-table';
+
+export default Layout;
+
+# Color Picker
+
+<Yard placeholderHeight={48} {...colorPickerYardConfig} />
+
+## Examples
+
+<Example title="Basic usage" path="color-picker/examples/basic.js">
+  <Basic />
+</Example>
+<Example title="With Overrides" path="color-picker/examples/overrides.js">
+  <Overrides />
+</Example>
+
+
+## API
+
+<ApiTable title="Color Picker props" config={colorPickerYardConfig} />
+<ImplementationLink componentPath="color-picker" />
+<Exports component={ColorPickerExports} title="Color Picker exports" path="spaceweb/color-picker" />

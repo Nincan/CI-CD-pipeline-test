@@ -1,0 +1,61 @@
+import Example from 'components/example';
+import Layout from 'components/layout';
+import Exports from 'components/exports';
+
+import ClipLoader from 'componentConfigs/loader/examples/clip-loader.js';
+import BeatLoader from 'componentConfigs/loader/examples/beat-loader.js';
+import Delay from 'componentConfigs/loader/examples/delay.js';
+import LoaderOverride from 'componentConfigs/loader/examples/loader-override.js';
+import LoadingContent from 'componentConfigs/loader/examples/loading-content.js';
+
+import * as LoaderExports from 'spaceweb/loader';
+
+import Yard from 'components/yard/index';
+import loaderYardConfig from 'componentConfigs/loader/config';
+import ApiTable from 'components/api-table';
+
+import * as BoxExports from 'spaceweb/box';
+
+export default Layout;
+
+# Loader
+
+<Yard placeholderHeight={52} {...loaderYardConfig} />
+
+## Accessibility
+
+- `role="progressbar"` is applied to the element.
+- `aria-busy=true` is applied to element which indicates an element is being modified and that assistive technologies MAY want to wait until the modifications are complete before exposing them to the user.
+- By default `aria-label="Loading"` is applied to loader element. Can be changed using overrides.
+
+## Examples
+
+<Example title="Beat(default) Loader in different sizes" path="loader/examples/beat-loader.js">
+  <BeatLoader />
+</Example>
+
+Size provided to the Beat Loader is applied to each ball of the loader.
+
+<Example title="Clip Loader in different sizes" path="loader/examples/clip-loader.js">
+  <ClipLoader />
+</Example>
+<Example title="Loader with delay" path="loader/examples/delay.js">
+  <Delay />
+</Example>
+
+If loading ends during delay, loader won't appear.
+
+<Example title="Loading Content" path="loader/examples/loading-content.js">
+  <LoadingContent />
+</Example>
+
+When `Typography` component is used in `loadingContent`, `Text` component will not rendered. For all the other cases, content will be rendered inside `Text component`.
+
+<Example title="Loader Overrides" path="loader/examples/loader-override.js">
+  <LoaderOverride />
+</Example>
+
+`Text` will accept any `TypographyProps`.
+
+<ApiTable title="Loader props" config={loaderYardConfig} />
+<Exports component={LoaderExports} title="Loader exports" path="spaceweb/loader" />

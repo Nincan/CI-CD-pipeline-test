@@ -1,0 +1,22 @@
+node_modules
+npm-debug*
+package-lock.json
+yarn.lock
+.env
+yarn-error.log
+deploy.sh
+coverage
+coverage.json
+analysis-report
+.turbo
+tsconfig.tsbuildinfo
+
+# Compiled files
+.idea
+.vscode
+.history
+
+# OS Files
+.DS_Store
+# Local Netlify folder
+.netlify

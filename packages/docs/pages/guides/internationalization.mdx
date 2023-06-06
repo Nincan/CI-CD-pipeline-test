@@ -1,0 +1,37 @@
+import Layout from '../../components/layout';
+import { Notification } from 'baseui/notification';
+import { Link } from 'spaceweb/link';
+
+import InternationalizationExample from 'componentConfigs/internationalization/examples/en_Hi.js';
+
+export default Layout;
+
+# Internationalization
+
+<Notification
+  overrides={{
+    Body: {style: {width: 'auto'}},
+  }}
+>
+  In this guide, you'll learn how to customize Spaceweb for languages other than
+  English.
+</Notification>
+
+- Spaceweb supports English(en_US) as the default language.
+- You can pass internationalized locale to SpacewebProvider.
+- You can check locale structure <Link href="https://prod-gitlab.sprinklr.com/sprinklr/frontend/spaceweb/-/tree/main/packages%2Fspaceweb%2Fsrc/locale/en_US.ts">here</Link>.
+
+<br />
+<InternationalizationExample />
+
+```
+const en_Hi = {
+  select: {
+    noResultsMsg: 'कोई परिणाम नहीं',
+  },
+};
+
+<SpacewebProvider theme={sprLight} locale={en_Hi}>
+    <StatefulSelect />
+</SpacewebProvider>
+```

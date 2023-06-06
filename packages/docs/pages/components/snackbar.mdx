@@ -1,0 +1,53 @@
+import Example from 'components/example';
+import Exports from 'components/exports';
+import Layout from 'components/layout';
+import SEO from 'components/meta-seo';
+import ImplementationLink from 'components/implementation-link';
+
+import * as SnackbarExports from 'spaceweb/snackbar';
+
+import BasicSnackbar from 'componentConfigs/snackbar/examples/basic.js';
+import SnackbarPlacement from 'componentConfigs/snackbar/examples/placement.js';
+import SnackbarIntent from 'componentConfigs/snackbar/examples/intent.js';
+import CustomComponentMessage from 'componentConfigs/snackbar/examples/custom-component-message.js';
+
+import Yard from 'components/yard/index';
+import yardConfig from 'componentConfigs/snackbar/config';
+import ApiTable from 'components/api-table';
+
+export default Layout;
+
+# Snackbar
+
+<Yard placeholderHeight={0} {...yardConfig} />
+
+Snackbars provide brief messages about app processes. The component is also known as a toast.
+
+Snackbars inform users of a process that an app has performed or will perform. They appear temporarily, towards the bottom of the screen.
+They shouldn’t interrupt the user experience, and they don’t require user input to disappear.
+
+## Usage
+
+Ideally, an app should not render more than one instance of Snackbar.
+Snackbar appears on the screen whenever either `message` or `intent` prop is changed.
+
+## Examples
+
+<Example title="Default Snackbar" path="snackbar/examples/basic.js">
+  <BasicSnackbar />
+</Example>
+
+Here, whenever `message` prop is changed new `Snackbar` pops-up on the screen.
+
+<Example title="Snackbar Placements" path="snackbar/examples/placement.js">
+  <SnackbarPlacement />
+</Example>
+<Example title="Snackbar Intent" path="snackbar/examples/intent.js">
+  <SnackbarIntent />
+</Example>
+<Example title="Render custom component as message" path="snackbar/examples/custom-component-message.js">
+  <CustomComponentMessage />
+</Example>
+<ApiTable title="Snackbar props" config={yardConfig} />
+<ImplementationLink componentPath="snackbar" />
+<Exports component={SnackbarExports} title="Snackbar exports" path="spaceweb/snackbar" />

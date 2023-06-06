@@ -1,0 +1,62 @@
+{
+  "ignorePatterns": "node_modules",
+  "runCoverage": true,
+  "testCommand": "test",
+  "projectName": "Spaceweb",
+  "uploadToS3": true,
+  "slackConfig": {
+    "reportToSlack": true,
+    "channels": ["#frontend-system-alerts", "#space-system-stats"]
+  },
+  "testsSuitesSlownessThresholdA": 60000,
+  "testsSuitesSlownessThresholdB": 30000,
+  "testsSuitesSlownessThresholdC": 10000,
+  "maxWorkers": 7,
+  "buckets": [
+    {
+      "name": "spaceweb",
+      "root": "packages/spaceweb",
+      "directory": "packages/spaceweb/src"
+    },
+    {
+      "name": "spaceweb-charts",
+      "root": "packages/spaceweb-charts",
+      "directory": "packages/spaceweb-charts/src"
+    },
+    {
+      "name": "spaceweb-editor",
+      "root": "packages/spaceweb-editor",
+      "directory": "packages/spaceweb-editor/src"
+    },
+    {
+      "name": "spaceweb-form",
+      "root": "packages/spaceweb-form",
+      "directory": "packages/spaceweb-form/src"
+    },
+    {
+      "name": "spaceweb-icons",
+      "root": "packages/spaceweb-icons",
+      "directory": "packages/spaceweb-icons/src"
+    },
+    {
+      "name": "spaceweb-meet",
+      "root": "packages/spaceweb-meet",
+      "directory": "packages/spaceweb-meet/src"
+    },
+    {
+      "name": "spaceweb-themes",
+      "root": "packages/spaceweb-themes",
+      "directory": "packages/spaceweb-themes/src"
+    },
+    {
+      "name": "spaceweb-table",
+      "root": "packages/spaceweb-table",
+      "directory": "packages/spaceweb-table/src"
+    },
+    {
+      "name": "spaceweb-bolt",
+      "root": "packages/spaceweb-bolt",
+      "directory": "packages/spaceweb-bolt/src"
+    }
+  ]
+}

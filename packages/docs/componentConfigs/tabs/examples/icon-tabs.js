@@ -1,0 +1,43 @@
+import { useState } from 'react';
+import { TabList, Tab, TabsPanel } from 'spaceweb/tabs';
+import { IconButton } from 'spaceweb/button';
+import Search from 'spaceweb-icons/line/Search';
+import PlayCircleIcon from 'spaceweb-icons/solid/PlayCircle';
+import Close from 'spaceweb-icons/line/Close';
+import { Box } from 'spaceweb/box';
+
+const content = ['Search', 'Play Video', 'Close'];
+
+const IconTabs = () => {
+  const [activeTabId, setActiveTabId] = useState('0');
+  const onChange = ({ activeTabId: updatedActiveTabId }) => setActiveTabId(updatedActiveTabId);
+  return (
+    <Box className="flex flex-row-reverse">
+      <TabList
+        activeTabId={activeTabId}
+        onChange={onChange}
+        position="right"
+        className="w-12 border-t border-r border-b border-l border-solid spr-border-02 rounded-tr-1"
+      >
+        <Tab className="px-0 py-0">
+          <IconButton>
+            <Search />
+          </IconButton>
+        </Tab>
+        <Tab className="px-0 py-0">
+          <IconButton>
+            <PlayCircleIcon />
+          </IconButton>
+        </Tab>
+        <Tab className="px-0 py-0">
+          <IconButton>
+            <Close />
+          </IconButton>
+        </Tab>
+      </TabList>
+      <TabsPanel className="p-2">{content[+activeTabId]}</TabsPanel>
+    </Box>
+  );
+};
+
+export default IconTabs;

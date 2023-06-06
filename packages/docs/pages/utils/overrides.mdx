@@ -1,0 +1,80 @@
+import Example from 'components/example';
+import Layout from 'components/layout';
+
+export default Layout;
+
+# Override Utilities
+
+## useOverrides
+
+Suppose, I want to create an Input component with StartEnhancer with the simple structure defined below.
+
+```html
+<Root>
+  <StartEnhancer />
+  <input />
+</Root>
+```
+
+As we know spaceweb provides powerful `overrides` prop to make various modification to the original component.
+Let's add this same functionality to Input component and understand how `useOverrides` can help here.
+
+```tsx
+import { useOverrides, Override } from '@sprinklr/spaceweb/overrides';
+import { styled } from '@sprinklr/spaceweb/style';
+
+// Component with default styles
+const DefaultRoot = styled('div', 'rounded-4');
+const DefaultStartEnhancer = styled('div', 'p-2 inline-flex items-center justify-center');
+const DefaultInput = styled('input', 'text-14 px-2 py-1', theme => ({ '::placeholder': { color: theme.spr.text02 });
+
+type Props = {
+  overrides?: {
+    Root?: Override;
+    StartEnhancer?: Override;
+    Input?: Override;
+  }
+}
+const Input = ({ overrides }) => {
+  const [Root, rootProps] = useOverrides(overrides?.Root, DefaultRoot);
+  const [StartEnhancer, startEnhancerProps] = useOverrides(overrides?.StartEnhancer, DefaultStartEnhancer);
+  const [Input, inputProps] = useOverrides(overrides?.Input, DefaultInput);
+
+  return (
+    <Root {...rootProps}>
+      <StartEnhancer {...startEnhancerProps} />
+      <Input placeholder="input" {...inputProps} />
+    </Root>
+  )
+}
+```
+
+### What does useOverrides do behind the scenes?
+
+useOverrides returns `ComponentToRender` and `componentProps`(which should be passed to the `ComponentToRender`).
+Consumer can override 3 things with `Override` - style, props and the whole component itself.
+
+useOverrides accepts `DefaultComponent` which will be rendered if `override.component` is not provided.
+`componentProps` returned by useOverrides will be same as `override.props` and it adds one more prop `$style` if `override.style` is defined.
+
+Following snippet shows some inputs and outputs of the useOverrides.
+
+```ts
+const [Component, componentProps] = useOverrides({ props: { newProp: 1 } }, DefaultComponent);
+// Component - DefaultComponent
+// componentProps - { newProp: 1 }
+
+const [Component, componentProps] = useOverrides(NewComponent, DefaultComponent);
+// Component - NewComponent
+// componentProps - undefined
+
+const [Component, componentProps] = useOverrides(
+  { component: NewComponent, props: { newProp: 1 }, style: { color: 'red' } },
+  DefaultComponent
+);
+// Component - NewComponent
+// componentProps - { newProp: 1, $style: { color: 'red' } }
+```
+
+To support style override, ComponentToRender should know how to handle `$style`.
+In most cases `DefaultComponent` is a component created with `styled` utility and it can handle `$style`.

@@ -1,0 +1,375 @@
+import { Notification, KIND } from "baseui/notification";
+import Layout from '../../components/layout';
+
+export default Layout;
+
+# Theming & Styling with Spaceweb
+
+<Notification
+  overrides={{
+    Body: {style: {width: 'auto'}},
+  }}
+>
+  This guide will help you with understanding the theme and style usage in Spaceweb.
+</Notification>
+
+## Introduction
+
+Styling in **Spaceweb** is done using CSS-in-JS, which from now own we'll refer to as JSS. It is a combination of two existing technologies [TailwindCSS](https://tailwindcss.com/) + [Styletron](https://www.styletron.org/).
+
+## Goals
+
+Styling in **Spaceweb** was designed with the following goals in mind:
+
+- Minimize size of (output) CSS
+- Eliminate dead-code (CSS)
+- Eliminate bleeding stylesheets (specificity hell)
+- Theme-able
+- SSR Support
+- Encapsulation of the underlying technologies
+
+The idea is to have a system that reduces the amount of style related code to be written, that is easy to maintain and alter on existing components.
+
+## Spaceweb Styling Tools
+
+**Spaceweb** provides the following tools:
+
+- Space container
+- Space consumer
+- Styled component generator
+- Styling tools
+
+## Technical Terms
+Before we take a look at all the styling tools available. These are some technical terms for reference.
+
+```ts
+/**
+ * Theme-callback function (used to specify styles dynamically)
+ */
+type StyleFn<P = any> = (
+  utils: StyleUtils,
+  props: { $theme?: BaseTheme } & P
+) => StyleObject | string | undefined;
+
+/**
+ * Shape of styles accepted by spaceweb.
+ */
+type StyleAtom = string | StyleObject | StyleFn | undefined;
+type Styles = StyleAtom | RecursiveArray<StyleAtom>;
+```
+
+All these types are defined in [@sprinklr/spaceweb/types](https://prod-gitlab.sprinklr.com/sprinklr/frontend/spaceweb/-/blob/master/packages/spaceweb/src/types.ts).
+
+## Defining Styles in Spaceweb
+
+All the styling tools use the following nomenclatures to define styling:
+
+- Utility-Classes
+- JSS
+- Theme callback
+- Conditional Utility-Classes
+- Combining All of Above
+
+### Utility-Classes
+
+The first and preferred method for styling components is via utility classes. This approach is inspired and based in Tailwind's utility first approach.
+
+**Example:**
+
+Using utility classes in a string:
+
+```jsx
+<div className={css('font-bold sm:w-full md:w-12/24')}>
+```
+
+The resulting style is equal to the following CSS:
+
+```css
+/* classes are generated automatically by Styletron */
+.ae {
+  font-weight: '700';
+}
+
+@media sreen and (max-width: 640px) {
+  .af {
+    width: 100%;
+  }
+}
+
+@media sreen and (max-width: 640px) {
+  .ag {
+    width: 50%;
+  }
+}
+```
+
+The `className` attribute would be set to the following:
+
+```html
+<div className="ae af ag"></div>
+```
+
+You can also use an array of strings to do the same, this is recommended to improve readability when dealing with numerous styles, or when you want to add styles programmatically on certain conditions:
+
+```tsx
+const classes: string[] = ['font-bold', 'sm:w-full', 'md:w-12/24'];
+
+if (isDisabled) classes.push('hidden');
+
+return <div className={css(classes)}>{children}</div>;
+
+// or
+
+return <div className={css(...classes)}>{children}</div>;
+```
+
+Another way is to provide each utility-class as a separate string argument, again, recommended to increase readability when dealing with numerous utility-classes:
+
+```tsx
+<div className={css(
+	'font-bold',
+	'sm:w-full',
+	'md:w-12/24',
+)}>
+```
+
+**IMPORTANT:**
+
+_Please note that the resulting styles are assigned to `className` attribute, and not `style` attribute._ This is because based on the rules we generate CSS classes dynamically.
+
+Done this way so that we can reduce the amount of CSS being generated, caching, to increase performance, and SSR support.
+
+## Using JSS
+
+```tsx
+const { css, theme } = useStyle();
+
+return (
+  <div
+    className={css({
+      color: theme.spr.text01,
+      fontWeight: 700,
+      width: calculatedValue,
+    })}
+  >
+    {children}
+  </div>
+);
+```
+
+**IMPORTANT:**
+
+_This way of styling components should be used ONLY when the intended style is not possible using the provided utility-classes._
+
+**We should always default to use utility-classes over JSS.** Since doing so increases the cache-hits on previously generated CSS classes increasing performance overall.
+
+# Styling using Theme-Callback
+
+_If you need to access values from current theme_, you can style your components using the **Theme-Callback**:
+
+```tsx
+const { css } = useStyle();
+
+return (
+  <div
+    className={css(({ theme }) => ({
+      backgroundColor: theme.spr.text01,
+    }))}
+  >
+    {children}
+  </div>
+);
+```
+
+# Conditional Utility-Classes
+
+**Spaceweb** provides `classNames` utility method to add classes programmatically. The class will be added if the value is **truthy**.
+
+```tsx
+import { classNames } from 'spaceweb/classNames';
+
+const MyComponent = () => {
+  const { css } = useStyle();
+
+  return <div className={css(classNames({ disabled: isDisabled }))}>{children}</div>;
+};
+```
+
+### Combining All the Above
+
+For complex styling scenarios, there are times when you need to combine multiple ways to express your style:
+
+```tsx
+import { classNames } from 'spaceweb/classNames';
+
+<div className={css(
+	'font-bold',
+	'sm:w-full',
+	'md:w-12/24',
+	classNames({ disabled: isDisabled }),
+	{
+		backgroundColor: rgb(2,0,36);
+	},
+	({ theme }) => ({
+		fontFace: `Roboto, ${theme.font.sans}`
+	})
+)} />
+```
+
+**NOTE:** The order of the arguments it doesn't matter, but we do recommend to use the following order as a convention:
+
+1. utility-classes
+2. conditional utility-classes
+3. JSS
+4. theme-callback
+
+## Styling Tools
+
+**Spaceweb** provides the following styling tools:
+
+- useStyle (context hook)
+- css
+- styled
+
+### `useStyle`
+
+`useStyle` is a context hook, which has the following signature:
+
+```tsx
+const { css, getStyle, theme: { density }, direction } = useStyle();
+```
+
+**NOTE: ** This is a hook, which means that it can only be used inside a React Component, which is rendered inside an application wrapped with `<Space theme={light}>` container (which sets-up the theme in context).
+
+### `css`
+
+This is a method that is returned from the `useStyle` hook (see above section).
+
+`css` has the following nomenclature:
+
+```ts
+type CssFn = (...args: Styles[]) => string;
+```
+
+`css` returns a string with all the generated CSS classes.
+
+**Example**
+
+```tsx
+import { classNames } from 'spaceweb/classNames';
+
+<div className={css(
+	'font-bold',
+	'sm:w-full',
+	'md:w-12/24',
+	classNames({ disabled: isDisabled }),
+	{
+		backgroundColor: rgb(2,0,36);
+	},
+	({ theme }) => ({
+		fontFace: `Roboto, ${theme.font.sans}`
+	})
+)} />
+```
+
+### `getStyle`
+
+This is a method that is returned from the `useStyle` hook (see above section).
+
+`getStyle` is specially useful for overriding styles on existing components. In which you need to generate the overriding JSS style rules.
+
+This method has the same signature of `css`, but instead of returning a string with the list of classes, it returns the generated JSS style.
+
+```ts
+type GetStyle = (...args: Styles[]) => StyleObject;
+```
+
+**Example:**
+
+```tsx
+const getLabelOverride = () => {
+  const { getStyle, theme } = useStyle();
+  return getStyle({ backgroundColor: theme.spr.bgBlue });
+};
+```
+
+## `styled`
+
+`styled` is a method that helps us to generate components with a pre-defined style for later use, which helps to reducing the amount of boilerplate code.
+
+Components generated this way behave like any other component, all the properties that the generated component receives are forwarded to the styled component.
+
+`styled` has similar signature as the previous two, except that the first parameter is either a element name or a component that we wish to style:
+
+```ts
+type Tag = keyof JSX.IntrinsicElements | React.ComponentType<any>;
+type StyledComponent = (props: ComponentProps<unknown>) => ReactElement;
+
+type StyledFunc = (tag: Tag, ...args: Styles[]) => StyledComponent;
+```
+
+**Example:**
+
+```tsx
+// Header.tsx;
+import styled from 'spaceweb/style/styled';
+export default styled('h1', 'font-hairline text-xl');
+```
+
+Then, the generated component can be used as follows:
+
+```tsx
+<Header className="spr-text-01" />
+```
+
+**NOTE:** Classes passed to styled components will be merged and will take precedence over the ones specified originally.
+
+### Using Theme Values on Styled Components
+
+If you need to access values from the _theme to be selected_, you can follow the following nomenclature:
+
+```tsx
+// Header.tsx;
+import styled from 'spaceweb/style/styled';
+export default styled('h1', ({ theme }) => ({ color: theme.spr.text01 }));
+```
+
+Althought, the styled component doesn't have access to the theme at compile time, when used in other components the values for the theme will be present at run-time.
+
+### Using Component Props on Styled Components
+
+Sometimes we need to use the properties from the component to make styling decisions. You can access the component properties via the _theme callback_ as follows:
+
+```tsx
+// Button
+import styled from 'spaceweb/style/styled';
+
+export default styled('button', (utils, props) => [
+  props.variant.primary ? 'spr-text-01' : 'spr-text-02',
+  props.variant.primaryBg ? 'spr-ui-01' : 'spr-ui-02',
+]);
+```
+
+## Space Consumer
+
+In a typical React application, data is passed top-down (parent to child) via props, but this can be cumbersome for certain types of props (e.g. locale preference, UI theme) that are required by many components within an application. Context provides a way to share values like these between components without having to explicitly pass a prop through every level of the tree.
+
+`<SpaceConsumer>` subscribes to changes of **Spaceweb** context, which requires a function as a child. The function receives the current context that includes `css` and `getStyle` functions, and the _current_ `theme`.
+
+**Example:**
+
+```tsx
+render(): ReactElement {
+  return (
+    ...
+      <SpaceConsumer>
+        {([{ css, getStyle }, { theme }]) => (
+          <div className={css({ color: theme.spr.text01 })}>
+            ...
+          </div>
+        )}
+      </SpaceConsumer>
+    ...
+  );
+}
+```

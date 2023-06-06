@@ -1,0 +1,123 @@
+import Example from 'components/example';
+import Layout from 'components/layout';
+import Exports from 'components/exports';
+import ImplementationLink from 'components/implementation-link';
+
+import Basic from 'componentConfigs/stack/examples/basic.js';
+import BasicVertical from 'componentConfigs/stack/examples/vertical.js';
+import CustomHeightVertical from 'componentConfigs/stack/examples/custom-height-vertical.js';
+import CustomHeightVerticalShrink from 'componentConfigs/stack/examples/custom-height-vertical-shrink.js';
+import ChildShrinkVertical from 'componentConfigs/stack/examples/child-shrink-vertical.js';
+import AlignVertical from 'componentConfigs/stack/examples/align-vertical.js';
+import ChildAlignVertical from 'componentConfigs/stack/examples/child-align-vertical.js';
+import BasicHorizontal from 'componentConfigs/stack/examples/horizontal.js';
+import CustomWidthHorizontal from 'componentConfigs/stack/examples/custom-width-horizontal.js';
+import CustomWidthHorizontalShrink from 'componentConfigs/stack/examples/custom-width-horizontal-shrink.js';
+import ChildShrinkHorizontal from 'componentConfigs/stack/examples/child-shrink-horizontal.js';
+import AlignHorizontal from 'componentConfigs/stack/examples/align-horizontal.js';
+import ChildAlignHorizontal from 'componentConfigs/stack/examples/child-align-horizontal.js';
+import BasicForm from 'componentConfigs/stack/examples/basic-form.js';
+import Responsive from 'componentConfigs/stack/examples/responsive.js';
+import OverlappedStack from 'componentConfigs/stack/examples/overlappedStack';
+
+import Yard from 'components/yard/index';
+import stackConfig from 'componentConfigs/stack/config';
+import responsiveStackConfig from 'componentConfigs/stack/responsive-config';
+import ApiTable from 'components/api-table';
+
+import * as StackExports from 'spaceweb/stack';
+
+export default Layout;
+
+# Stack
+
+Stack is a container-type utility which abstracts layout implementation for its children components.
+
+- `direction` refers to the stacking of children in either horizontal or vertical orientation.
+- `gap` refers to the space between children components.
+- `sm`, `md`, `lg`, `xl` are responsive properties which can be used to supply custom direction & gap for respective breakpoints.
+
+## Stack
+
+<Yard placeholderHeight={72} {...stackConfig} queryStringName="stack" />
+
+## Responsive Stack
+
+<Yard placeholderHeight={52} {...responsiveStackConfig} queryStringName="responsive-stack" />
+
+## Examples
+
+<Example title="Responsive Stack" path="stack/examples/responsive.js">
+  <Responsive />
+</Example>
+
+- Reduce viewport size below `md` to see the stack direction change.
+- Responsive Stack can be achieved using breakpoints in props of Stack.
+- Provide `direction` & `gap` for every breakpoint you want to use.
+
+<Example title="Overlap stack items using negative gap" path="stack/examples/overlappedStack.js">
+  <OverlappedStack />
+</Example>
+<Example title="Vertical Stack with gap" path="stack/examples/vertical.js">
+  <BasicVertical />
+</Example>
+<Example title="Custom height vertical stack" path="stack/examples/custom-height-vertical.js">
+  <CustomHeightVertical />
+</Example>
+<Example title="Custom height vertical stack (shrink)" path="stack/examples/custom-height-vertical-shrink.js">
+  <CustomHeightVerticalShrink />
+</Example>
+
+- `shrink` attribute on `stack` makes container take height of its items in vertical stack.
+
+<Example title="Vertical Stack (custom item shrink)" path="stack/examples/child-shrink-vertical.js">
+  <ChildShrinkVertical />
+</Example>
+
+- You can wrap any child with `StackItem` to provide custom `shrink` property to specific item.
+
+<Example title="Align Items Vertical Stack" path="stack/examples/align-vertical.js">
+  <AlignVertical />
+</Example>
+
+- You can use `className` to provide align property to container to align all items
+
+<Example title="Align Vertical Stack (custom items)" path="stack/examples/child-align-vertical.js">
+  <ChildAlignVertical />
+</Example>
+
+- You can wrap any child with `StackItem` & provide custom alignment using `className` on it.
+
+<Example title="Horizontal Stack with gap" path="stack/examples/horizontal.js">
+  <BasicHorizontal />
+</Example>
+<Example title="Custom width horizontal stack" path="stack/examples/custom-width-horizontal.js">
+  <CustomWidthHorizontal />
+</Example>
+<Example title="Custom width horizontal stack (shrink)" path="stack/examples/custom-width-horizontal-shrink.js">
+  <CustomWidthHorizontalShrink />
+</Example>
+
+- `shrink` attribute on `stack` makes container take width of its items in horizontal stack.
+
+<Example title="Horizontal Stack (custom item shrink)" path="stack/examples/child-shrink-horizontal.js">
+  <ChildShrinkHorizontal />
+</Example>
+
+- You can wrap any child with `StackItem` to provide custom `shrink` property to specific item.
+
+<Example title="Align Items Horizontal Stack" path="stack/examples/align-horizontal.js">
+  <AlignHorizontal />
+</Example>
+
+- You can use `className` to provide align property to container to align all items
+
+<Example title="Align Horizontal Stack (custom items)" path="stack/examples/child-align-horizontal.js">
+  <ChildAlignHorizontal />
+</Example>
+
+- You can wrap any child with `StackItem` & provide custom alignment using `className` on it.
+
+<Example title="Basic form setup" path="stack/examples/basic-form.js">
+  <BasicForm />
+</Example>

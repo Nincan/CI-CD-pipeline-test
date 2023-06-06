@@ -1,0 +1,45 @@
+import Example from 'components/example';
+import Layout from 'components/layout';
+import Exports from 'components/exports';
+import ImplementationLink from 'components/implementation-link';
+
+import BorderedContainer from 'componentConfigs/box/examples/bordered-container.js';
+import BoxClassName from 'componentConfigs/box/examples/box-className.js';
+import OverriddenBox from 'componentConfigs/box/examples/overridden-box.js';
+import MockupComponent from 'componentConfigs/box/examples/box-mock-component.js';
+import OverrideAPI from 'componentConfigs/box/examples/box-overrides-api.js';
+
+import Yard from 'components/yard/index';
+import boxYardConfig from 'componentConfigs/box/config';
+import ApiTable from 'components/api-table';
+
+import * as BoxExports from 'spaceweb/box';
+
+export default Layout;
+
+# Box
+
+<Yard placeholderHeight={52} {...boxYardConfig} />
+
+Box is a layout primitive which can serve as a wrapper component providing most of the CSS utilities.
+
+## Examples
+
+<Example title="Bordered Container" path="box/examples/bordered-container.js">
+  <BorderedContainer />
+</Example>
+<Example title="Box className" path="box/examples/box-className.js">
+  <BoxClassName />
+</Example>
+<Example title="Overridden Box" path="box/examples/overridden-box.js">
+  <OverriddenBox />
+</Example>
+<Example title="Mockup Component" path="box/examples/box-mock-component.js">
+  <MockupComponent />
+</Example>
+<Example title="Box Override API" path="box/examples/box-overrides-api.js">
+  <OverrideAPI />
+</Example>
+<ApiTable title="Box props" config={boxYardConfig} />
+<ImplementationLink componentPath="box" />
+<Exports component={BoxExports} title="Box exports" path="spaceweb/box" />

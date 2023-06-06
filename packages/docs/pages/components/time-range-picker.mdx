@@ -1,0 +1,75 @@
+import Example from 'components/example';
+import Layout from 'components/layout';
+import Exports from 'components/exports';
+import ApiTable from 'components/api-table';
+import ImplementationLink from 'components/implementation-link';
+import Yard from 'components/yard';
+
+import * as TimeRangePickerExports from 'spaceweb/time-range-picker';
+
+import timeRangePickerYardConfig from 'componentConfigs/time-range-picker/config';
+import TimeRangePickerBasic from 'componentConfigs/time-range-picker/examples/basic';
+import TimeRangePickerStates from 'componentConfigs/time-range-picker/examples/states';
+import TimeRangePickerFormatString from 'componentConfigs/time-range-picker/examples/format-string';
+import TimeRangePickerOverrides from 'componentConfigs/time-range-picker/examples/overrides';
+import TimeRangePickerNewApi from 'componentConfigs/time-range-picker/examples/new-api';
+import TimeRangePickerLocalization from 'componentConfigs/time-range-picker/examples/localization';
+import TimeRangePickerSingleMonth from 'componentConfigs/time-range-picker/examples/single-month';
+import TimeRangePickerDateConstraints from 'componentConfigs/time-range-picker/examples/date-constraints';
+import TimeRangePickerDateTimeSelectOverrides from 'componentConfigs/time-range-picker/examples/date-time-select-overrides';
+
+export default Layout;
+
+# Time Range Picker
+
+<Yard placeholderHeight={48} {...timeRangePickerYardConfig} />
+
+A simple and reusable component to work with or select a date or a range of dates.
+
+Note: Consumer of this component can customize the labels for header, timezone, cancel button, save button and even
+error message via `LocaleProvider`
+
+## Examples
+
+<Example title="Usage with new API" path="time-range-picker/examples/new-api.js">
+  <TimeRangePickerNewApi />
+</Example>
+<Example title="Basic Usage" path="time-range-picker/examples/basic.js">
+  <TimeRangePickerBasic />
+</Example>
+<Example title="States" path="time-range-picker/examples/states.js">
+  <TimeRangePickerStates />
+</Example>
+<Example title="Format String" path="time-range-picker/examples/format-string.js">
+  <TimeRangePickerFormatString />
+</Example>
+<Example title="Single Month" path="time-range-picker/examples/single-month.js">
+  <TimeRangePickerSingleMonth />
+</Example>
+<Example title="Overrides" path="time-range-picker/examples/overrides.js">
+  <TimeRangePickerOverrides />
+</Example>
+<Example title="Date and Time Select Overrides" path="time-range-picker/examples/date-time-select-overrides.js">
+  <TimeRangePickerDateTimeSelectOverrides />
+</Example>
+<Example title="Time Range Picker with localization" path="time-range-picker/examples/localization.js">
+  <TimeRangePickerLocalization />
+</Example>
+<Example title="Date constraints" path="time-range-picker/examples/date-constraints.js">
+  <TimeRangePickerDateConstraints /> 
+</Example>
+
+NOTE: the valid range is `[minDate, maxDate)` since the `Calendar` sets seconds and milliseconds on end time to `59.999`. 
+Consider a scenario where `maxDate` has the time `12:30:00.000` and user selects the same as End Time. It gets converted 
+to `12:30:59.999` which violates `maxDate`. Thus, the valid range is not inclusive of `maxDate`.
+
+## ApiTable
+
+<ApiTable title="Time Range Picker Props" config={timeRangePickerYardConfig} />
+<ImplementationLink componentPath="time-range-picker" />
+<Exports
+  component={TimeRangePickerExports}
+  title="Time Range Picker exports"
+  path="spaceweb/time-range-picker"
+  cheatsheet={false}
+/>

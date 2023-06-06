@@ -1,0 +1,184 @@
+import Example from 'components/example';
+import Layout from 'components/layout';
+import Exports from 'components/exports';
+import ImplementationLink from 'components/implementation-link';
+
+import SelectUncontrolled from 'componentConfigs/select/examples/uncontrolled.js';
+import SelectSizes from 'componentConfigs/select/examples/sizes.js';
+import SelectControlled from 'componentConfigs/select/examples/controlled.js';
+import SelectOverridden from 'componentConfigs/select/examples/overridden.js';
+import SelectLabel from 'componentConfigs/select/examples/label.js';
+import SelectInModal from 'componentConfigs/select/examples/in-modal.js';
+import SelectNative from 'componentConfigs/select/examples/native.js';
+import SelectSinglePickSearch from 'componentConfigs/select/examples/search-single-pick.js';
+import SelectMultiPickSearch from 'componentConfigs/select/examples/search-multi-pick.js';
+import SelectWithManyOptions from 'componentConfigs/select/examples/with-many-options.js';
+import SelectCreatable from 'componentConfigs/select/examples/creatable.js';
+import SelectCreatableMulti from 'componentConfigs/select/examples/creatable-multi.js';
+import SelectOverriddenMenuItems from 'componentConfigs/select/examples/avatar-menu-option.js';
+import SelectGrouped from 'componentConfigs/select/examples/grouped.js';
+import OverlaySelect from 'componentConfigs/select/examples/overlay-select.js';
+import OverlaySelectWithConfirmation from 'componentConfigs/select/examples/overlay-select-with-confirmation.js';
+import OverlaySelectGrouped from 'componentConfigs/select/examples/overlay-grouped.js';
+import CaptureMenuScroll from 'componentConfigs/select/examples/capture-menu-scroll.js';
+import SelectCustomPlacementPopoverMinWidth from 'componentConfigs/select/examples/custom-placement-popoverMinWidth.js';
+import MobileSelect from 'componentConfigs/select/examples/mobile-select.js';
+import MobileSelectWithoutChildren from 'componentConfigs/select/examples/mobile-select-without-children.js';
+import ControlRef from 'componentConfigs/select/examples/control-ref.js';
+import OverlayControlRef from 'componentConfigs/select/examples/overlay-control-ref.js';
+import DelimSeparated from 'componentConfigs/select/examples/delim-separated.js';
+import OnPaste from 'componentConfigs/select/examples/on-paste.js';
+import Delimiter from 'componentConfigs/select/examples/delimiter.js';
+import ClearAsOption from 'componentConfigs/select/examples/clear-as-option.js'
+import LoadingStateSingleSelect from 'componentConfigs/select/examples/loading-state-single-select.js';
+import LoadingStateMultiSelect from 'componentConfigs/select/examples/loading-state-multi-select.js';
+
+import { StatefulSelect, TYPE } from 'spaceweb/select';
+import * as SelectExports from 'spaceweb/select';
+import { Block } from 'baseui/block';
+
+import Yard from 'components/yard/index';
+import selectYardConfig from 'componentConfigs/select/config';
+import ApiTable from 'components/api-table';
+
+export default Layout;
+
+# Select
+
+<Yard placeholderHeight={48} {...selectYardConfig} />
+
+The select and search controls allow the user to select an option or options.
+
+Select menus in Base hover atop of a selection menu while providing a simple list of options.
+Proper spacing, color, and a check-mark are clear indicators of a selection. Each menu is
+scrollable, if applicable.
+
+Note: by default, `id` and `label` are default properties that Select components look for in options array objects. To adapt to custom properties, use the `labelKey` and `valueKey` to override the defaults.
+
+## Examples
+
+<Example title="Select basic usage" path="select/examples/controlled.js">
+  <SelectControlled />
+</Example>
+
+Things to note in the example source code:
+
+- the `value` is always an `Array` to provide a consistent interface - no matter if you use multi or single selects,
+- you have to call `setState` with the entire object, not just the `id` value.
+
+<Example title="Select as single-pick search" path="select/examples/search-single-pick.js">
+  <SelectSinglePickSearch />
+</Example>
+<Example title="Label with loading state in single select" path="select/examples/loading-state-single-select.js">
+  <LoadingStateSingleSelect />
+</Example>
+<Example title="Label with loading state in multi select" path="select/examples/loading-state-single-select.js">
+  <LoadingStateMultiSelect />
+</Example>
+
+When type is 'search' a magnifying glass icon will be rendered to the input's left and a dropdown
+arrow will not be rendered to the right.
+
+<Example title="Select with custom labels" path="select/examples/label.js">
+  <SelectLabel />
+</Example>
+<Example title="Select in different sizes" path="select/examples/sizes.js">
+  <SelectSizes />
+</Example>
+<Example title="Select creatable" path="select/examples/creatable.js">
+  <SelectCreatable />
+</Example>
+
+The creatable select enables users to create new options along with choosing
+existing options.
+
+<Example title="Select as multi-pick search" path="select/examples/search-multi-pick.js">
+  <SelectMultiPickSearch />
+</Example>
+<Example title="Select creatable multi-pick" path="select/examples/creatable-multi.js">
+  <SelectCreatableMulti />
+</Example>
+<Example title="Add values when delimiter is encountered" path="select/examples/delimiter.js">
+  <Delimiter />
+</Example>
+<Example title="Separate values by delimiter" path="select/examples/delim-separated.js">
+  <DelimSeparated />
+</Example>
+<Example title="Add values on paste event" path="select/examples/on-paste.js">
+  <OnPaste />
+</Example>
+<Example title="Select as overlay" path="select/examples/overlay-select.js">
+  <OverlaySelect />
+</Example>
+
+When type is 'overlay', select renders in overlay. Child element works as target element for overlay select.
+
+<Example
+  title="Create Overlay Select with confirmation using overrides"
+  path="select/examples/overlay-select-with-confirmation.js"
+>
+  <OverlaySelectWithConfirmation />
+</Example>
+<Example title="Mobile Select (with children)" path="select/examples/mobile-select.js">
+  <MobileSelect />
+</Example>
+<Example title="Mobile Select (without children)" path="select/examples/mobile-select-without-children.js">
+  <MobileSelectWithoutChildren />
+</Example>
+<Example title="Usage of controlRef prop" path="select/examples/control-ref.js">
+  <ControlRef />
+</Example>
+<Example title="Usage of controlRef prop with OverlaySelect" path="select/examples/overlay-control-ref.js">
+  <OverlayControlRef />
+</Example>
+<Example title="Select with grouped options" path="select/examples/grouped.js">
+  <SelectGrouped />
+</Example>
+<Example title="Select similar to native select" path="select/examples/native.js">
+  <SelectNative />
+</Example>
+<Example title="Overlay Select with grouped options" path="select/examples/overlay-grouped.js">
+  <OverlaySelectGrouped />
+</Example>
+<Example title="Select uncontrolled example" path="select/examples/uncontrolled.js">
+  <SelectUncontrolled />
+</Example>
+<Example title="Select with many options" path="select/examples/with-many-options.js">
+  <SelectWithManyOptions />
+</Example>
+
+Virtualization is enabled in Select by default. Select uses [react-virtual](https://github.com/TanStack/virtual).
+
+<Example title="Select in a modal dialog" path="select/examples/in-modal.js">
+  <SelectInModal />
+</Example>
+<Example title="Select with scroll lock" path="select/examples/capture-menu-scroll.js">
+  <CaptureMenuScroll />
+</Example>
+<Example
+  title="Select with custom placement and popoverMinWidth"
+  path="select/examples/custom-placement-popoverMinWidth.js"
+>
+  <SelectCustomPlacementPopoverMinWidth />
+</Example>
+<Example title="Select with overridden menu items and Value" path="select/examples/avatar-menu-option.js">
+  <SelectOverriddenMenuItems />
+</Example>
+<Example title="Select with overridden placeholder" path="select/examples/overridden.js">
+  <SelectOverridden />
+</Example>
+
+To override the `Popover` that's being used by the Dropdown subcomponent, you have to use a [nested override](/guides/understanding-overrides/#override-nested-components).
+
+<Example title="Clear As Option" path="select/examples/clear-as-option.js">
+    <ClearAsOption/>
+</Example>
+
+Setting `clearAsOption` will render an additional option in the popover whenever a value is selected. This additional option can be used to clear the selected value. Whenever `clearAsOption` is set, ClearIcon will not be rendered irrespective of the value of `clearable` prop. By default the label for this clear option will be **Unassign**, a custom label can be set using `clearAsOptionLabel` prop.
+
+
+## API
+
+<ApiTable title="Select props" config={selectYardConfig} />
+<ImplementationLink componentPath="select" />
+<Exports component={SelectExports} title="Select exports" path="spaceweb/select" />

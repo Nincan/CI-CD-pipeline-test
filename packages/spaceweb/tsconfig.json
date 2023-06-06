@@ -1,0 +1,25 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "allowJs": true,
+    "baseUrl": "./",
+    "declaration": true,
+    "lib": ["ESNext.Array", "ES5", "DOM"],
+    "moduleResolution": "node",
+    "rootDir": "./src",
+    "target": "es5",
+    "outDir": "./dist",
+    "composite": true,
+    "resolveJsonModule": true,
+    "paths": {
+      "@sprinklr/spaceweb-themes/*": ["../spaceweb-themes/dist/*"]
+    }
+  },
+  "references": [
+    {
+      "path": "../spaceweb-themes"
+    }
+  ],
+  "exclude": ["config", "dist", "node_modules", "scripts", "jest.config.js", "coverage", "**/__tests__/*"],
+  "include": ["./src/**/*"]
+}

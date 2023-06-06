@@ -1,0 +1,102 @@
+import Example from 'components/example';
+import Exports from 'components/exports';
+import Layout from 'components/layout';
+import SEO from 'components/meta-seo';
+import ImplementationLink from 'components/implementation-link';
+
+import AvatarClassName from 'componentConfigs/avatar/examples/avatar-className.js';
+import AvatarColors from 'componentConfigs/avatar/examples/avatar-colors.js';
+import Sizes from 'componentConfigs/avatar/examples/sizes.js';
+import CustomSizes from 'componentConfigs/avatar/examples/custom-sizes.js';
+import Shapes from 'componentConfigs/avatar/examples/shapes.js';
+import Error from 'componentConfigs/avatar/examples/error.js';
+import Override from 'componentConfigs/avatar/examples/override.js';
+import Initials from 'componentConfigs/avatar/examples/initals.js';
+import AvatarGroupBasic from 'componentConfigs/avatar/examples/avatar-group.js';
+import AvatarGroupSpacing from 'componentConfigs/avatar/examples/avatar-group-spacing.js';
+import AvatarGroupMax from 'componentConfigs/avatar/examples/avatar-group-max.js';
+import AvatarGroupOverrides from 'componentConfigs/avatar/examples/avatar-group-overrides.js';
+import AvatarPhoneNumber from 'componentConfigs/avatar/examples/phone-initials.js';
+import AvatarUserIconOverrides from 'componentConfigs/avatar/examples/avatar-user-icon-overrides.js';
+
+import { Avatar } from 'spaceweb/avatar';
+import * as AvatarExports from 'spaceweb/avatar';
+import { Block } from 'baseui/block';
+
+import Yard from 'components/yard/index';
+import avatarYardConfig from 'componentConfigs/avatar/config';
+import ApiTable from 'components/api-table';
+
+<SEO
+  description="The Avatar component adds additional visual information about a user."
+  keywords="avatar, react avatar, react user info"
+/>
+
+export default Layout;
+
+# Avatar
+
+<Yard placeholderHeight={52} {...avatarYardConfig} />
+
+The Avatar component adds additional visual information about a user.
+
+## When to use
+
+- When you want to show a user's image along contextual information.
+- When you want to attribute an action to a user.
+
+## Accessibility
+
+- Top level `name` prop will be set on the `<img>` element as its `alt` attribute.
+- If src fails to load, applies `aria-label` with provided name and `role` with 'img' to root div element.
+
+## Examples
+
+<Example title="Avatar with className support" path="avatar/examples/avatar-className.js">
+  <AvatarClassName />
+</Example>
+<Example title="Avatar with all colors" path="avatar/examples/avatar-colors.js">
+  <AvatarColors />
+</Example>
+<Example title="Avatar with available sizes" path="avatar/examples/sizes.js">
+  <Sizes />
+</Example>
+<Example title="Avatar with custom sizes" path="avatar/examples/custom-sizes.js">
+  <CustomSizes />
+</Example>
+<Example title="Avatar in available shapes" path="avatar/examples/shapes.js">
+  <Shapes />
+</Example>
+<Example title="Avatar with error fallback" path="avatar/examples/error.js">
+  <Error />
+</Example>
+<Example title="Avatar with initials" path="avatar/examples/initals.js">
+  <Initials />
+</Example>
+<Example title="Avatar With Phone Number" path="avatar/examples/phone-initials.js">
+  <AvatarPhoneNumber />
+</Example>
+<Example title="Avatar with example overrides" path="avatar/examples/override.js">
+  <Override />
+</Example>
+<Example title="Avatar with user icon overrides" path="avatar/examples/avatar-user-icon-overrides.js">
+  <AvatarUserIconOverrides />
+</Example>
+<Example title="Avatar group" path="avatar/examples/avatar-group.js">
+  <AvatarGroupBasic />
+</Example>
+<Example title="Avatar group with different spacing" path="avatar/examples/avatar-group-spacing.js">
+  <AvatarGroupSpacing />
+</Example>
+<Example title="Avatar group max" path="avatar/examples/avatar-group-max.js">
+  <AvatarGroupMax />
+</Example>
+<Example title="Avatar group overrides" path="avatar/examples/avatar-group-overrides.js">
+  <AvatarGroupOverrides />
+</Example>
+
+## API
+
+<ApiTable title="Avatar props" config={avatarYardConfig} />
+<ImplementationLink componentPath="avatar" />
+<Exports component={AvatarExports} title="Avatar exports" path="spaceweb/avatar" />

@@ -1,0 +1,36 @@
+import Example from '../../components/example';
+import Layout from '../../components/layout';
+import Exports from '../../components/exports';
+import ImplementationLink from 'components/implementation-link';
+
+import { Block } from 'baseui/block';
+import { DateInput } from 'spaceweb/date-input';
+import * as DateInputExports from 'spaceweb/date-input';
+
+import DateInputFormatString from 'componentConfigs/date-input/examples/format-string';
+import DateInputOverrides from 'componentConfigs/date-input/examples/overrides';
+
+import Yard from '../../components/yard/index';
+import dateInputYardConfig from 'componentConfigs/date-input/config';
+import ApiTable from '../../components/api-table';
+
+export default Layout;
+
+# Date Input
+
+<Yard placeholderHeight={48} {...dateInputYardConfig} />
+
+## Examples
+
+<Example title="Format String" path="date-input/examples/format-string.js">
+  <DateInputFormatString />
+</Example>
+<Example title="Overrides" path="date-input/examples/overrides.js">
+  <DateInputOverrides />
+</Example>
+
+## API
+
+<ApiTable title="Date Input props" config={dateInputYardConfig} />
+<ImplementationLink componentPath="date-input" />
+<Exports component={DateInputExports} title="Date Input exports" path="spaceweb/date-input" />

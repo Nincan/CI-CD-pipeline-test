@@ -1,0 +1,38 @@
+import Example from 'components/example';
+import Exports from 'components/exports';
+import Layout from 'components/layout';
+import { Banner, BannerItem } from 'spaceweb/banner';
+
+import Yard from 'components/yard/index';
+
+import { headerConfig, sectionHeaderConfig } from 'componentConfigs/forms/config';
+import HeaderStyles from 'componentConfigs/forms/examples/header-styles';
+import SectionHeaderExample from 'componentConfigs/forms/examples/section-header';
+import ApiTable from 'components/api-table';
+
+export default Layout;
+
+# Form Components
+
+## Form Header
+
+<Yard placeholderHeight={52} {...headerConfig} />
+
+<Example path="forms/examples/header-styles.tsx">
+  <HeaderStyles />
+</Example>
+
+## Section Header
+
+<Yard placeholderHeight={52} {...sectionHeaderConfig} />
+
+## Section Header Examples
+
+<Example path="forms/examples/section-header.tsx">
+  <SectionHeaderExample />
+</Example>
+
+## API
+
+<ApiTable title="FormHeader props" config={headerConfig} />
+<ApiTable title="SectionHeader props" config={sectionHeaderConfig} />

@@ -1,0 +1,48 @@
+import Layout from '../../components/layout';
+import { Notification, KIND } from 'baseui/notification';
+
+export default Layout;
+
+# Building Themes (with Spaceweb CLI)
+
+## Building Spaceweb CLI
+
+In order to use latest Spaceweb CLI from your local system, please perform the following commands:
+
+```
+# Go to spaceweb-cli package
+cd packages/spaceweb-cli
+
+# Install dependencies
+yarn install
+
+# Build CLI
+yarn build
+
+# Install CLI (dev mode) globally
+npm i -g
+```
+
+## Commands
+
+### Building Spaceweb Themes
+
+The command `spaceweb theme` helps you to generate the utility classes and the theme tokens file. Whenever a theme config is changed you need to run this command in order to update the theme files.
+
+Standard themes are stored at the package `packages/spaceweb-themes` under `src` directory.
+
+Once Spaceweb CLI is installed globally, in order to build a theme you need to run the following command:
+
+```
+spaceweb theme [theme config file] [theme output dir]
+```
+
+### Generation of Standard SPR Themes
+
+The standard light and dark themes, please run the following commands:
+
+```
+spaceweb theme packages/spaceweb-themes/src/spr-app-light.js packages/spaceweb-themes/lib/space/light
+
+spaceweb theme packages/spaceweb-themes/src/spr-app-dark.js packages/spaceweb-themes/lib/space/dark
+```

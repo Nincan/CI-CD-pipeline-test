@@ -1,0 +1,66 @@
+import Layout from '../../components/layout';
+import Example from '../../components/example';
+import Exports from '../../components/exports';
+import ImplementationLink from '../../components/implementation-link';
+
+import Slider from 'componentConfigs/slider/examples/basic.js';
+import Range from 'componentConfigs/slider/examples/range.js';
+import CustomStep from 'componentConfigs/slider/examples/custom-step.js';
+import WithMarks from 'componentConfigs/slider/examples/slider-with-marks.js';
+import MarkLabel from 'componentConfigs/slider/examples/mark-label.js';
+import CustomMarkLabel from 'componentConfigs/slider/examples/custom-mark-label.js';
+import Disabled from 'componentConfigs/slider/examples/disabled.js';
+import StatefulSlider from 'componentConfigs/slider/examples/stateful-slider.js';
+import Intents from 'componentConfigs/slider/examples/intents.js';
+import Overrides from 'componentConfigs/slider/examples/overrides.js';
+
+import * as SliderExports from 'spaceweb/slider';
+
+import Yard from 'components/yard/index';
+import sliderYardConfig from 'componentConfigs/slider/config';
+import ApiTable from 'components/api-table';
+
+export default Layout;
+
+# Slider
+
+<Yard placeholderHeight={48} {...sliderYardConfig} />
+
+## Examples
+
+<Example title="Basic usage" path="slider/examples/basic.js">
+  <Slider />
+</Example>
+<Example title="Range Slider" path="slider/examples/range.js">
+  <Range />
+</Example>
+<Example title="Custom step, min and max" path="slider/examples/custom-step.js">
+  <CustomStep />
+</Example>
+<Example title="Marks at each step" path="slider/examples/slider-with-marks.js">
+  <WithMarks />
+</Example>
+<Example title="Mark with labels" path="slider/examples/mark-label.js">
+  <MarkLabel />
+</Example>
+<Example title="Mark with custom labels" path="slider/examples/custom-mark-label.js">
+  <CustomMarkLabel />
+</Example>
+<Example title="Disabled" path="slider/examples/disabled.js">
+  <Disabled />
+</Example>
+<Example title="Stateful Slider (Uncontrolled)" path="slider/examples/stateful-slider.js">
+  <StatefulSlider />
+</Example>
+<Example title="Intents" path="slider/examples/intents.js">
+  <Intents />
+</Example>
+<Example title="Overrides usage" path="slider/examples/overrides.js">
+  <Overrides />
+</Example>
+
+## API
+
+<ApiTable title="Slider props" config={sliderYardConfig} />
+<ImplementationLink componentPath="slider" />
+<Exports component={SliderExports} title="Slider exports" path="spaceweb/slider" />

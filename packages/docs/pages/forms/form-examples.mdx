@@ -1,0 +1,39 @@
+import Example from 'components/example';
+import Exports from 'components/exports';
+import Layout from 'components/layout';
+
+import Yard from 'components/yard/index';
+import { BasicForm } from 'componentConfigs/forms/examples/basic-form';
+import { AllFieldsContainer } from 'componentConfigs/forms/examples/all-fields';
+import { Banner, BannerItem } from 'spaceweb/banner';
+
+export default Layout;
+
+## Form Examples
+
+<Banner intent="success" title="Design Docs" $as="ul">
+  <BannerItem>
+    Refer to this{' '}
+    <a href="https://www.figma.com/file/xL7PJJBqC0CNB1Aax9Kz0d/Form-Builders-Library?node-id=3543%3A251635&t=1z3xW3PzYBg5f1R9-0">
+      link
+    </a>{' '}
+    for design documentation of spaceweb forms
+  </BannerItem>
+</Banner>
+
+All form fields have are of md size by default. In case, fields should be of some other size, then size can be passed to fields using componentProps.
+<Example title="Basic Form" path="forms/examples/basic-form.tsx">
+  <BasicForm />
+</Example>
+
+<Example path="forms/examples/all-fields.tsx">
+  <AllFieldsContainer />
+</Example>
+
+### Important Specifications:
+
+- Form Container should have **32 px** horizontal padding and **16 px** vertical padding. This can be achieved by passing `px-8 py-4` classes to form container. **No additional spacing should be added to the form**.
+
+- `<FormHeader/>` is used as a separate component along with `<Form/>`. FormHeader needs to be passed `mb-6` class to follow the design guidelines.
+
+- `SectionHeader` can be used as a field in fieldConfigMap. To follow the design specifications, SectionHeader must be passed `mt-4` as classNames.

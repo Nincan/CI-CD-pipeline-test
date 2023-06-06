@@ -1,0 +1,22 @@
+{
+  "extends": ["@sprinklr/sprinklr"],
+  "rules": {
+    "react/jsx-props-no-spreading": 0,
+    "no-unused-expressions": 0,
+    "max-len": 0,
+    "react/jsx-uses-react": 0,
+    "react/react-in-jsx-scope": 0,
+    "import/no-unresolved": "error"
+  },
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
+    "import/resolver": {
+      "typescript": {
+        "alwaysTryTypes": true,
+        "project": "packages/*/tsconfig.json"
+      }
+    }
+  }
+}

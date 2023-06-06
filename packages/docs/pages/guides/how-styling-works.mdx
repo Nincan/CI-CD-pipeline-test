@@ -1,0 +1,186 @@
+import Layout from '../../components/layout';
+import { Notification, KIND } from 'baseui/notification';
+
+export default Layout;
+
+<Notification
+  overrides={{
+    Body: {style: {width: 'auto'}},
+  }}
+>
+  This guide assumes you're familiar with <b>Style Utils</b>, which you can read about in <a href="/guides/styling#styling-tools">here</a>.
+</Notification>
+
+# How Styles are Parsed
+
+The last argument of every **Style Utils** function receives a list of style arguments (_rest parameter_). Style arguments have the following definition:
+
+```
+type GetStyles = (...args: Styles[]) => StyleObject;
+```
+
+As we saw in Styling guide, the `getStyle` function takes _rest parameter_ Style arguments, and returns a `StyleObject`. `StyleObject` is simply a type representation of CSS in JS.
+
+Let's see some examples and their outputs for `getStyle` style util to understand how styles are applied:
+
+### Using Utility Classes
+
+You can use utility classes that translate to JSS:
+
+```
+getStyle('m-4')
+
+// => { margin: '0.25rem' } // equals 4px with html.fontSize 16px
+```
+
+<Notification
+  overrides={{
+    Body: {style: {width: 'auto'}},
+  }}
+>
+  <b>IMPORTANT:</b>
+  <p>
+    <i>
+      We strongly suggest to use utility classes as much as you can, as this requires you to write the least amount of code
+      and increases the chances of reusing an already cached CSS rule.
+    </i>
+  </p>
+</Notification>
+
+### Using Style Object
+
+If an utility class is not available write your style rules, you can use JSS as an argument:
+
+```
+getStyle({
+  marginTop: '6px',
+});
+
+// => {
+//   marginTop: '6px',
+// }
+```
+
+Sure, using just a single `StyleObject` is an over-kill since the output is the same in most cases, but not always. _Always use one of the **Style Utils**, as we do some optimizations to the style arguments and/or cache previously used rules._
+
+### Using a Style-Callback Function
+
+Sometimes you need access to the current `theme`, language direction, and any utility function. In that case, you can pass a function as an argument:
+
+```
+getStyle(({ theme, px2rem }) => {
+  backgroundColor: theme.spr.ui01,
+  minWidth: px2rem(28),
+}));
+
+// => {
+//   backgroundColor: '#FFFFFF',
+//   minWidth: '1.75rem' // equals 28px with html.fontSize 16px
+// }
+```
+
+You can also access to `theme` and other **Style Utils** from `useStyle` hook:
+
+```
+import classNames from 'classNames';
+
+...
+
+render() ReactElement {
+  const { direction, getStyle, theme } = useStyle();
+
+  ...
+
+  return (
+    <>
+      ...
+      <p style={getStyle(classNames({
+        'pr-3': direction === 'ltr',
+        'pl-3': direction === 'rtl',
+      }))}>
+        {text}
+      <p>
+      ...
+    </>
+  )
+}
+```
+
+### Combining Multiple Argument Types
+
+Here's where **Style Utils** really shows its usefulness. Again, we start with the approach that we should _use utility-classes as much as possible_. If there's a class for it, we should use it, instead of writing our own JSS.
+
+Here's an example with multiple argument types:
+
+```
+getStyle(
+  'm-4',
+  'mt-0',
+  {
+    minWidth: `12.5rem`
+  },
+  ({ theme }) => ({
+    backgroundColor: theme.spr.ui01,
+  })
+);
+// => {
+//   margin: '1rem', // equals 16px with html.fontSize 16px
+//   marginTop: '0',
+//   minWidth: '12.5rem', // equals 200px with html.fontSize 16px
+//   backgroundColor: '#FFFFFF',
+// }
+```
+
+## Important Considerations
+
+### Argument Precedence
+
+**_Arguments are applied from left to right,_** meaning that the argument to the right overrides the _resulting JSS_ from the argument to its left.
+
+The following code is a good example of argument precedence:
+
+```
+getStyle(
+  { margin: 0 },
+  'm-1',
+  ({ theme }) => ({ margin: theme.margin['4'] }),
+);
+// => {
+//   margin: '1rem', // equals 16px with html.fontSize 16px;
+// }
+```
+
+### Avoid Short-Hand Properties
+
+**Shorthand properties are CSS properties that let you set the values of multiple other CSS properties simultaneously.** Using a shorthand property, you can write more concise (and often more readable) style sheets, saving time and energy.
+
+While that is fine with CSS, **_it is not a valid approach for JSS since it produces inconsistent styles._**
+
+This problem is caused because **_JavaScript object is an unordered collection of properties_** each of which contains a primitive value, object, or function (see https://www.styletron.org/concepts/#shorthand-and-longhand-properties).
+
+Because of this, please avoid using **short-hand properties**.
+
+**Example:**
+
+```
+// Instead of:
+{ border: '1px solid black' }
+
+// Instead use:
+{
+  borderWidth: '1px',
+  borderStyle: 'solid',
+  borderColor: 'black',
+}
+```
+
+The `margin` property is also a common use case where we mix short-hand to reset all margins and then a long-hand to set one side of the box-model with a different value:
+
+```
+{
+  margin: '0',
+  marginBottom: '1rem',
+}
+```
+
+_This also can produce inconsistent results since we can't not ensure the order in which the above rules get applied. Since each one of them will be converted to atomic CSS classes._

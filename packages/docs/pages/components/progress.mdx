@@ -1,0 +1,66 @@
+import Example from 'components/example';
+import Exports from 'components/exports';
+import Layout from 'components/layout';
+import SEO from 'components/meta-seo';
+import ImplementationLink from 'components/implementation-link';
+
+import linearProgressYard from 'componentConfigs/progress/linear-progress-config';
+import circularProgressYard from 'componentConfigs/progress/circular-progress-config';
+
+import LinearProgressIntent from 'componentConfigs/progress/examples/linear-progress-intent.js';
+import DeterminateLinearProgress from 'componentConfigs/progress/examples/determinate-linear-progress.js';
+import IndeterminateLinearProgress from 'componentConfigs/progress/examples/indeterminate-linear-progress.js';
+import NestedLinearProgress from 'componentConfigs/progress/examples/nested-linear-progress.js';
+import CircularProgressIntent from 'componentConfigs/progress/examples/circular-progress-intent.js';
+import DeterminateCircularProgress from 'componentConfigs/progress/examples/determinate-circular-progress.js';
+import IndeterminateCircularProgress from 'componentConfigs/progress/examples/indeterminate-circular-progress.js';
+
+import Yard from 'components/yard/index';
+import ApiTable from 'components/api-table';
+
+export default Layout;
+
+# Progress
+
+### Linear Progress
+
+<Yard placeholderHeight={20} {...linearProgressYard} queryStringName="linear-progress" />
+
+### Circular Progress
+
+<Yard placeholderHeight={20} {...circularProgressYard} queryStringName="circular-progress" />
+
+## Accessibility
+
+If the progress bar is describing the loading progress of a particular region of a page,
+you should use `aria-describedby` to point that region to the progress bar, and set the `aria-busy` attribute to true on that region until it has finished loading.
+
+## Examples
+
+<Example title="Linear Progress Intents" path="progress/examples/linear-progress-intent.js">
+  <LinearProgressIntent />
+</Example>
+<Example title="Determinate Linear Progress" path="progress/examples/determinate-linear-progress.js">
+  <DeterminateLinearProgress />
+</Example>
+<Example title="Indeterminate Linear Progress" path="progress/examples/indeterminate-linear-progress.js">
+  <IndeterminateLinearProgress />
+</Example>
+<Example title="Nested Linear Progress" path="progress/examples/nested-linear-progress.js">
+  <NestedLinearProgress />
+</Example>
+
+To render nested linear progress, you need to pass `first` and `last` prop to the respective first and last `ProgressSegment`.
+
+<Example title="Circular Progress Intents" path="progress/examples/circular-progress-intent.js">
+  <CircularProgressIntent />
+</Example>
+<Example title="Determinate Circular Progress" path="progress/examples/determinate-circular-progress.js">
+  <DeterminateCircularProgress />
+</Example>
+<Example title="Indeterminate Circular Progress" path="progress/examples/indeterminate-circular-progress.js">
+  <IndeterminateCircularProgress />
+</Example>
+<ApiTable title="Linear Progress props" config={linearProgressYard} />
+<ApiTable title="Circular Progress props" config={circularProgressYard} />
+<ImplementationLink componentPath="progress" />

@@ -1,0 +1,47 @@
+import Layout from '../../components/layout';
+
+export default Layout;
+
+# Learning Spaceweb
+
+We understand that learning new libraries have their own set of challenges.
+To help you get started, we are here to help! First, you'll learn the concepts
+of Spaceweb, then you'll build your first Spaceweb application.
+
+## Concepts
+
+### Overrides
+
+Looking to customize Spaceweb components? There is a concept call overrides. Each Spaceweb component consists of multiple subcomponents (for example list can have list container and list items). Overrides gives you a full access to all those subcomponents and lets you to customize:
+
+- styles of the subcomponent
+- props of the subcomponent
+- or replace it completely
+
+Every Spaceweb component has a top-level prop called overrides. It accepts a map of subcomponents
+and desired overrides.
+
+_To learn more, check out the [Overrides guide](/guides/understanding-overrides/)._
+
+### Controlled and Uncontrolled components
+
+Most code examples you'll find on the documentation site feature controlled components.
+
+> In HTML, form elements such as `<input>`, `<textarea>`, and `<select>` typically maintain their own
+> state and update it based on user input. In React, mutable state is typically
+> kept in the state property of components, and only updated with setState().
+
+> We can combine the two by making the React state be the “single source of truth”.
+
+Most Spaceweb components are released with both options:
+
+- `Stateful` components, to support uncontrolled usage,
+- and the default component, that supports controlled usage.
+
+_To learn more about these, check out the official React docs on
+[Controlled components](https://reactjs.org/docs/forms.html#controlled-components)
+and [Uncontrolled components](https://reactjs.org/docs/uncontrolled-components.html)._
+
+### Styling
+
+Styling in **Spaceweb** is done using CSS-in-JS. Head over to [this link](/guides/styling) to learn everything about it.

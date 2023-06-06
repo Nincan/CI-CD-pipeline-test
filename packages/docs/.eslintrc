@@ -1,0 +1,26 @@
+{
+  "settings": {
+    "import/resolver": {
+      "alias": {
+        "map": [
+          ["spaceweb", "./packages/spaceweb/dist"],
+          ["spaceweb-themes", "./packages/spaceweb-themes"],
+          ["@sprinklr/spaceweb-calendar", "./packages/spaceweb-calendar/dist"],
+          ["spaceweb-icons", "./packages/spaceweb-icons/dist"],
+          ["@sprinklr/spaceweb-charts", "./packages/spaceweb-charts/dist"],
+          ["spaceweb-editor", "./packages/spaceweb-editor/dist"],
+          ["spaceweb-crm-components", "./packages/spaceweb-crm-components/lib"],
+          ["spaceweb-form", "./packages/spaceweb-form/dist"],
+          ["spaceweb-meet", "./packages/spaceweb-meet/dist"],
+          ["spaceweb-table", "./packages/spaceweb-table/dist"],
+          ["componentConfigs", "./packages/docs/componentConfigs"],
+          ["spaceweb-vscode-extension", "./packages/spaceweb-vscode-extension/"]
+        ],
+        "extensions": [".ts", ".js", ".jsx", ".json", ".tsx"]
+      },
+      "node": {
+        "paths": ["./packages/docs"]
+      }
+    }
+  }
+}

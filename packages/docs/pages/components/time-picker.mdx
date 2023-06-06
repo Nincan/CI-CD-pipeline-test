@@ -1,0 +1,29 @@
+import Example from 'components/example';
+import Layout from 'components/layout';
+import Exports from 'components/exports';
+import ApiTable from 'components/api-table';
+import ImplementationLink from 'components/implementation-link';
+
+import Yard from '../../components/yard/index';
+
+import timePickerYardConfig from 'componentConfigs/time-picker/config';
+import TimePicker from 'componentConfigs/time-picker/examples/basic';
+import * as TimePickerExports from 'spaceweb/time-picker';
+
+export default Layout;
+
+# Time Picker
+
+<Yard placeholderHeight={48} {...timePickerYardConfig} />
+
+## Examples
+
+<Example title="Time Picker" path="time-picker/examples/basic.js">
+  <TimePicker />
+</Example>
+
+## API
+
+<ApiTable title="Time Picker props" config={timePickerYardConfig} />
+<ImplementationLink componentPath="time-picker" />
+<Exports component={TimePickerExports} title="Time Picker exports" path="spaceweb/time-picker" cheatsheet={false} />

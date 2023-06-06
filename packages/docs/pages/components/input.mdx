@@ -1,0 +1,82 @@
+import Example from '../../components/example';
+import Layout from '../../components/layout';
+import Exports from '../../components/exports';
+import ImplementationLink from 'components/implementation-link';
+
+import InputStyles from 'componentConfigs/input/examples/input-styles.js';
+import Sizes from 'componentConfigs/input/examples/sizes.js';
+import AvailableStates from 'componentConfigs/input/examples/available-states.js';
+import Enhancers from 'componentConfigs/input/examples/enhancers.js';
+import BeforeAfter from 'componentConfigs/input/examples/before-after.js';
+import Mask from 'componentConfigs/input/examples/mask.js';
+import Customization from 'componentConfigs/input/examples/overrides.js';
+import Focus from 'componentConfigs/input/examples/focus.js';
+import Clearable from 'componentConfigs/input/examples/clearable.js';
+import Password from 'componentConfigs/input/examples/password.js';
+import BasicUncontrolled from 'componentConfigs/input/examples/basic-uncontrolled.js';
+import InputDebounce from 'componentConfigs/input/examples/debounce.js';
+import NativeProps from 'componentConfigs/input/examples/input-native-props';
+import AutoFocus from 'componentConfigs/input/examples/autoFocus';
+
+import { StatefulInput } from 'spaceweb/input';
+import * as InputExports from 'spaceweb/input';
+
+import Yard from '../../components/yard/index';
+import inputYardConfig from 'componentConfigs/input/config';
+import ApiTable from '../../components/api-table';
+
+export default Layout;
+
+# Input
+
+<Yard placeholderHeight={48} {...inputYardConfig} />
+
+An input enables a person to type in text information.
+
+## When to use
+
+- When a person should provide information to the application.
+
+## Examples
+
+<Example title="States and Variants" path="input/examples/available-states.js">
+  <AvailableStates />
+</Example>
+<Example title="className and style API" path="input/examples/input-styles.js">
+  <InputStyles />
+</Example>
+<Example title="Sizes" path="input/examples/sizes.js">
+  <Sizes />
+</Example>
+<Example title="Enhancers" path="input/examples/enhancers.js">
+  <Enhancers />
+</Example>
+<Example title="AutoFocus" path="input/examples/autoFocus">
+  <AutoFocus />
+</Example>
+<Example title="MaskedInput" path="input/examples/mask.js">
+  <Mask />
+</Example>
+<Example title="Override native input props" path="input/examples/input-native-props">
+  <NativeProps />
+</Example>
+
+You can pass `accept` prop to native input using Override which isn't exposed in the main API.
+
+<Example title="Before and After overrides" path="input/examples/before-after.js">
+  <BeforeAfter />
+</Example>
+<Example title="Stateful (uncontrolled) usage" path="input/examples/basic-uncontrolled.js">
+  <BasicUncontrolled />
+</Example>
+<Example title="Debounce" path="input/examples/debounce.js">
+  <InputDebounce />
+</Example>
+
+As with many of our components, there is also an [uncontrolled](https://reactjs.org/docs/uncontrolled-components.html) version, `StatefulInput`, which manages its own state.
+
+## API
+
+<ApiTable title="Input props" config={inputYardConfig} />
+<ImplementationLink componentPath="input" />
+<Exports component={InputExports} title="Input exports" path="spaceweb/input" />

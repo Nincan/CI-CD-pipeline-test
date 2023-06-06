@@ -1,0 +1,77 @@
+import Example from '../../components/example';
+import Layout from '../../components/layout';
+import Exports from '../../components/exports';
+import ImplementationLink from 'components/implementation-link';
+
+import DefaultTabs from 'componentConfigs/tabs/examples/default.js';
+import DefaultTabsWithIcons from 'componentConfigs/tabs/examples/default-with-icons.js';
+import FlapTabs from 'componentConfigs/tabs/examples/flap.js';
+import IconTabs from 'componentConfigs/tabs/examples/icon-tabs.js';
+import CustomKeyTabs from 'componentConfigs/tabs/examples/custom-key-tabs.js';
+import StatefulTabs from 'componentConfigs/tabs/examples/stateful-tabs.js';
+import StatefulCustomKeysTabs from 'componentConfigs/tabs/examples/stateful-custom-keys.js';
+
+import * as TabsExports from 'spaceweb/tabs';
+
+import Yard from '../../components/yard/index';
+import tabsYardConfig from 'componentConfigs/tabs/config';
+import ApiTable from '../../components/api-table';
+
+export default Layout;
+
+# Tabs
+
+<Yard placeholderHeight={102} {...tabsYardConfig} />
+
+The TabList component is used for navigating frequently accesssed, but distinct categories.
+
+## Accessibility
+
+- `tab`, `shift + tab` - to move focus between tabs.
+- `Space` or `Enter` - to display the selected tab's content
+- `aria-selected`, `aria-disabled` are applied to the tabs.
+- Roles: `role=tab`, `role=tablist`, `role=tabpanel`
+
+## Examples
+
+<Example title="Default Tabs" path="tabs/examples/default.js">
+  <DefaultTabs />
+</Example>
+<br />
+<Example title="Default tabs with icons" path="tabs/examples/default-with-icons.js">
+  <DefaultTabsWithIcons />
+</Example>
+<br />
+<Example title="Flap Tabs" path="tabs/examples/flap.js">
+  <FlapTabs />
+</Example>
+<br />
+<Example title="Custom TabIds Tabs" path="tabs/examples/custom-key-tabs.js">
+  <CustomKeyTabs />
+</Example>
+<br />
+<Example title="Stateful Tabs" path="tabs/examples/stateful-tabs.js">
+  <StatefulTabs />
+</Example>
+
+- `tabId` is mandatory for `TabsPanel` when used within StatefulTabs.
+- We do not assume where `TabList` or `TabsPanels` would lie inside StatefulTabs.
+- If `tabId` is not supplied to `Tab` inside `TabList` then it is their ordered index.
+
+<br />
+<Example title="Stateful Custom TabIds Tabs" path="tabs/examples/stateful-custom-keys.js">
+  <StatefulCustomKeysTabs />
+</Example>
+
+- `tabId` supplied to `Tab` inside `TabList` corresponds to the `tabId` to be passed to corresponding `TabsPanel`.
+
+<br />
+<Example title="Icon Tabs" path="tabs/examples/icon-tabs.js">
+  <IconTabs />
+</Example>
+
+## API
+
+<ApiTable title="TabList props" config={tabsYardConfig} />
+<ImplementationLink componentPath="tabs" />
+<Exports component={TabsExports} title="Tabs exports" path="spaceweb/tabs" />

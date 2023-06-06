@@ -1,0 +1,276 @@
+import Layout from '../../components/layout';
+import { Notification, KIND } from 'baseui/notification';
+import Example from 'components/example';
+
+import GroupHoverBaseButton from 'components/pseudoSelectorsExamples/group-hover-base-button';
+import GroupHoverChatBubble from 'components/pseudoSelectorsExamples/group-hover-chat-bubble';
+import HoverBaseButton from 'components/pseudoSelectorsExamples/hover-base-button';
+import ActiveBaseButton from 'components/pseudoSelectorsExamples/active-base-button';
+import DisabledBaseButton from 'components/pseudoSelectorsExamples/disabled-base-button';
+import ChildSelectors from 'components/pseudoSelectorsExamples/child-selectors';
+import FocusInput from 'components/pseudoSelectorsExamples/focus-input';
+import FocusWithinInput from 'components/pseudoSelectorsExamples/focus-within-input';
+import FocusWithinInputBiDirection from 'components/pseudoSelectorsExamples/focus-within-input-bidirection';
+import ResponsiveCard from 'components/pseudoSelectorsExamples/responsive-card';
+
+export default Layout;
+
+<Notification
+  overrides={{
+    Body: { style: { width: 'auto' } },
+  }}
+>
+  This guide assumes you're familiar with <b>Style Utils</b>, which you can read about in{' '}
+  <a href="/guides/styling#styling-tools">here</a>.
+</Notification>
+
+# Pseudo Selectors
+
+Spaceweb's atomic classes are inspired from [tailwindcss](https://tailwindcss.com/).
+Following is a list of `pseudo-selectors` currently supported by Spaceweb.
+
+```
+hover, focus, active, disabled, visited, first-child,
+last-child, odd-child, even-child, focus-within, focus-visible,
+ltr,rtl
+```
+
+These `pseudo-selectors` can be used with all atomic classes without increasing the bundle size. This is made possible because we [parse atomic classes at run time](#how-are-pseudo-selectors-parsed).
+
+### Hover
+
+Add the `hover:` prefix to only apply a utility on hover.
+
+<HoverBaseButton />
+
+```jsx
+<BaseButton className="spr-support-error spr-text-05 hover:spr-support-success">Hover Me</BaseButton>
+```
+
+<br />
+
+### Focus
+
+Add the `focus:` prefix to only apply a utility on focus.
+
+<FocusInput />
+
+```jsx
+<StyledInput placeholder="Focus Me" className="border-transparent focus:spr-focus-01 ..." />
+```
+
+<br />
+
+### Active
+
+Add the `active:` prefix to only apply a utility when element is active.
+
+<ActiveBaseButton />
+
+```jsx
+<BaseButton className="spr-support-error spr-text-05 active:spr-support-success">Click Me</BaseButton>
+```
+
+<br />
+
+### Disabled
+
+Add the `disabled:` prefix to only apply a utility when element is disabled.
+
+<DisabledBaseButton />
+
+```jsx
+<BaseButton className="disabled:opacity-25">
+  Submit
+</BaseButton>
+<BaseButton
+  disabled
+  className="disabled:opacity-25 disabled:cursor-not-allowed"
+>
+  Submit
+</BaseButton>
+```
+
+<br />
+
+### Focus Within
+
+Add the `focus-within:` prefix to only apply a utility when that element or any of its descendants have focus.
+
+<FocusWithinInput />
+
+```jsx
+<Box className="border-transparent focus-within:spr-focus-01 focus-within:spr-support-error-text ...">
+  <EmailIcon className="fill-current" />
+  <StyledInput />
+</Box>
+```
+
+<br />
+
+### Direction Selectors
+
+Add the `ltr:` or `rtl:` prefix to only apply a utility when that app is rendered with particular direction.
+
+<FocusWithinInputBiDirection />
+
+```jsx
+<Box className="...">
+  <EmailIcon className="..." />
+  <StyledInput className="ml-4" />
+</Box>
+```
+
+<br />
+
+### Child Selectors
+
+Spaceweb currently support 4 child selectors. `:first-child`, `:last-child`, `:odd-child`, `:even-child`
+
+<ChildSelectors />
+
+```jsx
+<Box className="...">
+  {_times(4).map(x =>
+    <Box key={x} className="spr-support-success first-child:spr-clr-orange ..." />)}
+</Box>
+
+<Box className="...">
+  {_times(4).map(x =>
+    <Box key={x} className="spr-support-success last-child:spr-clr-orange ..." />)}
+</Box>
+
+<Box className="...">
+  {_times(4).map(x =>
+    <Box key={x} className="spr-support-success odd-child:spr-clr-orange ..." />)}
+</Box>
+
+<Box className="...">
+  {_times(4).map(x =>
+    <Box key={x} className="spr-support-success even-child:spr-clr-orange ..." />)}
+</Box>
+```
+
+<br />
+
+## How are pseudo selectors parsed?
+
+Spaceweb internally converts all utility classes to a `StyleObject`. In depth article can be found [here](/guides/how-styling-works).
+
+While mapping an atomic class to `StyleObject`, we also check if any of the pseudo selectors are present in the class. If so, `StyleObject` are converted accordingly.
+See the example below:
+
+```
+'flex items-center' -> { display: 'flex', alignItems: 'center' }
+
+'flex items-center hover:hidden'
+  -> { display: 'flex', alignItems: 'center', ':hover': { display: 'none' } }
+```
+
+<br />
+
+<Notification
+  overrides={{
+    Body: { style: { width: 'auto' } },
+  }}
+>
+  Styletron does not provide support for all type of selectors. e.g.{' '}
+  <a href="https://www.styletron.org/concepts#selectors">CSS combinators</a> are not supported by styletron.
+</Notification>
+
+<br />
+<br />
+
+# Responsive Design
+
+Every utility classes can be applied conditionally at different breakpoints.
+Breakpoints are defined in spaceweb [ThemeObject](/guides/theming#theme-properties/).
+
+To add a utility but only have it take effect at a certain breakpoint,
+all you need to do is prefix the utility with the breakpoint name, followed by the `:` character. e.g. `sm:`, `md:`, `lg:`...
+
+If spaceweb finds a valid breakpoint in the className, it adds styles to corresponding media query.
+
+```
+md:hidden -> @media (min-width ${theme.screens.md}) { display: none }
+lg:block -> @media (min-width ${theme.screens.lg}) { display: block }
+```
+
+Spaceweb uses mobile first breakpoint system.
+
+What this means is if `hidden lg:block` classes are applied to an element then `display: none` will be applied to all screen sizes,
+while prefixed utilities `lg:block` only take effect at the specified breakpoint and above (lg & above).
+
+Here's a simple example of a responsive card. Try resizing your browser to check the responsive behavior.
+
+<ResponsiveCard />
+
+```jsx
+<Box className="flex flex-col md:flex-row ...">
+  <Image className="h-48 w-full md:w-56" alt="Customer Story" src="..." />
+  <Box className="flex-1">
+    <Typography>Customer story: P&G</Typography>
+    <Typography>
+      P&G needed a unified platform capable of capturing relevant customer data across modern channels at scale — and
+      translating data into brand-building action. So they partnered with Sprinklr.
+    </Typography>
+  </Box>
+</Box>
+```
+
+- Outer div has `flex-col` applied to all the breakpoints. `flex-row` will be applied when screen size is more than `md`.
+  Which means Image and content will be side by side for larger screen size.
+- Image has `w-full md:w-56` applied. Which will ensure, that image takes full width for all the breakpoints other than `md` or greater.
+
+<br />
+
+# CSS Utilities
+
+To overcome the limitations of [Styletron](https://www.styletron.org/concepts#selectors), a preconfigured list of CSS utilities is provided out of the box by Spaceweb.
+Simply add `@sprinklr/spaceweb-themes/utilities.min.css` separately to your application.
+
+### Group Hover
+
+If you need to style a child element when hovering over a specific parent element,
+add the `group` class to the parent element and add the `group-hover:` prefix to the utility on the child element.
+
+<Notification
+  overrides={{
+    Body: { style: { width: 'auto' } },
+  }}
+>
+  Since these atomic classes adds to the size of the utilities.min.css file, group-hover utilities are only supported
+  for spr-ui-, spr-support,.... classes.
+</Notification>
+
+<GroupHoverBaseButton />
+
+```jsx
+<BaseButton className="group spr-support-error hover:spr-ui-05">
+  <Typography className="spr-text-05 group-hover:spr-text-01">On Parent Hover</Typography>
+  <Typography className="spr-text-05 group-hover:spr-support-error-text">This text will change its color.</Typography>
+</BaseButton>
+```
+
+<br />
+<br />
+<br />
+<br />
+
+<GroupHoverChatBubble />
+
+```jsx
+<Box className="group relative ...">
+  <Typography variant="h6">Hover over me. Options will be visible.</Typography>
+  <ButtonGroup className="opacity-0 group-hover:opacity-100 absolute ...">
+    <IconButton aria-label="Like Icon Button">
+      <LikeIcon />
+    </IconButton>
+    <IconButton aria-label="Trash Icon Button">
+      <TrashIcon />
+    </IconButton>
+  </ButtonGroup>
+</Box>
+```
+
+Here we are controlling opacity of the Action Buttons using `group-hover` selectors.

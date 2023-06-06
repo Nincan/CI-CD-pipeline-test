@@ -1,0 +1,24 @@
+{
+  "extends": "../../tsconfig.json",
+  "include": ["componentConfigs/*/examples/*.tsx"],
+  "compilerOptions": {
+    "target": "esnext",
+    "paths": {
+      "spaceweb": ["../spaceweb/dist"],
+      "spaceweb/*": ["../spaceweb/dist/*"],
+      "spaceweb-icons": ["../spaceweb-icons/dist"],
+      "spaceweb-icons/*": ["../spaceweb-icons/dist/*"],
+      "@sprinklr/spaceweb-calendar": ["../spaceweb-calendar/dist"],
+      "@sprinklr/spaceweb-calendar/*": ["../spaceweb-calendar/dist/*"],
+      "@sprinklr/spaceweb-charts": ["../spaceweb-charts/dist"],
+      "@sprinklr/spaceweb-charts/*": ["../spaceweb-charts/dist/*"],
+      "@sprinklr/spaceweb-editor": ["../spaceweb-editor/dist"]
+    },
+    "baseUrl": "./",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "jsx": "react-native",
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true
+  }
+}

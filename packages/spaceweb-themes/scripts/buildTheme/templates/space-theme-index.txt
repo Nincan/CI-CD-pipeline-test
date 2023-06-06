@@ -1,0 +1,6 @@
+import theme from './theme';
+import utilities from './utilities';
+export default {
+  theme,
+  classes: utilities,
+};

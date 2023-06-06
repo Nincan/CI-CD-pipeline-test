@@ -1,0 +1,97 @@
+import Layout from 'components/layout';
+import Example from 'components/example';
+
+import AtomicClassesFocusStyles from 'components/focusStylesExamples/atomic-classes-focus-styles';
+import ResetAtomicClassFocusStyles from 'components/focusStylesExamples/reset-atomic-class-focus-styles';
+import ResetSharedPropFocusStyles from 'components/focusStylesExamples/reset-shared-prop-focus-styles';
+import OutlineRadiusFocusStyles from 'components/focusStylesExamples/outline-radius-focus-styles';
+
+export default Layout;
+
+
+# Accessibility
+
+## Focus Styles
+
+The following Spaceweb components support focus styles and provide visible `outline` when user interacts via tabbing :
+
+```
+BaseButton, Button, ButtonGroup, Checkbox, Link, List, ListItem,
+Menu, Radio, Switch, Tabs, Tag
+```
+
+Input elements support focus styles using `$isFocusVisible` shared prop. This is because input can not differentiate between
+`:focus` and `:focus-visible`. All other components support focus styles via `:focus-visible` pseudo-selector.
+
+<br />
+<br />
+<br />
+
+## Apply focus styles on custom components
+
+Spaceweb has atomic classes for adding outlines to custom components. These atomic classes can be used
+in conjuction with the `focus-visible` pseudo-selector to add focus styles on any focusable component.
+
+<AtomicClassesFocusStyles />
+
+```jsx
+<Box tabIndex={0} className="spr-ui-01 p-4 focus-visible:outline-01">
+  Focus me by tabbing
+</Box>
+```
+
+`outline-01` class will apply following styles.
+
+```
+.outline-01 {
+  outline-style: solid;
+  outline-width: 2px;
+  outline-color: #0E61F6;
+  outline-offset: 2px;
+}
+```
+
+<br /><br />
+
+## Reset focus styles
+
+### Atomic Classes
+
+The `outline-none` atomic class can be used to remove the default focus styles on non-input elements
+
+<ResetAtomicClassFocusStyles />
+
+```jsx
+<Button>With Focus Styles</Button>
+<Button className="focus-visible:outline-none">Without Focus Styles</Button>
+```
+
+<br />
+
+### Shared Outline Props
+
+Since in Input elements we are not dependent on `:focus-visible` selector `$outlineStyle` shared prop can be used to tweak outline styles.
+
+<ResetSharedPropFocusStyles />
+
+```jsx
+<Checkbox>With Focus Styles</Checkbox>
+<Checkbox $outlineStyle="none">Without Focus Styles</Checkbox>
+```
+
+<br /><br />
+
+## Configuring outline radius
+
+Outline radius is not directly configurable. It can only be configured by setting the `border-radius` of the element.
+
+<OutlineRadiusFocusStyles />
+
+```jsx
+<Box tabIndex={0} className="spr-ui-01 p-4 rounded-8 focus-visible:outline-01">
+  Border radius controls my outline radius
+</Box>
+```
+
+
+

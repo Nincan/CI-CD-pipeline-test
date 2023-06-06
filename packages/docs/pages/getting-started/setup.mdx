@@ -1,0 +1,189 @@
+import Layout from '../../components/layout';
+import { Link } from 'spaceweb/link';
+
+export default Layout;
+
+# Setup
+
+## Installing Spaceweb
+
+**Spaceweb** is available on npm as private sprinklr package spaceweb. This single
+package contains all **Spaceweb** components.
+
+```bash
+# using yarn
+yarn add @sprinklr/spaceweb @sprinklr/spaceweb-themes
+
+# using npm
+npm install @sprinklr/spaceweb @sprinklr/spaceweb-themes
+```
+
+Since **Spaceweb** comes with Typescript, our React components don't use [PropTypes](https://reactjs.org/docs/typechecking-with-proptypes.html).
+
+## Adding Spaceweb to Your Application
+
+**Spaceweb** provides an application container `<SpacewebProvider>`. This is an HOC that is the root element for all the Space applications.
+
+Behind the scenes the `<SpacewebProvider>` performs the following tasks:
+
+- Setup theme and it's context (and providers)
+- Initiates style engine with SSR support
+- Makes theme, utility classes, and tokens available from StyleUtils (via the hook `useStyle`).
+- Setup a layer's manager, the anchor element that different surface components such as Modal's and popups attach to.
+
+You can read detailed documentation of [`SpacewebProvider`](/components/spaceweb-provider) as utility for further customisations.
+
+## Setup with React
+
+> If you're using [create-react-app](https://github.com/facebook/create-react-app), this is the section that applies to your application.
+
+**You need to wrap your application root with the `SpacewebProvider`** and pass the direction (`ltr` by default), the theme, and the StyleEngine instance. [React context](https://reactjs.org/docs/context.html) is used in the background to ensure all the important context details are available accross your application, and that CSS rules are properly extracted and CSS classes created.
+
+```tsx
+// App.tsx
+
+import * as React from 'react';
+
+// Gets Spaceweb's context provider
+import SpacewebProvider from '@sprinklr/spaceweb/spacewebProvider';
+
+// Gets the theme
+import light from '@sprinklr/spaceweb-themes/hyperspace/light';
+
+// Import css variables, which can be used in stylesheet.
+import from '@sprinklr/spaceweb-themes/hyperspace/themeVars.min.css'
+
+/**
+* Import utility stylesheet
+* https://frontend.sprinklr.com/spaceweb/guides/css-utilities#css-utilities
+*/
+import from '@sprinklr/spaceweb-themes/utilities.min.css';
+
+// normalize all styles that browser has to offer to make sure consistent experience across the browser
+import '@sprinklr/spaceweb-themes/styles/normalize.min.css';
+
+// import some global styles common in sprinklr, like font sizes of header tags, styles of anchor tag etc
+import '@sprinklr/spaceweb-themes/styles/globals.min.css';
+
+const App = (): React.ReactElement => (
+  // 1. Initialize SpacewebProvider's direction (ltr default) and the theme:
+  <SpacewebProvider direction="ltr" theme={theme}>
+    {/* 2. Wrap your application in here */}
+  </SpacewebProvider>
+);
+
+export default App;
+```
+
+## Server Side Rendering
+
+**Spaceweb** supports **Server Side Rendering (SSR)** so you can generate the styles on
+the server and then "hydrate" the client. You can significantly improve the loading
+time of your application!
+
+### Extracting Server-Rendered Styles
+
+```jsx
+// App.tsx
+
+import * as React from 'react';
+
+import SpacewebProvider from '@sprinklr/spaceweb/spacewebProvider';
+import light from '@sprinklr/spaceweb-themes/hyperspace/light';
+
+const App = (): React.ReactElement => (
+  // 1. Initialize SpacewebProvider's direction, styleEngine, and theme:
+  <SpacewebProvider direction="ltr" theme={theme}>
+    {/* 2. Wrap your application in here */}
+  </SpacewebProvider>
+);
+
+// 1. Create a server engine instance
+const engine = new getStyleEngine();
+
+// 2. Provide the engine to the app
+const html = React.render(
+  <SpacewebProvider direction="ltr" styleEngine={engine} theme={theme}>
+    <App />
+  </SpacewebProvider>
+);
+
+// 3. Extract critical styles after SSR
+const styles = engine.getStylesheetsHtml();
+// → "<style ..."
+```
+
+### With Next.JS
+
+[Next.js](https://nextjs.org/) is a popular React framework that covers SSR. Here's how to setup **Spaceweb** with Next.jsx
+
+1. Edit `pages/_app.js` and wrap the entire app's code with the `SpacewebProvider`:
+
+```jsx
+// _app.js
+
+import App from 'next/app';
+
+import SpacewebProvider from '@sprinklr/spaceweb/spacewebProvider';
+import light from '@sprinklr/spaceweb-themes/hyperspace/light';
+
+export default class MyApp extends App {
+  render() {
+    const { Component, pageProps } = this.props;
+
+    return (
+      <SpacewebProvider direction="ltr" theme={theme}>
+        <Component {...pageProps} />
+      </SpacewebProvider>
+    );
+  }
+}
+```
+
+2. Edit `pages/_document.js` and setup style's engine SSR:
+
+```jsx
+import Document, { Html, Head, Main, NextScript } from 'next/document';
+import { StyleProvider, getStylesheets, isServer } from '@sprinklr/spaceweb/styleEngine';
+
+export default class MyDocument extends Document {
+  static getInitialProps(props) {
+    const page = props.renderPage(App => pageProps => (
+      <StyleProvider debug>
+        <App {...pageProps} />
+      </StyleProvider>
+    ));
+
+    if (isServer) return { ...page, stylesheets: getStylesheets() };
+
+    return page;
+  }
+
+  render() {
+    return (
+      <Html>
+        <Head>
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          {this.props.stylesheets.map((sheet, i) => (
+            <style
+              className="_spaceweb_hydrate_"
+              dangerouslySetInnerHTML={{ __html: sheet.css }}
+              media={sheet.attrs.media}
+              data-hydrate={sheet.attrs['data-hydrate']}
+              key={i} //eslint-disable-line react/no-array-index-key
+            />
+          ))}
+        </Head>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    );
+  }
+}
+```
+
+## Next step
+
+Check out the [Learn Spaceweb](/getting-started/learn), to better understand the concepts of **Spaceweb**.

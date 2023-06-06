@@ -1,0 +1,52 @@
+import Example from '../../components/example';
+import Layout from '../../components/layout';
+import Exports from '../../components/exports';
+import ImplementationLink from 'components/implementation-link';
+
+import Sizes from 'componentConfigs/search/examples/sizes.js';
+import AvailableStates from 'componentConfigs/search/examples/available-states.js';
+import DebounceSearch from 'componentConfigs/search/examples/debounce.js';
+import After from 'componentConfigs/search/examples/after.js';
+import StatefulSearch from 'componentConfigs/search/examples/stateful-search.js';
+
+import * as SearchExports from 'spaceweb/search';
+
+import Yard from '../../components/yard/index';
+import searchYardConfig from 'componentConfigs/search/config';
+import ApiTable from '../../components/api-table';
+
+export default Layout;
+
+# Search
+
+<Yard placeholderHeight={48} {...searchYardConfig} />
+
+Search enables a person to search text information.
+
+## When to use
+
+- When a person needs to search information in the application.
+
+## Examples
+
+<Example title="Stateful Search" path="search/examples/stateful-search.js">
+  <StatefulSearch />
+</Example>
+<Example title="States and Variants" path="search/examples/available-states.js">
+  <AvailableStates />
+</Example>
+<Example title="Sizes" path="search/examples/sizes.js">
+  <Sizes />
+</Example>
+<Example title="Debounce handler" path="search/examples/debounce.js">
+  <DebounceSearch />
+</Example>
+<Example title="After overrides" path="search/examples/after.js">
+  <After />
+</Example>
+
+## API
+
+<ApiTable title="Search props" config={searchYardConfig} />
+<ImplementationLink componentPath="search" />
+<Exports component={SearchExports} title="Search exports" path="spaceweb/search" />

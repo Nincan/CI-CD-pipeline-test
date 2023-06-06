@@ -1,0 +1,42 @@
+import Layout from '../../components/layout';
+
+export default Layout;
+
+# Test Utilities
+
+## TestProvider
+
+This is SpacewebProvider with theme object which can run in jest environment.
+
+```tsx
+import { TestProvider } from '@sprinklr/spaceweb/test-utils/test-provider';
+...
+test('onClick', () => {
+  const onClick = jest.fn();
+  const { getByTestId } = render(
+      <TestProvider>
+      <Button onClick={onClick}>Hello</Button>
+      </TestProvider>
+  );
+  fireEvent.click(getByTestId('button'));
+  expect(onClick).toHaveBeenCalled();
+});
+```
+
+## getCSSByTestId
+
+This utility let's you test calculated CSS properties.
+
+```tsx
+import { TestProvider, getCSSByTestId } from '@sprinklr/spaceweb/test-utils/test-provider';
+...
+test('fullWidth', () => {
+  render(
+    <TestProvider>
+      <Button fullWidth>Hello</Button>
+    </TestProvider>
+  );
+  const buttonCss = getCSSByTestId('button');
+  expect(buttonCss.width).toEqual(theme.width.full);
+});
+```

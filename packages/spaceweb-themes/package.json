@@ -1,0 +1,27 @@
+{
+  "name": "@sprinklr/spaceweb-themes",
+  "version": "12.14.3",
+  "description": "Sprinklr's Spaceweb theme library",
+  "main": "./index.js",
+  "scripts": {
+    "build-cheatsheet": "ts-node scripts/buildCheatSheetConfig",
+    "build": "ts-node ./scripts/buildTheme && yarn build-cheatsheet && yarn copy-package.json",
+    "copy-package.json": "cp package.json dist/",
+    "test": "jest ./src",
+    "test:watch": "jest --watch ./src",
+    "test:coverage": "jest ./src --coverage",
+    "build:theme": "ts-node ./scripts/buildTheme --log-error"
+  },
+  "repository": "https://prod-gitlab.sprinklr.com/sprinklr/frontend/spaceweb",
+  "author": "Sprinklr, Inc.",
+  "license": "ISC",
+  "devDependencies": {
+    "@tailwindcss/line-clamp": "^0.2.2",
+    "clean-css": "^4.2.3",
+    "lodash": "^4.17.15",
+    "postcss": "^7.0.27",
+    "postcss-js": "^2.0.3",
+    "tailwindcss": "~1.9.0",
+    "ts-node": "^10.4.0"
+  }
+}

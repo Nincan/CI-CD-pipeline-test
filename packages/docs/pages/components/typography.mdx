@@ -1,0 +1,53 @@
+import Example from 'components/example';
+import Exports from 'components/exports';
+import Layout from 'components/layout';
+import ImplementationLink from 'components/implementation-link';
+
+import ClassNameAPI from 'componentConfigs/typography/examples/typography-className';
+import BodyVariants from "componentConfigs/typography/examples/Typography-body-variants";
+import DisplayVariants from "componentConfigs/typography/examples/Typography-display-variants";
+import BodyVariantTable from "componentConfigs/typography/examples/typography-body-variant-docs-table"
+import DisplayVariantTable from "componentConfigs/typography/examples/typography-display-variant-docs-table"
+
+import * as TypographyExports from 'spaceweb/typography';
+
+import Yard from 'components/yard/index';
+import typographyYardConfig from 'componentConfigs/typography/config';
+import ApiTable from 'components/api-table';
+
+export default Layout;
+
+# Typography
+
+A set of text block components for an out-of-the-box path to the SpaceWeb font standard.
+
+<Yard placeholderHeight={52} {...typographyYardConfig} />
+<br />
+
+## Examples
+
+<Example title="Typography Body variants" path="typography/examples/Typography-body-variants.js">
+  <BodyVariants />
+</Example>
+
+### Body Variant Specifications
+<BodyVariantTable />
+<br />
+
+<Example title="Typography Display variants" path="typography/examples/Typography-display-variants.js">
+  <DisplayVariants />
+</Example>
+
+### Display Variant Specifications
+<DisplayVariantTable />
+<br />
+
+<Example title="Typography ClassNameAPI" path="typography/examples/typography-className.js">
+  <ClassNameAPI />
+</Example>
+
+## API
+
+<ApiTable title="Typography props" config={typographyYardConfig} />
+<ImplementationLink componentPath="typography" />
+<Exports component={TypographyExports} title="Typography exports" path="spaceweb/typography" />

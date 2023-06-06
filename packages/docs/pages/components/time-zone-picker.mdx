@@ -1,0 +1,33 @@
+import Example from 'components/example';
+import Layout from 'components/layout';
+import Exports from 'components/exports';
+import ApiTable from 'components/api-table';
+import ImplementationLink from 'components/implementation-link';
+import Yard from 'components/yard';
+
+import timezonePickerYardConfig from 'componentConfigs/time-zone-picker/config';
+import * as TimezonePickerExports from 'spaceweb/time-zone-picker';
+import TimezonePicker from 'componentConfigs/time-zone-picker/examples/basic.js';
+
+export default Layout;
+
+# Time Zone Picker
+
+<Yard placeholderHeight={48} {...timezonePickerYardConfig} />
+
+## Examples
+
+<Example title="Timezone picker" path="time-zone-picker/examples/basic.js">
+  <TimezonePicker />
+</Example>
+
+## ApiTable
+
+<ApiTable title="Timezone Picker props" config={timezonePickerYardConfig} />
+<ImplementationLink componentPath="time-zone-picker" />
+<Exports
+  component={TimezonePickerExports}
+  title="Timezone Picker exports"
+  path="spaceweb/time-zone-picker"
+  cheatsheet={false}
+/>

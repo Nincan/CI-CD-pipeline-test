@@ -1,0 +1,55 @@
+import Yard from 'components/yard/index';
+import linkConfig from 'componentConfigs/link/config';
+import ApiTable from 'components/api-table';
+import Layout from 'components/layout';
+import Exports from 'components/exports';
+import Example from 'components/example';
+import ImplementationLink from 'components/implementation-link';
+
+import WithHref from 'componentConfigs/link/examples/with-href.js';
+import WithoutHref from 'componentConfigs/link/examples/without-href.js';
+
+import * as LinkExports from 'spaceweb/link';
+
+export default Layout;
+
+# Link
+
+<Yard placeholderHeight={20} {...linkConfig} />
+
+export const Link = LinkExports.Link;
+
+## Behaviour
+
+- When a link has an href, <Link href="/components/link">it renders as an anchor tag</Link>.<br/>
+- Without an href, <Link>this link is rendered as a button</Link>.<br/>
+
+## Usage
+
+- Use Link to navigate to another page or help topic; initiate a command; or choose an option.
+- Should render inline textual content only.
+- Should provide specific descriptive information about the result of clicking on the link.
+- Do NOT use when you just want to provide href to any non-textual component such as img or custom Component.
+- For aforementioned use case, use BaseButton with href and provide your custom styles to it however you'd like it to be.
+
+## Accessibility
+
+- Link (with or without href) is by accessible by keyboard.
+- Link should not have onClick listener when used with href.
+- Link will behave as a button without href.
+- Use title to provide more context if required.
+
+## Examples
+
+<Example title="Link (with href)" path="link/examples/with-href.js">
+  <WithHref />
+</Example>
+<Example title="LinkButton (without href)" path="link/examples/without-href.js">
+  <WithoutHref />
+</Example>
+
+## API
+
+<ApiTable title="Link props" config={linkConfig} />
+<ImplementationLink componentPath="link" />
+<Exports component={LinkExports} title="Link exports" path="spaceweb/link" cheatsheet={false} />

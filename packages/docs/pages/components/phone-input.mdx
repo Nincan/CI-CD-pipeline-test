@@ -1,0 +1,80 @@
+import Example from '../../components/example';
+import Layout from '../../components/layout';
+import Exports from '../../components/exports';
+import { DocLink } from '../../components/markdown-elements';
+
+import Basic from 'componentConfigs/phone-input/examples/basic.js';
+import FlagContainerOverrides from 'componentConfigs/phone-input/examples/flag-container-overrides.js';
+import MapIsoToLabel from 'componentConfigs/phone-input/examples/map-iso-to-label.js';
+import NestedInputOverrides from 'componentConfigs/phone-input/examples/nested-input-overrides.js';
+import Uncontrolled from 'componentConfigs/phone-input/examples/uncontrolled.js';
+import WithSelectiveCountries from 'componentConfigs/phone-input/examples/uncontrolled-with-selective-countries.js';
+
+import * as PhoneInputExports from 'spaceweb/phone-input';
+import { COUNTRIES } from 'spaceweb/phone-input';
+import { Table } from 'baseui/table';
+import { Block } from 'baseui/block';
+
+import Yard from '../../components/yard/index';
+import phoneInputYardConfig from 'componentConfigs/phone-input/config';
+import ApiTable from '../../components/api-table';
+
+export default Layout;
+
+# Phone Input
+
+<Yard placeholderHeight={48} {...phoneInputYardConfig} />
+
+## Examples
+
+<Example title="Basic usage" path="phone-input/examples/basic.js">
+  <Basic />
+</Example>
+<Example title="FlagContainer overridden with Tag" path="phone-input/examples/flag-container-overrides.js">
+  <FlagContainerOverrides />
+</Example>
+<Example title="Custom label using mapIsoToLabel" path="phone-input/examples/map-iso-to-label.js">
+  <MapIsoToLabel />
+</Example>
+<Example title="Nested input overrides" path="phone-input/examples/nested-input-overrides.js">
+  <NestedInputOverrides />
+</Example>
+
+### AutoFocus
+
+`PhoneInput` accepts an `autoFocus` prop. For information on its behaviour, check <DocLink href="/components/input#autofocus">Input's autoFocus example</DocLink>.
+
+<Example title="Stateful (uncontrolled) usage" path="phone-input/examples/uncontrolled.js">
+  <Uncontrolled />
+</Example>
+
+As with many of our components, there is also an [uncontrolled](https://reactjs.org/docs/uncontrolled-components.html) version, `StatefulPhoneInput`, which manages its own state.
+
+<Example title="With Selective Countries" path="phone-input/examples/uncontrolled-with-selective-countries.js">
+  <WithSelectiveCountries />
+</Example>
+
+Note that, default selected country will be the first country passed in `countries`.
+
+## Supported Countries
+
+The following countries are available in the country selector dropdown.
+You can import these as an object `COUNTRIES` from `spaceweb/phone-input`.
+Note, the country objects are formatted for ease of use with our `Select` component.
+
+```js
+COUNTRIES: {
+  id: string,      // Country ISO
+  label: string,   // Country Name
+  dialCode: string // Country Dial Code
+}
+```
+
+<Block height="400px">
+  <Table columns={['ID', 'Label', 'Dial Code']} data={Object.values(COUNTRIES).map(c => [c.id, c.label, c.dialCode])} />
+</Block>
+
+## API
+
+<ApiTable title="Phone Input props" config={phoneInputYardConfig} />
+<Exports component={PhoneInputExports} title="Phone Input exports" path="spaceweb/phone-input" />

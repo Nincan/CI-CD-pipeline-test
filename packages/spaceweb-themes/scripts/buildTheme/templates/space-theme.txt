@@ -1,0 +1,8 @@
+// THIS FILES IS GENERATED USING SCRIPT, DO NOT EDIT DIRECTLY
+import commonTheme from '%%COMMON_THEME_PATH%%';
+
+const theme = %%THEME%%
+export default {
+  ...commonTheme,
+  ...theme
+};
