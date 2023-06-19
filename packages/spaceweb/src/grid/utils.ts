@@ -18,7 +18,7 @@ export const filterOwnProps = <T>(breakpoints: string[], props: T): Partial<T> =
     'rowStart',
     ...breakpoints,
   ];
-
+//@ts-ignore
   return Object.entries(props).reduce<Partial<T>>((otherProps, [key, val]) => {
     if (gridProps.includes(key)) return otherProps;
     return { ...otherProps, [key]: val };

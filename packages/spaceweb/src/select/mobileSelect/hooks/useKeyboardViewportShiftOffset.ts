@@ -10,13 +10,15 @@ export const useKeyboardViewportShiftOffset = (
     // when the keyboard shows (see https://bugs.webkit.org/show_bug.cgi?id=141832)
     const handler = (): void => {
       if (rootRef.current) {
+        //@ts-ignore
         const _offsetBottom = window.innerHeight - window.visualViewport.height - window.visualViewport.offsetTop;
         setOffsetBottom(_offsetBottom);
       }
     };
-
+    //@ts-ignore
     window.visualViewport.addEventListener('resize', handler);
     return (): void => {
+      //@ts-ignore
       window.visualViewport.removeEventListener('resize', handler);
     };
   }, []);

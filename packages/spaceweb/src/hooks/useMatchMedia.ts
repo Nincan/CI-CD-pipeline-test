@@ -39,6 +39,7 @@ const useMedia = (query: string, defaultState?: boolean) => {
     if ('addEventListener' in mediaQueryList) {
       mediaQueryList.addEventListener('change', onChange);
     } else {
+      //@ts-ignore
       mediaQueryList.addListener(onChange);
     }
 
@@ -49,6 +50,7 @@ const useMedia = (query: string, defaultState?: boolean) => {
       if ('removeEventListener' in mediaQueryList) {
         mediaQueryList.removeEventListener('change', onChange);
       } else {
+        //@ts-ignore
         mediaQueryList.removeListener(onChange);
       }
     };
