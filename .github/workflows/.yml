@@ -1,0 +1,36 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build_job:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install Dependencies
+      run: npm install
+    - name: Building the app
+      run: echo "Building the app"
+
+  test_job:
+    needs: build_job
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install Dependencies
+      run: npm install
+    - name: Testing the app
+      run: echo "Testing the app"
+
+  a11y_check:
+    needs: test_job
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install Dependencies
+      run: npm install
+    - name: Running accessibility checks
+      run: npm-run-all serve-public pa11y-ci:sitemap kill-server
