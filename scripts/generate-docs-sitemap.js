@@ -29,7 +29,7 @@ ${pages
 
     return `\
   <url>
-    <loc>${`https://frontend.sprinklr.com/spaceweb${route}`}</loc>
+    <loc>${`http://localhost:8080${route}`}</loc>
   </url>`;
   })
   .join('\n')}

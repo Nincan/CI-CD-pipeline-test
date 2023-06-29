@@ -1,0 +1,19 @@
+{   
+    "sitemap": "http://localhost:3000/sitemap.xml",
+    "sitemapFind": "http://localhost:3000/",
+    "defaults": {
+    "concurrency": 1,
+    "standard": "WCAG2AA",
+    "runners": ["axe", "htmlcs"],
+    "ignore":["warnings","notices"],
+    "chromeLaunchConfig": {
+        "args": ["--disable-dev-shm-usage", "--no-sandbox", "--disable-gpu"]
+    },
+    "reporters": [
+        "cli",
+        "pa11y-ci-reporter-html"
+    ],
+    "timeout": 20000,
+    "threshold": 2
+    }
+}

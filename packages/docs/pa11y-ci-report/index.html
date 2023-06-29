@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Pa11y CI Accessibility Report Summary</title>
+	<style>
+		body {
+			background-color: #ffffff;
+			color: #333333;
+			display: flex;
+			font-family: system-ui, sans-serif;
+			font-size: 16px;
+			line-height: 1.3rem;
+			margin: 0;
+			padding: 0;
+		}
+
+		main {
+			margin: 0 auto;
+			min-width: 1000px;
+			padding: 1.25rem;
+			text-align: center;
+		}
+
+		h1 {
+			font-size: 1.5rem;
+			line-height: 1.5rem;
+			margin: 0;
+			margin-bottom: 0.75rem;
+		}
+
+		h2 {
+			font-size: 1.15rem;
+			font-weight: normal;
+			margin: 0 0 0.75rem;
+		}
+
+		p {
+			margin: 0;
+		}
+
+		.counts {
+			display: inline-grid;
+			grid-template-columns: repeat(3, 1fr);
+			margin: 0.75rem 0;
+			width: 27rem;
+		}
+
+		.page-error .counts {
+			grid-template-columns: 1fr;
+		}
+
+		.count {
+			background-color: #e8e8e8;
+			box-shadow: 0.1rem 0.25rem 0.5rem rgba(0 0 0 / 15%);
+			color: #2d2d2d;
+			display: inline-grid;
+			font-size: 1rem;
+			grid-template-columns: 0.35rem 1fr;
+			margin-right: 0.75rem;
+		}
+
+		.count .left-bar {
+			background-color: #7c7c7c;
+		}
+
+		.count .body {
+			border-color: #c9c9c9;
+			border-style: solid;
+			border-width: 1px 1px 1px 0;
+			overflow-x: hidden;
+			padding: 0.35rem 0.7rem;
+		}
+
+		.error {
+			background-color: #f8d7da;
+			color: #67191f;
+		}
+
+		.warning {
+			background-color: #fff3cd;
+			color: #544003;
+		}
+
+		.notice {
+			background-color: #cfe2ff;
+			color: #062c65;
+		}
+
+		.failure {
+			background-color: #f8e5d7;
+			color: #673a19;
+		}
+
+		.error>.left-bar {
+			background-color: #d53447;
+		}
+
+		.error>.body {
+			border-color: #f2bbc1;
+		}
+
+		.warning>.left-bar {
+			background-color: #c79500;
+		}
+
+		.warning>.body {
+			border-color: #ffd761;
+		}
+
+		.notice>.left-bar {
+			background-color: #015cda;
+		}
+
+		.notice>.body {
+			border-color: #a9cefe;
+		}
+
+		.failure>.left-bar {
+			background-color: #d57234;
+		}
+
+		.failure>.body {
+			border-color: #f2d0bb;
+		}
+
+		.count.hidden {
+			background-color: #f6f6f6;
+			color: #323232;
+		}
+
+		.count.hidden .left-bar {
+			background-color: #c0c0c0;
+		}
+
+		.count.hidden .body {
+			border-color: #e9e9e9;
+		}
+
+		.pages {
+			list-style-type: none;
+			margin: 0.5rem 0 1rem;
+			padding: 0;
+		}
+
+		.page {
+			background-color: #ffffff;
+			border: 1px solid #cccccc;
+			border-radius: 0;
+			box-shadow: 0.1rem 0.25rem 0.5rem rgba(0 0 0 / 15%);
+			display: grid;
+			gap: 0.5rem;
+			grid-template-columns: 1.5fr auto;
+			margin: 0;
+			margin-bottom: 1.5rem;
+			padding: 0.25rem 0.5rem;
+		}
+
+		.page.hidden {
+			display: none;
+		}
+
+		.page-link {
+			align-self: center;
+			display: inline-block;
+			font-size: 1.05rem;
+			overflow: hidden;
+			padding: 0 0.3rem 0 0.75rem;
+			text-align: left;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+
+		.filter {
+			display: inline-grid;
+			grid-template-columns: 1.5fr repeat(3, 1fr);
+			margin: 0.75rem 0;
+		}
+
+		.label {
+			align-self: center;
+			display: inline-block;
+			font-size: 1.15em;
+			padding-right: 0.5rem;
+		}
+
+		.button:hover {
+			cursor: pointer;
+		}
+	</style>
+</head>
+
+<body>
+	<main>
+		<h1>Pa11y CI Accessibility Report Summary</h1>
+		<h2>Generated at: Tue Jun 20 2023 20:23:26 GMT+0530 (India Standard Time)</h2>
+		<h2>Summary: 63 pages (0 passed / 63
+			failed), 14404 accessibility issues</h2>
+		<div class="filter">
+			<span class="label">Filter page results: </span>
+			<span class="count error button" id="pa11y-issues" tabindex="0" role="button" aria-label="Toggle pages with issues" title="Pa11y analyzed page and found issues">
+				<span class="left-bar" aria-hidden="true"></span>
+				<span class="body">Pa11y Issues</span>
+			</span>
+			<span class="count button" id="no-issues" tabindex="0" role="button" aria-label="Toggle pages with no issues" title="Pa11y analyzed page and found no issues">
+				<span class="left-bar" aria-hidden="true"></span>
+				<span class="body">No Issues</span>
+			</span>
+			<span class="count failure button" id="page-errors" tabindex="0" role="button" aria-label="Toggle page errors" title="Pa11y failed to analyze page">
+				<span class="left-bar" aria-hidden="true"></span>
+				<span class="body">Page Errors</span>
+			</span>
+		</div>
+		<ul class="pages">
+<li class="page has-errors"><a class="page-link" href="localhost-8080-cheatsheet.html">http://localhost:8080/cheatsheet</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">24 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-components-async-select.html">http://localhost:8080/components/async-select</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">454 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-components-avatar.html">http://localhost:8080/components/avatar</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">280 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-components-badge.html">http://localhost:8080/components/badge</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">141 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-components-banner.html">http://localhost:8080/components/banner</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">178 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-components-base-button.html">http://localhost:8080/components/base-button</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">147 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-components-box.html">http://localhost:8080/components/box</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">117 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-components-breadcrumb.html">http://localhost:8080/components/breadcrumb</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">234 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-components-button-group.html">http://localhost:8080/components/button-group</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">326 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-components-button.html">http://localhost:8080/components/button</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">179 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-components-checkbox.html">http://localhost:8080/components/checkbox</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">167 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-components-color-picker.html">http://localhost:8080/components/color-picker</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">444 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-components-date-input.html">http://localhost:8080/components/date-input</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">207 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-components-date-picker.html">http://localhost:8080/components/date-picker</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">236 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-components-form-control.html">http://localhost:8080/components/form-control</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">226 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-components-grid.html">http://localhost:8080/components/grid</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">268 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-components-icon-button.html">http://localhost:8080/components/icon-button</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">191 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-components-icon.html">http://localhost:8080/components/icon</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">90 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-components-image.html">http://localhost:8080/components/image</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">127 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-components-input.html">http://localhost:8080/components/input</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">293 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-components-link.html">http://localhost:8080/components/link</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">103 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-components-list.html">http://localhost:8080/components/list</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">336 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-components-loader.html">http://localhost:8080/components/loader</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">98 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-components-menu.html">http://localhost:8080/components/menu</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">203 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-components-modal.html">http://localhost:8080/components/modal</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">314 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-components-payment-card.html">http://localhost:8080/components/payment-card</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">193 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-components-phone-input.html">http://localhost:8080/components/phone-input</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">365 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-components-popover.html">http://localhost:8080/components/popover</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">258 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-components-progress.html">http://localhost:8080/components/progress</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">190 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-components-radio.html">http://localhost:8080/components/radio</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">233 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-components-search.html">http://localhost:8080/components/search</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">215 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-components-select.html">http://localhost:8080/components/select</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">593 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-components-slider.html">http://localhost:8080/components/slider</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">269 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-components-snackbar.html">http://localhost:8080/components/snackbar</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">115 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-components-spaceweb-provider.html">http://localhost:8080/components/spaceweb-provider</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">256 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-components-stack.html">http://localhost:8080/components/stack</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">416 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-components-switch.html">http://localhost:8080/components/switch</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">162 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-components-tabs.html">http://localhost:8080/components/tabs</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">239 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-components-tag.html">http://localhost:8080/components/tag</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">266 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-components-test-provider.html">http://localhost:8080/components/test-provider</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">139 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-components-textarea.html">http://localhost:8080/components/textarea</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">245 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-components-time-picker.html">http://localhost:8080/components/time-picker</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">138 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-components-time-range-picker.html">http://localhost:8080/components/time-range-picker</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">245 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-components-time-zone-picker.html">http://localhost:8080/components/time-zone-picker</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">141 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-components-tooltip.html">http://localhost:8080/components/tooltip</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">118 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-components-video.html">http://localhost:8080/components/video</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">109 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-getting-started-learn.html">http://localhost:8080/getting-started/learn</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">26 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-getting-started-setup.html">http://localhost:8080/getting-started/setup</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">379 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-guides-accessibility-focus-styles.html">http://localhost:8080/guides/accessibility/focus-styles</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">122 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-guides-bidirectionality.html">http://localhost:8080/guides/bidirectionality</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">146 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-guides-building-themes.html">http://localhost:8080/guides/building-themes</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">75 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-guides-css-utilities.html">http://localhost:8080/guides/css-utilities</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">474 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-guides-how-styling-works.html">http://localhost:8080/guides/how-styling-works</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">253 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-guides-internationalization.html">http://localhost:8080/guides/internationalization</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">60 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-guides-seo.html">http://localhost:8080/guides/seo</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">369 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-guides-styling.html">http://localhost:8080/guides/styling</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">622 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-guides-testing.html">http://localhost:8080/guides/testing</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">64 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-guides-theming.html">http://localhost:8080/guides/theming</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">188 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-guides-understanding-overrides.html">http://localhost:8080/guides/understanding-overrides</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">514 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-iconLibrary.html">http://localhost:8080/iconLibrary</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">25 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080.html">http://localhost:8080/</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">23 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-live-editor.html">http://localhost:8080/live-editor</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">558 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li><li class="page has-errors"><a class="page-link" href="localhost-8080-utils-overrides.html">http://localhost:8080/utils/overrides</a><p class="counts">
+					<span class="count error">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">218 errors</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 warnings</span>
+					</span>
+					<span class="count">
+						<span class="left-bar" aria-hidden="true"></span>
+						<span class="body">0 notices</span>
+					</span>
+				</p>
+			</li>		</ul>
+	</main>
+	<script>
+		const togglePages = (btn, pageQuery) => {
+			const className = 'hidden';
+			document.getElementById(btn).classList.toggle(className);
+			document.querySelectorAll(pageQuery).forEach(page => {
+				page.classList.toggle(className);
+			});
+		};
+
+		const pa11yIssuesFilter = document.getElementById('pa11y-issues');
+		pa11yIssuesFilter.addEventListener('click', () => togglePages('pa11y-issues', '.page.has-errors, .page.has-warnings, .page.has-notices'));
+		pa11yIssuesFilter.addEventListener('keydown', (event) => event.key === "Enter" && togglePages('pa11y-issues', '.page.has-errors, .page.has-warnings, .page.has-notices'));
+
+		const pageErrorsFilter = document.getElementById('page-errors');
+		pageErrorsFilter.addEventListener('click', () => togglePages('page-errors', '.page.page-error'));
+		pageErrorsFilter.addEventListener('keydown', (event) => event.key === "Enter" && togglePages('page-errors', '.page.page-error'));
+
+		const noIssuesFilter = document.getElementById('no-issues');
+		noIssuesFilter.addEventListener('click', () => togglePages('no-issues', '.page:not(.has-errors, .has-warnings, .has-notices, .page-error)'));
+		noIssuesFilter.addEventListener('keydown', (event) => event.key === "Enter" && togglePages('no-issues', '.page:not(.has-errors, .has-warnings, .has-notices, .page-error)'));
+	</script>
+</body>
+
+</html>

@@ -1,360 +1,210 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/calendar</loc>
+    <loc>http://localhost:8080/cheatsheet</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/charts/bar-chart/bar-sizes</loc>
+    <loc>http://localhost:8080/components/async-select</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/charts/bar-chart/basic-stacked</loc>
+    <loc>http://localhost:8080/components/avatar</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/charts/bar-chart/basic</loc>
+    <loc>http://localhost:8080/components/badge</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/charts/bar-chart/stacked-bar-sizes</loc>
+    <loc>http://localhost:8080/components/banner</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/charts/bar-chart/stacked-example</loc>
+    <loc>http://localhost:8080/components/base-button</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/charts/bubble-plot-chart/basic</loc>
+    <loc>http://localhost:8080/components/box</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/charts/bubble-plot-chart/color-map</loc>
+    <loc>http://localhost:8080/components/breadcrumb</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/charts/bubble-plot-chart/multi-metric</loc>
+    <loc>http://localhost:8080/components/button-group</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/charts/bubble-plot-chart/ordinal-stacks</loc>
+    <loc>http://localhost:8080/components/button</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/charts/bubble-plot-chart/single-color</loc>
+    <loc>http://localhost:8080/components/checkbox</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/charts/column-chart/basic-insights</loc>
+    <loc>http://localhost:8080/components/color-picker</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/charts/column-chart/basic-stacked</loc>
+    <loc>http://localhost:8080/components/date-input</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/charts/column-chart/basic</loc>
+    <loc>http://localhost:8080/components/date-picker</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/charts/column-chart/column-sizes</loc>
+    <loc>http://localhost:8080/components/form-control</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/charts/column-chart/stacked-column-sizes</loc>
+    <loc>http://localhost:8080/components/grid</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/charts/geo-chart/basic</loc>
+    <loc>http://localhost:8080/components/icon-button</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/charts/geo-chart/zoomable</loc>
+    <loc>http://localhost:8080/components/icon</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/charts/line-chart/basic-insights</loc>
+    <loc>http://localhost:8080/components/image</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/charts/line-chart/basic-multi</loc>
+    <loc>http://localhost:8080/components/input</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/charts/line-chart/basic</loc>
+    <loc>http://localhost:8080/components/link</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/charts/line-chart/custom-multi</loc>
+    <loc>http://localhost:8080/components/list</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/charts/line-chart/multi-insights</loc>
+    <loc>http://localhost:8080/components/loader</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/charts/metric-bar-chart/basic</loc>
+    <loc>http://localhost:8080/components/menu</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/charts/pie-chart/basic</loc>
+    <loc>http://localhost:8080/components/modal</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/charts/treemap/basic</loc>
+    <loc>http://localhost:8080/components/payment-card</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/charts/word-cloud/basic</loc>
+    <loc>http://localhost:8080/components/phone-input</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/cheatsheet</loc>
+    <loc>http://localhost:8080/components/popover</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/components/async-select</loc>
+    <loc>http://localhost:8080/components/progress</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/components/avatar</loc>
+    <loc>http://localhost:8080/components/radio</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/components/badge</loc>
+    <loc>http://localhost:8080/components/search</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/components/banner</loc>
+    <loc>http://localhost:8080/components/select</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/components/base-button</loc>
+    <loc>http://localhost:8080/components/slider</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/components/box</loc>
+    <loc>http://localhost:8080/components/snackbar</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/components/button-group</loc>
+    <loc>http://localhost:8080/components/spaceweb-provider</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/components/button</loc>
+    <loc>http://localhost:8080/components/stack</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/components/checkbox</loc>
+    <loc>http://localhost:8080/components/switch</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/components/date-input</loc>
+    <loc>http://localhost:8080/components/tabs</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/components/date-picker</loc>
+    <loc>http://localhost:8080/components/tag</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/components/form-control</loc>
+    <loc>http://localhost:8080/components/test-provider</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/components/grid</loc>
+    <loc>http://localhost:8080/components/textarea</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/components/icon-button</loc>
+    <loc>http://localhost:8080/components/time-picker</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/components/icon</loc>
+    <loc>http://localhost:8080/components/time-range-picker</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/components/image</loc>
+    <loc>http://localhost:8080/components/time-zone-picker</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/components/input</loc>
+    <loc>http://localhost:8080/components/tooltip</loc>
   </url>
+  <!-- <url>
+    <loc>http://localhost:8080/components/typography</loc>
+  </url> -->
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/components/link</loc>
+    <loc>http://localhost:8080/components/video</loc>
   </url>
-  <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/components/list</loc>
-  </url>
-  <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/components/loader</loc>
-  </url>
-  <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/components/menu</loc>
-  </url>
-  <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/components/modal</loc>
-  </url>
-  <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/components/payment-card</loc>
-  </url>
-  <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/components/phone-input</loc>
-  </url>
-  <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/components/popover</loc>
-  </url>
-  <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/components/progress</loc>
-  </url>
-  <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/components/radio</loc>
-  </url>
-  <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/components/search</loc>
-  </url>
-  <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/components/select</loc>
-  </url>
-  <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/components/slider</loc>
-  </url>
-  <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/components/snackbar</loc>
-  </url>
-  <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/components/spaceweb-provider</loc>
-  </url>
-  <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/components/stack</loc>
-  </url>
-  <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/components/switch</loc>
-  </url>
-  <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/components/tabs</loc>
-  </url>
-  <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/components/tag</loc>
-  </url>
-  <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/components/test-provider</loc>
-  </url>
-  <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/components/textarea</loc>
-  </url>
-  <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/components/time-picker</loc>
-  </url>
-  <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/components/time-range-picker</loc>
-  </url>
-  <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/components/time-zone-picker</loc>
-  </url>
-  <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/components/tooltip</loc>
-  </url>
-  <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/components/typography</loc>
-  </url>
-  <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/components/video</loc>
-  </url>
-  <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/crm-components/Layout</loc>
+  <!-- <url>
+    <loc>http://localhost:8080/forms/form-components</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/crm-components/text</loc>
+    <loc>http://localhost:8080/forms/form-examples</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/editor/Example</loc>
+    <loc>http://localhost:8080/forms/full-page-form</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/editor/ImplementationLink</loc>
-  </url>
-  <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/editor/Layout</loc>
-  </url>
-  <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/editor/htmlEditor/example</loc>
-  </url>
-  <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/editor/htmlEditor/htmlEditorPropsConfig.ts</loc>
-  </url>
-  <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/editor/htmlEditor/introduction/FullFeaturedHTMLEditor</loc>
-  </url>
-  <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/editor/htmlEditor/introduction</loc>
-  </url>
-  <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/editor/htmlEditor/layout</loc>
-  </url>
-  <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/editor/keyboardShortcuts/config.ts</loc>
-  </url>
-  <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/editor/keyboardShortcuts</loc>
-  </url>
-  <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/editor/markDownEditor</loc>
-  </url>
-  <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/editor/suggestions/config.ts</loc>
-  </url>
-  <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/editor/suggestions</loc>
-  </url>
-  <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/editor/textEditor/TextEditor</loc>
-  </url>
-  <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/editor/textEditor</loc>
-  </url>
-  <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/editor/textEditor/textEditorPropsConfig.ts</loc>
-  </url>
-  <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/forms/form-components</loc>
-  </url>
-  <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/forms/form-examples</loc>
-  </url>
-  <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/forms/full-page-form</loc>
-  </url>
-  <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/forms</loc>
-  </url>
-  <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/getting-started/learn</loc>
-  </url>
-  <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/getting-started/setup</loc>
-  </url>
-  <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/guides/accessibility/focus-styles</loc>
-  </url>
-  <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/guides/bidirectionality</loc>
-  </url>
-  <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/guides/building-themes</loc>
-  </url>
-  <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/guides/css-utilities</loc>
-  </url>
-  <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/guides/how-styling-works</loc>
-  </url>
-  <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/guides/internationalization</loc>
-  </url>
+    <loc>http://localhost:8080/forms</loc>
+  </url> -->
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/guides/seo</loc>
+    <loc>http://localhost:8080/getting-started/learn</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/guides/styling</loc>
+    <loc>http://localhost:8080/getting-started/setup</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/guides/theming</loc>
+    <loc>http://localhost:8080/guides/accessibility/focus-styles</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/guides/understanding-overrides</loc>
+    <loc>http://localhost:8080/guides/bidirectionality</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/iconLibrary</loc>
+    <loc>http://localhost:8080/guides/building-themes</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb</loc>
+    <loc>http://localhost:8080/guides/css-utilities</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/live-editor</loc>
+    <loc>http://localhost:8080/guides/how-styling-works</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/meet</loc>
+    <loc>http://localhost:8080/guides/internationalization</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/meet/meetDemo</loc>
+    <loc>http://localhost:8080/guides/seo</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/table/body-scroll</loc>
+    <loc>http://localhost:8080/guides/styling</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/table</loc>
+    <loc>http://localhost:8080/guides/testing</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/table/paginated-table-cell-measurer</loc>
+    <loc>http://localhost:8080/guides/theming</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/table/paginated-table</loc>
+    <loc>http://localhost:8080/guides/understanding-overrides</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/table/pivot-table</loc>
+    <loc>http://localhost:8080/iconLibrary</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/theme/compare</loc>
+    <loc>http://localhost:8080</loc>
   </url>
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/utils/overrides</loc>
+    <loc>http://localhost:8080/live-editor</loc>
   </url>
+  <!-- <url>
+    <loc>http://localhost:8080/theme/compare</loc>
+  </url> -->
   <url>
-    <loc>https://frontend.sprinklr.com/spaceweb/vs-code-extension</loc>
+    <loc>http://localhost:8080/utils/overrides</loc>
   </url>
 </urlset>

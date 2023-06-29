@@ -8,12 +8,16 @@
     "build-draft": "node resetBasePath && next build",
     "postbuild": "yarn sitemap",
     "build:examples": "tsc --project examples.tsconfig.json && pretty-quick",
-    "sitemap": "node ../../scripts/generate-docs-sitemap.js",
+    "sitemap": "node ../docs/sitemapGenerator.js",
     "start": "next start",
     "export": "next export -o build",
     "export-draft": "next export -o build",
     "publish-draft": "netlify deploy -d build",
-    "publish-aws": "node upload-to-S3.js"
+    "publish-aws": "node upload-to-S3.js",
+    "serve-public": "http-server public --silent &",
+    "pa11y-ci:sitemap": "wait-on --timeout 10000 http-get://localhost:8080 && pa11y-ci --sitemap http://localhost:8080/sitemap.xml",
+    "kill-server": "pkill -f http-server",
+    "a11y-check": "npm-run-all serve-public pa11y-ci:sitemap kill-server"
   },
   "dependencies": {
     "@babel/preset-typescript": "^7.21.5",
@@ -49,10 +53,15 @@
     "@types/react": "^17.0.39",
     "@zeit/next-mdx": "^1.2.0",
     "axios": "^0.24.0",
+    "http-server": "^14.1.1",
     "mime-types": "^2.1.34",
     "netlify-cli": "~2.69.1",
     "next-images": "^1.3.0",
+    "npm-run-all": "^4.1.5",
+    "pa11y-ci": "^3.0.1",
+    "pa11y-ci-reporter-html": "^6.0.0",
     "raw-loader": "^4.0.0",
-    "recursive-readdir": "^2.2.2"
+    "recursive-readdir": "^2.2.2",
+    "wait-on": "^7.0.1"
   }
 }

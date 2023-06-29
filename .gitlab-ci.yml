@@ -1,115 +1,19 @@
-variables:
-  GIT_DEPTH: 200
-image: prod-nexus.sprinklr.com:8123/spr-ubuntu-nodejs:node-16.13.0-npm-8.1.0-yarn-1.22.5
-
 before_script:
-  - printf "//$NPM_REGISTRY_URL:_authToken=$NEXUS_AUTH_TOKEN\nregistry=https://$NPM_REGISTRY_URL\n" >> ~/.npmrc
-  - export PATH="$PATH:/usr/local/node/bin"
-  - source ~/.bashrc
+  - npm install
+
 stages:
-  - bootstrap
-  - test & nextjs-apps
-  - analytics
-  - publish-web
-  - test-report
+  - build
+  - test
+  - accessibility
 
-bootstrap:
-  stage: bootstrap
-  only:
-    - merge_requests
-    - schedules
-  script:
-    - rm -rf node_modules
-    - node -v
-    - /usr/local/node/bin/yarn -v
-    - yarn -v
-    - npm -v
-    - /usr/local/node/bin/yarn install
-    - /usr/local/node/bin/yarn build
-  retry: 1
-  artifacts:
-    paths:
-      - node_modules
-      - packages/*/node_modules
-      - packages/*/dist
-      - packages/*/lib
-      - packages/*/out
-      - packages/*/.turbo
-      # Need to preserve spaceweb-icons/svgComponents because it contains generated react components
-      - packages/spaceweb-icons/svgComponents
-    expire_in: 2 hours
+build_job:
+  stage: build
+  script: echo "Building the app"
 
-test:
-  stage: test & nextjs-apps
-  only:
-    - merge_requests
-    - schedules
-  except:
-    variables:
-      - $TEST_ANALYSIS_REPORT
-  script:
-    - /usr/local/node/bin/yarn ci:test-packages
-    - /usr/local/node/bin/yarn size-limit
-  artifacts:
-    paths:
-      - ./spaceweb-ci-results.json
-      - ./spaceweb-form-ci-results.json
-      - ./spaceweb-charts-ci-results.json
-      - ./spaceweb-editor-ci-results.json
-      - ./spaceweb-table-ci-results.json
-      - ./spaceweb-meet-ci-results.json
-    expire_in: 2 hours
-  retry: 1
+test_job:
+  stage: test
+  script: echo "Testing the app"
 
-docs-pages:
-  stage: test & nextjs-apps
-  only:
-    - merge_requests
-  script:
-    - /usr/local/node/bin/yarn turbo run export
-  retry: 1
-
-analytics:
-  stage: analytics
-  only:
-    - schedules
-  except:
-    variables:
-      - $TEST_ANALYSIS_REPORT
-  script:
-    - /usr/local/node/bin/yarn ci:analytics $TEAMS_WEBHOOK_URL
-
-publish-web:
-  stage: publish-web
-  only:
-    - web
-  script:
-    - >
-      if [ "$CI_COMMIT_BRANCH" = "ci-docs-deploy" ]; then
-        printf "Rebasing $CI_COMMIT_BRANCH with origin main\n"
-        git fetch origin main
-        git rebase origin/main
-      fi
-    - /usr/local/node/bin/yarn install
-    - >
-      if [ "$docs_draft" = "true" ]; then
-        echo "Publishing docs draft to netlify draft."; /usr/local/node/bin/yarn docs:publish-draft
-      elif [ "$docs_prod" = "true" ]; then
-        echo "Publishing docs prod to AWS S3."; /usr/local/node/bin/yarn docs:publish-aws
-      elif [ "$spaceweb_frontend_web" = "true" ]; then
-        echo "Publishing @sprinklr/spaceweb-frontend-web to AWS S3."; /usr/local/node/bin/yarn spaceweb-frontend-web:publish-aws
-      fi
-
-test-report:
-  stage: test-report
-  only:
-    variables:
-      - $TEST_ANALYSIS_REPORT
-  script:
-    - yarn report-ci-schedule
-  timeout: 4 hours
-  artifacts:
-    paths:
-      - ./analysis-report
-    expire_in: 12 hours
-  retry: 1
+a11y_check:
+  stage: accessibility
+  script: npm-run-all serve-public pa11y-ci:sitemap kill-server
